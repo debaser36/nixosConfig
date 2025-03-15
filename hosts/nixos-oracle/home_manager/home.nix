@@ -6,7 +6,7 @@ in
 {
 	imports = [
 
-		(import./home_packagelist.nix{
+		(import ./home_packagelist.nix{
 			pkgs = pkgs;
 		})
 		(import ../../../programs/homeManager/git/default.nix {
