@@ -1,7 +1,7 @@
 
 {user}:
 {
-  git.enable = true;
-  git.userName = user.username;
-  git.userEmail = user.email;
+  programs.git.enable = true;
+  programs.git.userName = user.username;
+  programs.git.userEmail = user.email;
 }
