@@ -11,6 +11,7 @@
 		vars = import ./vars.nix;
 	in
 	 {
+	  packages.${vars.architeture}.website = unhalteproblem-website.packages.${vars.architeture}.default;
 		nixosConfigurations = {
 			nixos-oracle = nixpkgs.lib.nixosSystem {
 				system=vars.architeture;
