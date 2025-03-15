@@ -5,12 +5,12 @@
         viAlias = true;
         vimAlias = true;
         vimdiffAlias = true;
-        plugins = with pkgs.vimPlugins; [
-          nvim-lspconfig
-          nvim-treesitter.withAllGrammars
-          plenary-nvim
-          gruvbox-material
-          mini-nvim
+        plugins =  [
+          pkgs.vimPlugins.nvim-lspconfig
+          pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+          pkgs.vimPlugins.plenary-nvim
+          pkgs.vimPlugins.gruvbox-material
+          pkgs.vimPlugins.mini-nvim
         ];
         extraConfig = ''
           set tabstop=2
