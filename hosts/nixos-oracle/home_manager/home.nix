@@ -6,7 +6,7 @@ in
 {
 	imports = [
 
-		./programs/home_packagelist.nix
+		./home_packagelist.nix
 		(import ../../../programs/homeManager/git/default.nix {
 			user = gitUser;
 		})
