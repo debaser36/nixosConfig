@@ -1,0 +1,1 @@
+# NixOS Configuration files for Nico, debaser36 and unhalteproblem.de

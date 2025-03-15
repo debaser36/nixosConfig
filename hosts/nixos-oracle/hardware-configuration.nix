@@ -2,10 +2,13 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
-
+let
+  vars = import ./vars.nix;
+in
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [ 
+      (modulesPath + "/profiles/qemu-guest.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "virtio_scsi" ];
@@ -33,5 +36,5 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp0s6.useDHCP = lib.mkDefault true;
 
-  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
+  nixpkgs.hostPlatform = lib.mkDefault vars.architeture;
 }

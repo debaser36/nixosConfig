@@ -2,12 +2,13 @@
 
 let
   vars = import ./vars.nix;
-  unhalteproblemWebsite = (builtins.getFlake "github:debaser36/unhalteproblem.de").packages.aarch64-linux.website;
+
 in
 {
   imports =
     [
       	./hardware-configuration.nix
+        ./http_https/system_settings.nix # settings for nginx, acme and the website
     ];
 
   boot = {
@@ -20,7 +21,6 @@ in
     };
     initrd.systemd.enable = true;
   };
-
   systemd.targets.multi-user.enable = true;
 
   networking.hostName = vars.hostname;
@@ -31,18 +31,18 @@ in
 
   users = {
     mutableUsers = false;
-    users.${vars.username} = {
+    users.${vars.default_user.username} = {
       isNormalUser = true;
       extraGroups = ["networkmanager" "wheel"];
       openssh.authorizedKeys.keys = [ vars.sshKey ];
-      home = "/home/" + vars.username;
+      home = "/home/" + vars.default_user.username;
     };
   };
 
   # Enable passwordless sudo.
   security.sudo.extraRules = [
     {
-      users = [vars.username];
+      users = [vars.default_user.username];
       commands = [
         {
           command = "ALL";
@@ -64,13 +64,12 @@ in
      nginx
   ];
 
-
-
- nix = {
-	package = pkgs.nixVersions.latest;
-	extraOptions = "experimental-features = nix-command flakes ";
+  nix = {
+	  package = pkgs.nixVersions.latest;
+	  extraOptions = "experimental-features = nix-command flakes ";
   };  
-environment.variables.EDITOR = "nvim";
+  
+  environment.variables.EDITOR = "nvim";
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
@@ -85,46 +84,6 @@ environment.variables.EDITOR = "nvim";
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 80 443 ];
-
-  #nginx setup
-  services.nginx = {
- 	enable = true;
-	recommendedGzipSettings = true;
-    	recommendedOptimisation = true;
-    	recommendedProxySettings = true;
-    	recommendedTlsSettings = true;
-
-  };
-  services.nginx.virtualHosts."unhalteproblem.de" = {
-		forceSSL = true;
-		enableACME = true;
-		root = "/var/www/unhalteproblem.de";
-		locations."/" = {	
-			index = "index.html";
-			extraConfig = ''
-				try_files $uri $uri/ =404;
-			'';
-		};
-	};
-  security.acme = {
-  	acceptTerms = true;
-	defaults.group = "nginx";
-	defaults.email = "admin@unhalteproblem.de";
-  };
-  users.users.nginx.extraGroups = ["acme"];
-  systemd.services."deploy-website" = {
-	description = "Copy Website to the correct nixos location";
-	after = ["network.target"];
-	wants = ["network.target"];
-	wantedBy = ["multi-user.target"];
-	script = ''
-		rm -rf /var/www/unhalteproblem.de
-	        mkdir -p /var/www/unhalteproblem.de
-	        chown -R nginx:nginx /var/www/unhalteproblem.de
-		'';
-    };
-
-
 
   # Disable documentation for minimal install.
   documentation.enable = false;
