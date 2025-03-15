@@ -34,7 +34,7 @@ in
     users.${vars.default_user.username} = {
       isNormalUser = true;
       extraGroups = ["networkmanager" "wheel"];
-      openssh.authorizedKeys.keys = [ vars.sshKey ];
+      openssh.authorizedKeys.keys = [ vars.public_sshKey ];
       home = "/home/" + vars.default_user.username;
     };
   };
