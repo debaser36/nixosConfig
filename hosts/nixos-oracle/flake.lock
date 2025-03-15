@@ -37,10 +37,45 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1742053528,
+        "narHash": "sha256-Y/bKxj4ebqdSApK2f4WTBjLLSU1euhoutqUapz9lZaY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2d3a45d000f67883e624fc5955f7431fc4734734",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "unhalteproblem-website": "unhalteproblem-website"
+      }
+    },
+    "unhalteproblem-website": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1742056757,
+        "narHash": "sha256-LDFWEmJkMXyRi49Ov/Ozr4ep95UhjjrHLN4dabArB38=",
+        "owner": "debaser36",
+        "repo": "unhalteproblem.de",
+        "rev": "992f3e6cd6f3d317352d86935091382224af9ff5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "debaser36",
+        "ref": "main",
+        "repo": "unhalteproblem.de",
+        "type": "github"
       }
     }
   },

@@ -1,4 +1,5 @@
 #nginx setup -- just inherit everything
+{config, pkgs, unhalteproblem-website, ...}:
 {
   services.nginx = {
  	  enable = true;
@@ -7,10 +8,12 @@
     	recommendedProxySettings = true;
     	recommendedTlsSettings = true;
   };
+
+
   services.nginx.virtualHosts."unhalteproblem.de" = {
 		forceSSL = true;
 		enableACME = true;
-		root = "/var/www/unhalteproblem.de";
+		root = "${unhalteproblem-website.packages.${pkgs.system}.default}";
 		locations."/" = {	
 			index = "index.html";
 			extraConfig = ''
