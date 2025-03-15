@@ -13,7 +13,7 @@ in
 			user = gitUser;
 		})
 		../../../programs/homeManager/bash/default.nix
-		../../../programs/homeManager/neovim/default.nix
+		(import ../../../programs/homeManager/neovim/default.nix{pkgs = pkgs;})
 	];
 
 	home.username = vars.default_user.username;
