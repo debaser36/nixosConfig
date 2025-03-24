@@ -65,6 +65,7 @@
 		pciutils
 		usbutils
 		xorg.xrandr
+		wlroots
 
 		#gaming
 		steam
@@ -72,6 +73,7 @@
 
 	home.sessionVariables = {
 		WLR_RENDERER_ALLOW_SOFTWARE="1";
+     WLR_EVDI_RENDER_DEVICE = "/dev/dri/card1"; 
 		};
 	
 
@@ -99,16 +101,17 @@
 		wrapperFeatures.gtk = true;
 		config = rec {
 			modifier = "Mod4";
-			menu = "wofi --show run";
-			bars = [
-				{
-					command = "waybar";
-				}
-			];
+			#menu = "wofi --show run";
+			#bars = [
+			#{
+			#		command = "waybar";
+			#
+			#}
+			#];
 			terminal = "alacritty";
-			window = {
+			#window = {
 				#border = 100;
-			};
+			#};
 			colors = {
 				focused.border = "#6ea5ff";
 				focused.background = "#367ff5";
@@ -121,35 +124,31 @@
 				unfocused.indicator = "#1df5e3";
 				unfocused.text = "#dcdede";
 			};
-			output."*".bg = "/etc/default_wallpaper.jpg fill";
+			#output."*".bg = "/etc/default_wallpaper.jpg fill";
 			input = {
 				"*" = {xkb_layout = "de";};
 			};
 		};
 		extraConfig = ''
-			output HDMI-A-1 disable
 			bindsym Print			exec shotman -c output
 			bindsym Print+Shift		exec shotman -c region
 			bindsym Print+Shift+Control	exec shotman -c window
 		'';
-		extraOptions = [
-			"--unsupported-gpu"
-			#"--my-next-gpu-wont-be-nvidia"
-		];
+		extraOptions = ["--unsupported-gpu"];
   	};
 
-		programs.waybar = {
-			enable = true;
-			settings = [{
-				"layer"="top";
-				"modules-left"= ["sway/workspaces" "sway/mode"];
-				"modules-center" = ["sway/window"];
-				"modules-right" = [ "clock"];
-				"clock" = {
-					"format-alt"= "{:%a, %d. %b  %H:%M}";
-				};
-			}];
-		};
+		#programs.waybar = {
+		#	enable = true;
+		#	settings = [{
+		#		"layer"="top";
+		#		"modules-left"= ["sway/workspaces" "sway/mode"];
+		#		"modules-center" = ["sway/window"];
+		#		"modules-right" = [ "clock"];
+		#		"clock" = {
+		#			"format-alt"= "{:%a, %d. %b  %H:%M}";
+		#		};
+		#	}];
+		#};
 	
 
 	# BEVLOED NVIM
