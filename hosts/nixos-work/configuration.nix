@@ -16,10 +16,8 @@
   i18n.defaultLocale = "de_DE.UTF-8";
 
 
-  nix = {
-	package = pkgs.nixVersions.latest;
-	extraOptions = "experimental-features = nix-command flakes no-url-literals";
-  };  
+	nix.package = pkgs.nixVersions.latest;
+	nix.extraOptions = "experimental-features = nix-command flakes no-url-literals";
 
   #packages needed for flakes to work
   environment.systemPackages = with pkgs; 
@@ -31,6 +29,13 @@
 		wlroots
 		xorg.xrandr
 	];
+
+	environment.variables = {    
+  WLR_EVDI_RENDER_DEVICE = "/dev/dri/card1";    
+	EDITOR = "nvim";
+};
+  environment.etc."default_wallpaper.jpg".source = ./assets/wallpapers/default_wallpaper.jpg;
+
 
 	
   #virtualisation.virtualbox.guest.enable = true;
@@ -46,11 +51,6 @@
 	programs.npm = {
 		enable = true;
 	};
-
-	environment.variables = {    
-  WLR_EVDI_RENDER_DEVICE = "/dev/dri/card1";    
-	EDITOR = "nvim";
-};
 nixpkgs.overlays = [
   (final: prev: {    
     wlroots_0_18 = prev.wlroots_0_18.overrideAttrs (old: { # you may need to use 0_18
@@ -84,7 +84,6 @@ nixpkgs.overlays = [
 
   # sway related stuff
   programs.sway.enable = true;
-  environment.etc."default_wallpaper.jpg".source = ./assets/wallpapers/default_wallpaper.jpg;
 
 	#DONT CHANGE THIS LINE
   system.stateVersion = "24.11"; # Did you read the comment?

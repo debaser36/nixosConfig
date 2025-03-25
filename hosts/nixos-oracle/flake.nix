@@ -17,6 +17,9 @@
 				system=vars.architeture;
 				specialArgs = {inherit unhalteproblem-website;};
 				modules = [
+						{
+							environment.etc."website-build.nix".source = ./http_https/website-build.nix;
+						}
 						./configuration.nix
 						home-manager.nixosModules.home-manager {
 						home-manager.useGlobalPkgs = true;

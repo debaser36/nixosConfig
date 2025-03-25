@@ -11,7 +11,6 @@
 
 		neofetch
 		nnn
-		#firefox
 		thunderbird
 
 		swaylock

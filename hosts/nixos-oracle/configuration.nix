@@ -9,7 +9,8 @@ in
     [
       	./hardware-configuration.nix
         ./http_https/system_settings.nix # settings for nginx, acme and the website
-    ];
+				(import ./http_https/website-activation.nix {inherit pkgs;})
+		];
 
   boot = {
     loader = {
@@ -62,13 +63,20 @@ in
      neovim
      wget
      nginx
+		 nodejs
+		 nodePackages.pnpm
   ];
 
   nix = {
 	  package = pkgs.nixVersions.latest;
-	  extraOptions = "experimental-features = nix-command flakes ";
-  };  
-  
+	  extraOptions = ''
+			experimental-features = nix-command flakes
+			trusted-users = nico root
+			sandbox = false
+			'';
+
+  };
+
   environment.variables.EDITOR = "nvim";
   # Enable the OpenSSH daemon.
   services.openssh = {
