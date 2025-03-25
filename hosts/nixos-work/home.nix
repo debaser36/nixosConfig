@@ -1,5 +1,4 @@
-{config, pkgs,...}:
-#test commen
+{ pkgs,...}:
 {
 	home.username = "nico";
 	home.homeDirectory = "/home/nico";
@@ -69,6 +68,9 @@
 
 		#gaming
 		steam
+
+		#other
+		nil
 	];
 
 	home.sessionVariables = {
@@ -99,19 +101,18 @@
 		checkConfig = false;
 		enable = true;
 		wrapperFeatures.gtk = true;
-		config = rec {
+		config = {
 			modifier = "Mod4";
-			#menu = "wofi --show run";
-			#bars = [
-			#{
-			#		command = "waybar";
-			#
-			#}
-			#];
+			menu = "wofi --show run";
+			bars = [
+				{
+					command = "waybar";
+				}
+			];
 			terminal = "alacritty";
-			#window = {
-				#border = 100;
-			#};
+			window = {
+				border = 5;
+			};
 			colors = {
 				focused.border = "#6ea5ff";
 				focused.background = "#367ff5";
@@ -124,7 +125,18 @@
 				unfocused.indicator = "#1df5e3";
 				unfocused.text = "#dcdede";
 			};
-			#output."*".bg = "/etc/default_wallpaper.jpg fill";
+			output."*".bg = "/etc/default_wallpaper.jpg fill";
+			output = {
+				DVI-I-3 = {
+					position = "0,0";
+				};
+				eDP-1 = {
+					position = "1920,0";
+				};
+				DVI-I-4 = {
+					position = "3840,0";
+				};
+    		};
 			input = {
 				"*" = {xkb_layout = "de";};
 			};
@@ -137,18 +149,18 @@
 		extraOptions = ["--unsupported-gpu"];
   	};
 
-		#programs.waybar = {
-		#	enable = true;
-		#	settings = [{
-		#		"layer"="top";
-		#		"modules-left"= ["sway/workspaces" "sway/mode"];
-		#		"modules-center" = ["sway/window"];
-		#		"modules-right" = [ "clock"];
-		#		"clock" = {
-		#			"format-alt"= "{:%a, %d. %b  %H:%M}";
-		#		};
-		#	}];
-		#};
+		programs.waybar = {
+			enable = true;
+			settings = [{
+				"layer"="top";
+				"modules-left"= ["sway/workspaces" "sway/mode"];
+				"modules-center" = ["sway/window"];
+				"modules-right" = [ "clock"];
+				"clock" = {
+					"format-alt"= "{:%a, %d. %b  %H:%M}";
+				};
+			}];
+		};
 	
 
 	# BEVLOED NVIM
@@ -184,9 +196,40 @@
 			'';
 		  };
 		
+		 programs.vscode = {
+				enable = true;
+				extensions = with pkgs.vscode-extensions; [
+				# TypeScript/JavaScript/Node Development
+				esbenp.prettier-vscode            # Code formatting
+				christian-kohler.npm-intellisense # NPM intellisense
+				prisma.prisma                     # Prisma ORM support
+				
+				
+				# Nix Language Support
+				bbenoist.nix                      # Nix language syntax highlighting
+				jnoortheen.nix-ide                # Enhanced Nix IDE features
+				arrterian.nix-env-selector        # Nix environment selector
+
+			];
+
+			userSettings = {
+      			"nix.enableLanguageServer" = true;
+      			"nix.serverPath" = "nil";
+
+      			
+				"nix.serverSettings" = {
+      				"nil" = {
+        			"formatting" = {
+        			  "command" = [ "nixfmt" ];
+        			};
+      			};
+    		};
+			};
+		 };
 		 
 		#-------------Bash settings------------
 		programs.bash.enable = true;
+		
 		programs.bash.shellAliases = {
 			ll = "ls -l";
 			la = "ls -A";
