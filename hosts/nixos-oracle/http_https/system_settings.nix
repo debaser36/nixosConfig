@@ -13,7 +13,7 @@
   services.nginx.virtualHosts."unhalteproblem.de" = {
 		forceSSL = true;
 		enableACME = true;
-		root = "${unhalteproblem-website.packages.${pkgs.system}.default}";
+		root = "/var/www/unhalteproblem.de";
 		locations."/" = {	
 			index = "index.html";
 			extraConfig = ''
@@ -26,6 +26,6 @@
 	  defaults.group = "nginx";
 	  defaults.email = "admin@unhalteproblem.de";
   };
-  
+
   users.users.nginx.extraGroups = ["acme"];
 }
