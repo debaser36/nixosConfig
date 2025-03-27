@@ -14,7 +14,13 @@
   nixpkgs.config.allowUnfree = true;
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "de_DE.UTF-8";
-
+	
+	services.avahi = {
+  enable = true;
+  nssmdns4 = true;
+  openFirewall = true;
+};
+	services.printing.enable = true;
 
   nix = {
 	package = pkgs.nixVersions.latest;
@@ -25,6 +31,18 @@
   environment.systemPackages = with pkgs; [git vim wget pulseaudio];
   environment.variables.EDITOR = "nvim";
 
+	services.postgresql = {
+		enable = true;
+		enableTCPIP = true;
+		#ensureDatabases = ["pb_app"];
+		authentication = pkgs.lib.mkOverride 10 ''
+			#type database  DBuser  origin-address auth-method
+      local all       all     trust
+			host	all				all			127.0.0.1/32 trust
+			host	all				all			::1/128			trust
+		'';
+
+	};
 	
   #virtualisation.virtualbox.guest.enable = true;
   console.keyMap = "de";	
@@ -36,9 +54,23 @@
 		home = "/home/nico";
   };
 
-	programs.npm = {
-		enable = true;
-	};
+		programs.npm = {
+			enable = true;
+			npmrc = ''
+				prefix = ''${HOME}/.npm
+				color = true
+				audit = false
+				fund = false
+				init-author-email = dev@unhalteproblem.de
+				init-author-url = https://www.unhalteproblem.de
+				init-license = MIT
+				init-type = module
+				prefer-offline = true
+				progress = false
+				yes = dev
+			'';
+		};
+
 
   security.polkit.enable = true;
   hardware.graphics.enable = true;
