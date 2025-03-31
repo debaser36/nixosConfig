@@ -55,7 +55,7 @@
 			audit=false
 			fund=false
 			init-type=module
-			offline=true
+			prefer-offline=true
 			progress=false
 
 		'';
