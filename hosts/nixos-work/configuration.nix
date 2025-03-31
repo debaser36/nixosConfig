@@ -50,6 +50,15 @@
 
 	programs.npm = {
 		enable = true;
+		npmrc = ''
+			init-license=MIT
+			audit=false
+			fund=false
+			init-type=module
+			offline=true
+			progress=false
+
+		'';
 	};
 nixpkgs.overlays = [
   (final: prev: {    
