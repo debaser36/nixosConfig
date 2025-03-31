@@ -28,6 +28,7 @@
 		pulseaudio
 		wlroots
 		xorg.xrandr
+		nodejs
 	];
 
 	environment.variables = {    
@@ -57,6 +58,7 @@
 			init-type=module
 			prefer-offline=true
 			progress=false
+			prefix ~/.npm-global
 
 		'';
 	};
