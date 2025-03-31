@@ -101,6 +101,8 @@
 		enable = true;
 		#wrapperFeatures.gtk = true;
 		config = {
+			focus.followMouse=false;
+
 			modifier = "Mod4";
 			menu = "wofi --show run";
 			bars = [
