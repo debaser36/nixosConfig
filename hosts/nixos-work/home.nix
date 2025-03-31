@@ -99,7 +99,7 @@
 	wayland.windowManager.sway = {
 		checkConfig = false;
 		enable = true;
-		wrapperFeatures.gtk = true;
+		#wrapperFeatures.gtk = true;
 		config = {
 			modifier = "Mod4";
 			menu = "wofi --show run";
@@ -126,20 +126,24 @@
 			};
 			output."*".bg = "/etc/default_wallpaper.jpg fill";
 			output = {
-				DVI-I-3 = {
-					position = "0,0";
-				};
-				eDP-1 = {
+		  	eDP-1 = {
+					mode = "1920x1200";
 					position = "1920,0";
 				};
-				DVI-I-4 = {
-					position = "3840,0";
+				DVI-I-1={
+					mode = "2560x1440";
+					position="3840,0";
 				};
-    		};
+				DVI-I-2={
+					mode="1920x1080";
+					position="0,0";
+				};
+  		};
 			input = {
 				"*" = {xkb_layout = "de";};
 			};
 		};
+
 		extraConfig = ''
 			bindsym Print			exec shotman -c output
 			bindsym Print+Shift		exec shotman -c region
@@ -150,15 +154,15 @@
 
 		programs.waybar = {
 			enable = true;
-			settings = [{
-				"layer"="top";
-				"modules-left"= ["sway/workspaces" "sway/mode"];
-				"modules-center" = ["sway/window"];
-				"modules-right" = [ "clock"];
-				"clock" = {
-					"format-alt"= "{:%a, %d. %b  %H:%M}";
-				};
-			}];
+		#	settings = [{
+		#		"layer"="top";
+		#		"modules-left"= ["sway/workspaces" "sway/mode"];
+		#		"modules-center" = ["sway/window"];
+		#		"modules-right" = [ "clock"];
+		#		"clock" = {
+		#			"format-alt"= "{:%a, %d. %b  %H:%M}";
+		#		};
+		#	}];
 		};
 	
 
