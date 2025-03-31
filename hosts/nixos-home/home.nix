@@ -1,10 +1,12 @@
-{config, pkgs,...}:
-#test commen
+{ pkgs,...}:
 {
 	home.username = "nico";
 	home.homeDirectory = "/home/nico";
 	home.packages = with pkgs; [
 
+		pinta
+
+		yarn
 		isabelle
 		
 		bruno
@@ -12,7 +14,6 @@
 
 		neofetch
 		nnn
-		#firefox
 		thunderbird
 
 		swaylock
@@ -65,13 +66,18 @@
 		pciutils
 		usbutils
 		xorg.xrandr
+		wlroots
 
 		#gaming
 		steam
+
+		#other
+		nil
 	];
 
 	home.sessionVariables = {
 		WLR_RENDERER_ALLOW_SOFTWARE="1";
+     WLR_EVDI_RENDER_DEVICE = "/dev/dri/card1"; 
 		};
 	
 
@@ -97,7 +103,8 @@
 		checkConfig = false;
 		enable = true;
 		wrapperFeatures.gtk = true;
-		config = rec {
+		config = {
+		focus.followMouse = false;
 			modifier = "Mod4";
 			menu = "wofi --show run";
 			bars = [
@@ -107,7 +114,7 @@
 			];
 			terminal = "alacritty";
 			window = {
-				#border = 100;
+				border = 5;
 			};
 			colors = {
 				focused.border = "#6ea5ff";
@@ -127,15 +134,11 @@
 			};
 		};
 		extraConfig = ''
-			output HDMI-A-1 disable
 			bindsym Print			exec shotman -c output
 			bindsym Print+Shift		exec shotman -c region
 			bindsym Print+Shift+Control	exec shotman -c window
 		'';
-		extraOptions = [
-			"--unsupported-gpu"
-			#"--my-next-gpu-wont-be-nvidia"
-		];
+		extraOptions = ["--unsupported-gpu"];
   	};
 
 		programs.waybar = {
@@ -185,9 +188,40 @@
 			'';
 		  };
 		
+		 programs.vscode = {
+				enable = true;
+				extensions = with pkgs.vscode-extensions; [
+				# TypeScript/JavaScript/Node Development
+				esbenp.prettier-vscode            # Code formatting
+				christian-kohler.npm-intellisense # NPM intellisense
+				prisma.prisma                     # Prisma ORM support
+				
+				
+				# Nix Language Support
+				bbenoist.nix                      # Nix language syntax highlighting
+				jnoortheen.nix-ide                # Enhanced Nix IDE features
+				arrterian.nix-env-selector        # Nix environment selector
+
+			];
+
+			userSettings = {
+      			"nix.enableLanguageServer" = true;
+      			"nix.serverPath" = "nil";
+
+      			
+				"nix.serverSettings" = {
+      				"nil" = {
+        			"formatting" = {
+        			  "command" = [ "nixfmt" ];
+        			};
+      			};
+    		};
+			};
+		 };
 		 
 		#-------------Bash settings------------
 		programs.bash.enable = true;
+		
 		programs.bash.shellAliases = {
 			ll = "ls -l";
 			la = "ls -A";
