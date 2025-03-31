@@ -28,7 +28,7 @@
 		pulseaudio
 		wlroots
 		xorg.xrandr
-		nodejs_22
+		nodejs_23
 	];
 
 	environment.variables = {    
