@@ -1,6 +1,6 @@
 {
   programs.npm = {
-			nable = true;
+			enable = true;
 			npmrc = ''
         init-license=MIT
         audit=false
