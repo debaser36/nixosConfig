@@ -1,9 +1,11 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   imports =
     [
-      ./hardware/hardware-configuration.nix
+      ../hardware/hardware-configuration.nix
+			(import ./environment.etc.nix)
+			(import ./systemPackages.nix {inherit pkgs;})
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -19,26 +21,11 @@
 	nix.package = pkgs.nixVersions.latest;
 	nix.extraOptions = "experimental-features = nix-command flakes no-url-literals";
 
-  #packages needed for flakes to work
-  environment.systemPackages = with pkgs; 
-	[
-		git 
-		vim 
-		wget 
-		pulseaudio
-		wlroots
-		xorg.xrandr
-		nodejs_23
-	];
-
+  
 	environment.variables = {   
-	WLR_RENDERER_ALLOW_SOFTWARE="1";
-	#WLR_RENDERER="gles2";
-  #WLR_EVDI_RENDER_DEVICE = "/dev/dri/card1";    
-	EDITOR = "nvim";
-};
-  environment.etc."default_wallpaper.jpg".source = ./assets/wallpapers/default_wallpaper.jpg;
-
+		WLR_RENDERER_ALLOW_SOFTWARE="1";
+		EDITOR = "nvim";
+	};
 
 	
   #virtualisation.virtualbox.guest.enable = true;
@@ -51,19 +38,7 @@
 		home = "/home/nico";
   };
 
-	programs.npm = {
-		enable = true;
-		npmrc = ''
-			init-license=MIT
-			audit=false
-			fund=false
-			init-type=module
-			prefer-offline=true
-			progress=false
-			prefix=~/.npm-global
 
-		'';
-	};
 
 
 
@@ -73,10 +48,10 @@
   security.rtkit.enable = true;
   services.dbus.enable = true;
   services.pipewire = {
-	enable = true;
-	alsa.enable = true;
-	alsa.support32Bit = true;
-	pulse.enable = true;
+		enable = true;
+		alsa.enable = true;
+		alsa.support32Bit = true;
+		pulse.enable = true;
   };
 	services.xserver.videoDrivers = ["modesetting"];
 	systemd.services.dlm.wantedBy = ["multi-user.target"];
@@ -85,8 +60,7 @@
 	networking.wireguard.enable = true;
 	services.wg-netmanager.enable = true;
 
-  # sway related stuff
-  programs.sway.enable = true;
+
 
 	#DONT CHANGE THIS LINE
   system.stateVersion = "24.11"; # Did you read the comment?
