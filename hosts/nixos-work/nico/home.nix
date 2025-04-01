@@ -40,6 +40,9 @@ in
 
 			# kitty
 			(import ../../../programs/homeManager/kitty/default.nix)
+
+			# waybar
+			(import ../../../programs/homeManager/waybar/default.nix)
 	
 	];
 
