@@ -75,10 +75,7 @@
 		nil
 	];
 
-	home.sessionVariables = {
-		WLR_RENDERER="gles2";
-		WLR_RENDERER_ALLOW_SOFTWARE="1";
-		};
+	
 	
 
 	# GIT
@@ -96,43 +93,13 @@
 		};
 
 	};
+
+	imports = [
+			"../../programs/homeManager/sway/default.nix"
+	];
 		
- 	
-	# WAYLAND
-	wayland.windowManager.sway = {
-		checkConfig = false;
-		enable = true;
-		wrapperFeatures.gtk = true;
-		config = {
-			focus.followMouse=false;
 
-			modifier = "Mod4";
-			menu = "wofi --show run";
-			bars = [
-				{
-					command = "waybar";
-				}
-			];
-			terminal = "alacritty";
-			window = {
-				border = 5;
-			};
-			colors = {
-				focused.border = "#6ea5ff";
-				focused.background = "#367ff5";
-				focused.childBorder = "#2878fa";
-				focused.indicator = "#2878fa";
-				focused.text = "#ffffff";
-				unfocused.border = "a1fff7";
-				unfocused.background = "#0061fc";
-				unfocused.childBorder = "#1770ff";
-				unfocused.indicator = "#1df5e3";
-				unfocused.text = "#dcdede";
-			};
-
-			
-
-			# monitor on the left
+			/* # monitor on the left
 			output.HDMI-A-1 = {
 				mode="1920x1200@59.950Hz";
 				position="0,0";
@@ -149,35 +116,7 @@
 			output.DP-2 = {
 				mode="2560x1440@59.951Hz";
 				position="3120,120";
-			};
-
-
-			output."*".bg = "/etc/default_wallpaper.jpg fill";
-			input = {
-				"*" = {xkb_layout = "de";};
-			};
-		};
-
-		extraConfig = ''
-			bindsym Print			exec shotman -c output
-			bindsym Print+Shift		exec shotman -c region
-			bindsym Print+Shift+Control	exec shotman -c window
-		'';
-		
-  	};
-
-		programs.waybar = {
-			enable = false;
-		#	settings = [{
-		#		"layer"="top";
-		#		"modules-left"= ["sway/workspaces" "sway/mode"];
-		#		"modules-center" = ["sway/window"];
-		#		"modules-right" = [ "clock"];
-		#		"clock" = {
-		#			"format-alt"= "{:%a, %d. %b  %H:%M}";
-		#		};
-		#	}];
-		};
+			}; */
 	
 
 	# BEVLOED NVIM
