@@ -1,19 +1,25 @@
 {
   programs.waybar = {
     enable = true;
-    settings = {
+    #settings = {
+#
+ #       MainBar = {
+  #        layer = "top";
+   #       potition = "top";
+#
+ #         modules-left = [];
+  #        modules-center = [];
+   #       modules-right = ["battery"];
 
-        MainBar = {
-          layer = "top";
-          potition = "top";
+    #      name = "MainBar";
+     #     reload_style_on_change = false;
+#
 
-          modules-left = [];
-          modules-center = [];
-          modules-right = ["battery"];
-
-          name = "MainBar";
-          reload_style_on_change = false;
-        };
-    };
+          # Module Settings
+ #         battery = {
+  #          format = "{icon} {capacity}%";
+   #       };
+    #    };
+    #};
   };
 }

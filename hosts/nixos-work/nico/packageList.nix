@@ -9,6 +9,8 @@ with pkgs; [
 		sqlite
 
 
+		pnpm
+
 		neofetch
 		nnn
 		thunderbird
