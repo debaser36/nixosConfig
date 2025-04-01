@@ -4,8 +4,8 @@ let
 		packageList = (import ./packageList.nix {inherit pkgs;});
 		
 		gitUser = {
-			userName = "debaser36";
-			userEmail = "n.burkholder@tu-berlin.de";
+			username = "debaser36";
+			email = "n.burkholder@tu-berlin.de";
 		};
 in
 {
@@ -24,22 +24,22 @@ in
 			})
 
 			# nvim
-			(import ../../programs/homeManager/neovim/default.nix {inherit pkgs;})
+			(import ../../../programs/homeManager/neovim/default.nix {inherit pkgs;})
 
 			# git
-			(import ../../programs/homeManager/git/default.nix {user = gitUser;})
+			(import ../../../programs/homeManager/git/default.nix {user = gitUser;})
 
 			# vscode
-			(import ../../programs/homeManager/vscode/default.nix {inherit pkgs;})
+			(import ../../../programs/homeManager/vscode/default.nix {inherit pkgs;})
 
 			# bash
-			(import ../../programs/homeManager/bash/default.nix)
+			(import ../../../programs/homeManager/bash/default.nix)
 
 			# firefox
-			(import ../../programs/homeManager/firefox/default.nix {inherit pkgs;})
+			(import ../../../programs/homeManager/firefox/default.nix {inherit pkgs;})
 
 			# kitty
-			(import ../../programs/homeManager/kitty/default.nix)
+			(import ../../../programs/homeManager/kitty/default.nix)
 	
 	];
 
