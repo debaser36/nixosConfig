@@ -1,5 +1,7 @@
 {
-  swayConfig?(import ./swayConfigDefault.nix),
+  swayConfig?(import ./swayConfigDefault.nix {}),
+  outputConfig?{},
+  extraConfig ? (import ./swayDefaultExtraConfig.nix),
   ...
 }:
 {
@@ -12,7 +14,8 @@
     checkConfig=false;
     wrapperFeatures.gtk = true;
 
-    config = swayConfig;
+    config = swayConfig // outputConfig;
+    inherit extraConfig;
 
   };
 }

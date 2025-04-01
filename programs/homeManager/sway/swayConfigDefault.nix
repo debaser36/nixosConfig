@@ -3,7 +3,6 @@
 	terminal ? "alacritty", 
 	colors ? (import ./swayColorsDefault.nix),
 	bgPath ? "/etc/default_wallpaper.jpg fill",
-	extraConfig ? (import ./swayDefaultExtraConfig.nix),
 	...
 }:
 {
@@ -27,6 +26,5 @@
 
 
 			output."*".bg = bgPath;
-			inherit extraConfig;
 
 		}
