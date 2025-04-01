@@ -1,121 +1,47 @@
 { pkgs,...}:
 let 
 		outputConfig = (import ../hardware/swayMonitorSettings.nix);
-		packageList = (import ./packageList {inherit pkgs;});
+		packageList = (import ./packageList.nix {inherit pkgs;});
+		
+		gitUser = {
+			userName = "debaser36";
+			userEmail = "n.burkholder@tu-berlin.de";
+		};
 in
 {
 	home.username = "nico";
 	home.homeDirectory = "/home/nico";
+
+	# Packages not configurable via home manager config settings
 	home.packages = packageList;
 
-	
-	
-
-	# GIT
-	programs.git = {
-		enable = true;
-		userName = "debaser36";
-		userEmail = "n.burkholder@tu-berlin.de";	
-	};
-
-	# FIREFOX
-	programs.firefox = {
-		enable = true;
-		profiles."nico" = {
-			#extensions.packages
-		};
-
-	};
-
-	
+	# Packages configurable via home manager config settings
 	imports = [
+			# sway
 			(import ../../../programs/homeManager/sway/default.nix {
 				inherit outputConfig;
 				inherit pkgs;
 			})
-	];
-		
 
-			
+			# nvim
+			(import ../../programs/homeManager/neovim/default.nix {inherit pkgs;})
+
+			# git
+			(import ../../programs/homeManager/git/default.nix {user = gitUser;})
+
+			# vscode
+			(import ../../programs/homeManager/vscode/default.nix {inherit pkgs;})
+
+			# bash
+			(import ../../programs/homeManager/bash/default.nix)
+
+			# firefox
+			(import ../../programs/homeManager/firefox/default.nix {inherit pkgs;})
+
+			# kitty
+			(import ../../programs/homeManager/kitty/default.nix)
 	
-
-	# BEVLOED NVIM
-  	programs.neovim = {
-      		enable = true;
-      		defaultEditor = true;
-					withNodeJs = true;
-      		viAlias = true;
-					vimAlias = true;
-      		vimdiffAlias = true;
-					plugins = with pkgs.vimPlugins; [
-						nvim-lspconfig
-						nvim-treesitter.withAllGrammars
-						plenary-nvim
-						gruvbox-material
-						mini-nvim
-					];
-	      	extraConfig = ''
-						set tabstop=2
-						set softtabstop=2
-						set shiftwidth=2
-						set autoindent
-						set number
-						set wildmode=longest,list
-						set cc=80
-						filetype plugin indent on
-						syntax on
-						set clipboard=unnamedplus
-						set mouse=a
-						filetype plugin on
-						set cursorline
-						set ttyfast
-			'';
-		  };
-		
-		 programs.vscode = {
-				enable = true;
-				extensions = with pkgs.vscode-extensions; [
-				# TypeScript/JavaScript/Node Development
-				esbenp.prettier-vscode            # Code formatting
-				christian-kohler.npm-intellisense # NPM intellisense
-				prisma.prisma                     # Prisma ORM support
-				
-				
-				# Nix Language Support
-				bbenoist.nix                      # Nix language syntax highlighting
-				jnoortheen.nix-ide                # Enhanced Nix IDE features
-				arrterian.nix-env-selector        # Nix environment selector
-
-			];
-
-			userSettings = {
-      			"nix.enableLanguageServer" = true;
-      			"nix.serverPath" = "nil";
-
-      			
-				"nix.serverSettings" = {
-      				"nil" = {
-        			"formatting" = {
-        			  "command" = [ "nixfmt" ];
-        			};
-      			};
-    		};
-			};
-		 };
-		 
-		#-------------Bash settings------------
-		programs.bash.enable = true;
-		
-		programs.bash.shellAliases = {
-			ll = "ls -l";
-			la = "ls -A";
-			ls = "ls -A --color=tty";
-		};
-		programs.bash.bashrcExtra = "export PATH=\"$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin\"";
-		programs.kitty.enable = true;
-
-		programs.alacritty.enable = true;
-
+	];
 
 		# don't change these Lines!!!
 		home.stateVersion = "24.11";

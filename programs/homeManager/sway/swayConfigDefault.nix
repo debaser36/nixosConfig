@@ -1,6 +1,6 @@
 {
 	modifier ? "Mod4", 
-	terminal ? "alacritty", 
+	terminal ? "kitty", 
 	colors ? (import ./swayColorsDefault.nix),
 	bgPath ? "/etc/default_wallpaper.jpg fill",
 	...
