@@ -1,82 +1,12 @@
 { pkgs,...}:
 let 
-		outputConfig = (import ./hardware/swayMonitorConfig.nix);
+		outputConfig = (import ../hardware/swayMonitorSettings.nix);
+		packageList = (import ./packageList {inherit pkgs;});
 in
 {
 	home.username = "nico";
 	home.homeDirectory = "/home/nico";
-	home.packages = with pkgs; [
-
-		isabelle
-		
-		bruno
-		element-desktop
-
-		sqlite
-
-
-		neofetch
-		nnn
-		thunderbird
-
-		swaylock
-		swayidle
-		mako
-		waybar
-
-		# archives
-		zip
-		xz
-		unzip
-		p7zip
-
-		#utils
-		jq
-		yq-go
-
-		#network
-		mtr
-		iperf3
-		dnsutils
-		ldns
-		aria2
-		socat
-		nmap
-		ipcalc
-		
-		#misc
-		which
-		tree
-		gnused
-		zstd
-		gnupg
-		libnotify
-		kitty # terminal emulator
-		alacritty
-		keepassxc
-		mako 
-		wl-clipboard
-		shotman
-
-		#nix-related
-		nix-output-monitor
-		
-		#systools
-		xorg.xmodmap
-		sysstat
-		lm_sensors
-		ethtool
-		pciutils
-		usbutils
-		xorg.xrandr
-		wlroots
-
-		#gaming
-		steam
-
-		#other
-		nil
-	];
+	home.packages = packageList;
 
 	
 	
@@ -99,8 +29,9 @@ in
 
 	
 	imports = [
-			(import ../../programs/homeManager/sway/default.nix {
+			(import ../../../programs/homeManager/sway/default.nix {
 				inherit outputConfig;
+				inherit pkgs;
 			})
 	];
 		
