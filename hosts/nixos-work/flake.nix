@@ -21,7 +21,7 @@
 						home-manager.useUserPackages = true;
 						home-manager.users.nico = import ./home.nix;	
 					}
-					./greetd.nix
+					#./greetd.nix
 					nur.modules.nixos.default
 				];
 			};

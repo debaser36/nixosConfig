@@ -9,6 +9,9 @@
 		bruno
 		element-desktop
 
+		sqlite
+
+
 		neofetch
 		nnn
 		thunderbird
@@ -73,8 +76,8 @@
 	];
 
 	home.sessionVariables = {
+		WLR_RENDERER="gles2";
 		WLR_RENDERER_ALLOW_SOFTWARE="1";
-     WLR_EVDI_RENDER_DEVICE = "/dev/dri/card1"; 
 		};
 	
 
@@ -99,7 +102,7 @@
 	wayland.windowManager.sway = {
 		checkConfig = false;
 		enable = true;
-		#wrapperFeatures.gtk = true;
+		wrapperFeatures.gtk = true;
 		config = {
 			focus.followMouse=false;
 
@@ -126,21 +129,30 @@
 				unfocused.indicator = "#1df5e3";
 				unfocused.text = "#dcdede";
 			};
+
+			
+
+			# monitor on the left
+			output.HDMI-A-1 = {
+				mode="1920x1200@59.950Hz";
+				position="0,0";
+				transform="90";
+			};
+
+			# laptop center
+			output.eDP-1 = {
+				mode="1920x1200@60.002Hz";
+				position="1200,240";
+			};
+
+			# monitor on the right
+			output.DP-2 = {
+				mode="2560x1440@59.951Hz";
+				position="3120,120";
+			};
+
+
 			output."*".bg = "/etc/default_wallpaper.jpg fill";
-			output = {
-		  	eDP-1 = {
-					mode = "1920x1200";
-					position = "1920,0";
-				};
-				DVI-I-1={
-					mode = "2560x1440";
-					position="3840,0";
-				};
-				DVI-I-2={
-					mode="1920x1080";
-					position="0,0";
-				};
-  		};
 			input = {
 				"*" = {xkb_layout = "de";};
 			};
@@ -151,11 +163,11 @@
 			bindsym Print+Shift		exec shotman -c region
 			bindsym Print+Shift+Control	exec shotman -c window
 		'';
-		extraOptions = ["--unsupported-gpu"];
+		
   	};
 
 		programs.waybar = {
-			enable = true;
+			enable = false;
 		#	settings = [{
 		#		"layer"="top";
 		#		"modules-left"= ["sway/workspaces" "sway/mode"];
