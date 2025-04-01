@@ -1,4 +1,7 @@
-{swayConfig?(import ./swayConfigDefault.nix)}:
+{
+  swayConfig?(import ./swayConfigDefault.nix),
+  ...
+}:
 {
   home.sessionVariables = {
 			WLR_RENDERER="gles2";
