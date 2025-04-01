@@ -95,7 +95,7 @@
 	};
 
 	imports = [
-			"../../programs/homeManager/sway/default.nix"
+			../../programs/homeManager/sway/default.nix
 	];
 		
 

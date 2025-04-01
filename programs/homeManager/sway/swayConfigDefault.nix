@@ -3,7 +3,8 @@
 	terminal ? "alacritty", 
 	colors ? (import ./swayColorsDefault.nix),
 	bgPath ? "/etc/default_wallpaper.jpg fill",
-	extraConfig ? (import ./swayDefaultExtraConfig.nix)
+	extraConfig ? (import ./swayDefaultExtraConfig.nix),
+	...
 }:
 {
 			focus.followMouse = false;
