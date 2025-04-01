@@ -3,7 +3,7 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
+      ./hardware/hardware-configuration.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
