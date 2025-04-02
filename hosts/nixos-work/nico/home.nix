@@ -36,7 +36,7 @@ in
 			(import ../../../programs/homeManager/bash/default.nix)
 
 			# firefox
-			(import ../../../programs/homeManager/firefox/default.nix {inherit pkgs;})
+			(import ../../../programs/homeManager/firefox/default.nix {inherit pkgs; inherit lib;})
 
 			# kitty
 			(import ../../../programs/homeManager/kitty/default.nix)
