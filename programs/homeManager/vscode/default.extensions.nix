@@ -38,7 +38,6 @@
         
         # -------- GENERAL ---------
         james-yu.latex-workshop           # Latex Support
-        2gua.rainbow-brackets             # Good for nested proofs
         tamasfe.even-better-toml          # Good for TOML
         mkhl.direnv                       # Shell Integration for direnv
         github.copilot  
@@ -95,6 +94,8 @@
       "docthis.includeAuthorTag" = true;
       "docthis.authorName" = "Nico Burkholder";
       "docthis.includeDateTag"=true;
+
+      "editor.guides.bracketPairs"= true;
     };
   };
 }
