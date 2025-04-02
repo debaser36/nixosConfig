@@ -18,9 +18,10 @@
   programs.sway.enable = true;
 
 	# displayManager
+	services.displayManager.defaultSession = "sway";
 	services.displayManager.sddm = {
 		enable = true;
-		defaultSession = "sway";
+		
 	};
 
 }
