@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nix-vscode-extension, ... }:
 
 {
   imports =
@@ -14,6 +14,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.timeout = 2;
   networking.hostName = "nixos"; 
+  nixpkgs.overlays = [
+    nix-vscode-extension.overlays.default
+  ];
   nixpkgs.config.allowUnfree = true;
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "de_DE.UTF-8";
@@ -27,6 +30,7 @@
 		WLR_RENDERER_ALLOW_SOFTWARE="1";
 		EDITOR = "nvim";
 	};
+
 
 	
   #virtualisation.virtualbox.guest.enable = true;

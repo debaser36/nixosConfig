@@ -9,8 +9,14 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+		nix-vscode-extension.url = "github:nix-community/nix-vscode-extensions";
 	};
-	outputs={nixpkgs, home-manager, nur, ...}: {
+	outputs=inputs@{self,
+		nixpkgs, 
+		home-manager, 
+		nur, 
+		nix-vscode-extension,
+		...}: {
 		nixosConfigurations = {
 			nixos=nixpkgs.lib.nixosSystem {
 				system="x86_64-linux";
