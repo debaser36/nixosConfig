@@ -9,9 +9,9 @@ in
 
   programs.vscode = {
 				enable = true;
-				extensions = extensionSettings.extensions;
+				profiles.default.extensions = extensionSettings.extensions;
 
-				userSettings = lib.recursiveUpdate {
+				profiles.default.userSettings = lib.recursiveUpdate {
 							"editor.fontFamily" = "'Fira Code'";
 							"editor.fontLigatures" = true;
 							"editor.fontWeight" = "400";
