@@ -19,6 +19,7 @@
 
 	# displayManager
 	services.displayManager.defaultSession = "sway";
+	services.xserver.enable = true;
 	services.displayManager.sddm = {
 		enable = true;
 		
