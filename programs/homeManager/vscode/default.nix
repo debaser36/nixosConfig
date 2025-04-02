@@ -18,6 +18,7 @@ in
       				"telemetry.enableTelemetry" = false;
 
 							"explorer.sortOrder" = "type";
+							"explorer.confirmDelete" = false;
 				}
 				extensionSettings.userSettings;
 		 };
