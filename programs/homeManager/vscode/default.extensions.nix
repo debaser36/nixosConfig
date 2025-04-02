@@ -65,6 +65,7 @@
       "nil" = {
         "formatting" = {
           "command" = [ "nixfmt" ];
+          };
         };
       };
 
@@ -97,5 +98,5 @@
 
       "editor.guides.bracketPairs"= true;
     };
-  };
-}
+  }
+

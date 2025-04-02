@@ -1,19 +1,18 @@
 {
-  pkgs,
+  	pkgs,
 	lib,
-  ...
+  	...
 }:
 let extensionSettings = (import ./default.extensions.nix {inherit pkgs;});
 in
 {
 
   programs.vscode = {
-				enable = true;
-				enableUpdateCheck = false;
+				# enable = true;
 				extensions = extensionSettings.extensions;
 
 				userSettings = lib.recursiveUpdate {
-      			"telemetry.enableTelemetry" = false;
+      				"telemetry.enableTelemetry" = false;
 				}
 				extensionSettings.userSettings;
 		 };

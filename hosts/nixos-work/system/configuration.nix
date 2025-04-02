@@ -24,6 +24,7 @@
 
 	nix.package = pkgs.nixVersions.latest;
 	nix.extraOptions = "experimental-features = nix-command flakes no-url-literals";
+  fonts.packages = [pkgs.fira-code];
 
   
 	environment.variables = {   
