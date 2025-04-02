@@ -10,6 +10,7 @@
 		wlroots
 		xorg.xrandr
 		nodejs_23
+		yarn
 	];
 	
   	
