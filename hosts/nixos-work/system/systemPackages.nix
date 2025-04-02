@@ -38,7 +38,7 @@
 			# ipv6
 			host all       all     ::1/128        trust
   '';
-		initialScipt = pkgs.writeText "init-sql-script" ''
+		initialScript = pkgs.writeText "init-sql-script" ''
 				ALTER USER postgres WITH PASSWORD 'postgres';
 				CREATE ROLE nico WITH LOGIN PASSWORT 'postgres';
 				GRANT ALL PRIVILEGES ON DATABASE pb_app TO nico;
