@@ -73,6 +73,11 @@
       "cssModules.pathAlias" = {
           "@styles"= "\${workspaceFolder}/src/styles";
       };
+      "cSpell.enabledFileTypes"= {
+        "*"= true;
+        "markdown"= true;
+        "nix" = false;
+      };
       "vscode_custom_css.imports"= [""];
 
       "reactSnippets.settings.prettierEnabled"= false;
