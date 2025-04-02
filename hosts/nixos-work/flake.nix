@@ -20,6 +20,7 @@
 		nixosConfigurations = {
 			nixos=nixpkgs.lib.nixosSystem {
 				system="x86_64-linux";
+				specialArgs = {inherit nix-vscode-extension;};
 				modules = [
 					./system/configuration.nix
 					home-manager.nixosModules.home-manager{
