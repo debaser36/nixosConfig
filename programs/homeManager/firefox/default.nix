@@ -7,7 +7,12 @@ in
 		enable = true;
 		profiles."nico" = {
 			extensions = {
+				force = true;
 				inherit packages;
+			};
+
+			settings = {
+				"extensions.autoDisableScopes" = 0;
 			};
 		};
 	};
