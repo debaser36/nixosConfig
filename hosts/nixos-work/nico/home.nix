@@ -30,7 +30,7 @@ in
 			(import ../../../programs/homeManager/git/default.nix {user = gitUser;})
 
 			# vscode
-			#(import ../../../programs/homeManager/vscode/default.nix {inherit pkgs; inherit lib;})
+			(import ../../../programs/homeManager/vscode/default.nix {inherit pkgs; inherit lib;})
 
 			# bash
 			(import ../../../programs/homeManager/bash/default.nix)
