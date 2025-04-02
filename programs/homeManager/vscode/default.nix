@@ -9,6 +9,7 @@ in
 
   programs.vscode = {
 				enable = true;
+				enableUpdateCheck = false;
 				extensions = extensionSettings.extensions;
 
 				userSettings = lib.recursiveUpdate {
