@@ -46,6 +46,9 @@ in
 		
 			# wofi
 			(import ../../../programs/homeManager/wofi/default.nix)
+
+			# direnv
+			(import ../../../programs/homeManager/direnv/default.nix)
 	];
 
 		# don't change these Lines!!!
