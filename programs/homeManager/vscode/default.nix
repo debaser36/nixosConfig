@@ -8,7 +8,7 @@ in
 {
 
   programs.vscode = {
-				# enable = true;
+				enable = true;
 				extensions = extensionSettings.extensions;
 
 				userSettings = lib.recursiveUpdate {
