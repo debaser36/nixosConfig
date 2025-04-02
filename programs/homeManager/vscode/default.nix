@@ -1,37 +1,19 @@
 {
   pkgs,
+	lib,
   ...
 }:
+let extensionSettings = (import ./default.extensions.nix {inherit pkgs;});
+in
 {
 
   programs.vscode = {
 				enable = true;
-				extensions = with pkgs.vscode-extensions; [
-				# TypeScript/JavaScript/Node Development
-				esbenp.prettier-vscode            # Code formatting
-				christian-kohler.npm-intellisense # NPM intellisense
-				prisma.prisma                     # Prisma ORM support
-				
-				
-				# Nix Language Support
-				bbenoist.nix                      # Nix language syntax highlighting
-				jnoortheen.nix-ide                # Enhanced Nix IDE features
-				arrterian.nix-env-selector        # Nix environment selector
+				extensions = extensionSettings.extensions;
 
-			];
-
-			userSettings = {
-      			"nix.enableLanguageServer" = true;
-      			"nix.serverPath" = "nil";
-
+				userSettings = lib.recursiveUpdate {
       			
-				"nix.serverSettings" = {
-      				"nil" = {
-        			"formatting" = {
-        			  "command" = [ "nixfmt" ];
-        			};
-      			};
-    		};
-			};
+				}
+				extensionSettings.userSettings;
 		 };
 }
