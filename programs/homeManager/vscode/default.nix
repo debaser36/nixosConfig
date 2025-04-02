@@ -12,7 +12,7 @@ in
 				extensions = extensionSettings.extensions;
 
 				userSettings = lib.recursiveUpdate {
-      			
+      			"telemetry.enableTelemetry" = false;
 				}
 				extensionSettings.userSettings;
 		 };
