@@ -12,6 +12,9 @@ in
 				extensions = extensionSettings.extensions;
 
 				userSettings = lib.recursiveUpdate {
+							"editor.fontFamily" = "'Fira Code'";
+							"editor.fontLigatures" = true;
+							"editor.fontWeight" = "400";
       				"telemetry.enableTelemetry" = false;
 				}
 				extensionSettings.userSettings;
