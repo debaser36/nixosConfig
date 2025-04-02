@@ -16,6 +16,8 @@ in
 							"editor.fontLigatures" = true;
 							"editor.fontWeight" = "400";
       				"telemetry.enableTelemetry" = false;
+
+							"explorer.sortOrder" = "type";
 				}
 				extensionSettings.userSettings;
 		 };
