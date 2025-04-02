@@ -43,7 +43,9 @@ in
 
 			# waybar
 			(import ../../../programs/homeManager/waybar/default.nix)
-	
+		
+			# wofi
+			(import ../../../programs/homeManager/wofi/default.nix)
 	];
 
 		# don't change these Lines!!!
