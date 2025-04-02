@@ -1,12 +1,14 @@
 {pkgs, profilename ? "nico"}:
 let 
-	extensions = (import ./default.extensions.nix {inherit pkgs;});
+	packages = (import ./default.extensions.nix {inherit pkgs;});
 in
 {
     programs.firefox = {
 		enable = true;
-		profiles.profilename = {
-			inherit extensions;
+		profiles."nico" = {
+			extensions = {
+				inherit packages;
+			};
 		};
 	};
 }

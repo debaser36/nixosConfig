@@ -1,4 +1,5 @@
 {pkgs}:
-with pkgs.nur.repos.rycee.firefox-addons; [
-  privacy-badger
-]
+
+  with pkgs.nur.repos.rycee.firefox-addons; [
+    privacy-badger
+  ]
