@@ -93,7 +93,9 @@
       "npm-intellisense.showBuildInLibs"= true;
 
       "cSpell.language" = "en,de-de";
-
+			"cSpell.userWords"= [
+				"Nico" "Burkholder"
+			];
 
       "docthis.includeDescriptionTag"= true;
       "docthis.inferTypesFromNames" = true;
