@@ -49,6 +49,9 @@ in
 
 			# direnv
 			(import ../../../programs/homeManager/direnv/default.nix)
+
+			# discord
+			(import ../../../programs/homeManager/discord/default.nix)
 	];
 
 		# don't change these Lines!!!
