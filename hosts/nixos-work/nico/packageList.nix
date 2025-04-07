@@ -1,5 +1,8 @@
 {pkgs}:
 with pkgs; [
+		discord
+
+		libgcc
 
 		isabelle
 		
@@ -13,7 +16,6 @@ with pkgs; [
 
 		neofetch
 		nnn
-		thunderbird
 
 		swaylock
 		swayidle
