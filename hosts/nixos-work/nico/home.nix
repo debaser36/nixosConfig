@@ -50,6 +50,8 @@ in
 			# direnv
 			(import ../../../programs/homeManager/direnv/default.nix)
 
+			# thunderbird
+			(import ../../../programs/homeManager/thunderbird/default.nix)
 	];
 
 		# don't change these Lines!!!
