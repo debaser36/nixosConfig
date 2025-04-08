@@ -1,25 +1,23 @@
 {
   programs.waybar = {
     enable = true;
-    #settings = {
-#
- #       MainBar = {
-  #        layer = "top";
-   #       potition = "top";
-#
- #         modules-left = [];
-  #        modules-center = [];
-   #       modules-right = ["battery"];
+    settings = {
+      MainBar = {
+        layer = "top";
+        potition = "top";
+        modules-left = ["sway/workspaces" "sway/mode"];
+        modules-center = ["sway/window"];
+        modules-right = ["battery" "clock"];
 
-    #      name = "MainBar";
-     #     reload_style_on_change = false;
-#
+        name = "MainBar";
+        reload_style_on_change = false;
 
-          # Module Settings
- #         battery = {
-  #          format = "{icon} {capacity}%";
-   #       };
-    #    };
-    #};
+        # Module Settings
+        battery = {
+           format = "{capacity}% {icon}";
+           format-icons = ["" "" "" "" ""];
+        };
+      };
+    };
   };
 }
