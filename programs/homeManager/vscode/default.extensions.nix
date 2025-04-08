@@ -49,6 +49,7 @@
         gruntfuggly.todo-tree
         edwinhuish.better-comments-next
 
+				shd101wyy.markdown-preview-enhanced
         oouo-diogo-perdigao.docthis       # Automated function documenting
         kshetline.ligatures-limited
         mechatroner.rainbow-csv           # different colors for different columns
