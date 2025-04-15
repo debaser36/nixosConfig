@@ -22,6 +22,7 @@
         christian-kohler.path-intellisense# Path Intellisense
         meganrogge.template-string-converter
         vincaslt.highlight-matching-tag
+				bradlc.vscode-tailwindcss
 
         ## -------- C++/C/CMake --------
         ms-vscode.cpptools-extension-pack
