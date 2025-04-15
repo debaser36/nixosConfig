@@ -4,6 +4,7 @@ with pkgs; [
 
 		libgcc
 
+		obsidian
 		isabelle
 		
 		bruno
