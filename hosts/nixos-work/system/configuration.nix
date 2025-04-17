@@ -59,6 +59,14 @@
 		alsa.support32Bit = true;
 		pulse.enable = true;
   };
+
+
+
+
+
+
+
+	services.xserver.wacom.enable = true;
 	services.xserver.videoDrivers = ["modesetting"];
 	systemd.services.dlm.wantedBy = ["multi-user.target"];
   networking.networkmanager.enable = true;
