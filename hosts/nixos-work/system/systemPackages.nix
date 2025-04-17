@@ -24,7 +24,6 @@
 	services.displayManager.sddm = {
 		enable = true;
 	};
-	programs.i3lock.enable = true;
 
 	# psql
 	services.postgresql = {
