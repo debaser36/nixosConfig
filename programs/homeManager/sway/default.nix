@@ -1,6 +1,7 @@
 {
   swayConfig?(import ./swayConfigDefault.nix {}),
   outputConfig?{},
+  inputConfig?{},
   extraConfig ? (import ./swayDefaultExtraConfig.nix),
   pkgs,
   ...
@@ -18,7 +19,7 @@ in
     checkConfig=false;
     wrapperFeatures.gtk = true;
 
-    config = lib.recursiveUpdate swayConfig outputConfig;
+    config = lib.recursiveUpdate swayConfig outputConfig inputConfig;
     inherit extraConfig;
 
   };
