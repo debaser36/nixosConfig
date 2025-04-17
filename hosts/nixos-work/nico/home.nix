@@ -1,7 +1,11 @@
 { pkgs,lib, ...}:
 let 
+# sway
 		outputConfig = (import ../hardware/swayMonitorSettings.nix);
 		inputConfig = (import ../hardware/swayInputSettings.nix);
+		extraConfig = (import ./swayExtraConfig.nix);
+#/sway
+
 		packageList = (import ./packageList.nix {inherit pkgs;});
 		
 		gitUser = {
@@ -22,6 +26,7 @@ in
 			(import ../../../programs/homeManager/sway/default.nix {
 				inherit inputConfig;
 				inherit outputConfig;
+				inherit extraConfig;
 				inherit pkgs;
 			})
 

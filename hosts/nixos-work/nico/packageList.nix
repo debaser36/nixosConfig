@@ -3,6 +3,7 @@ with pkgs; [
 		# WACOM TABLET
 		xf86_input_wacom
 		wacomtablet
+		xorg.xev
 
 		discord
 

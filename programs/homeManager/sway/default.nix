@@ -19,7 +19,7 @@ in
     checkConfig=false;
     wrapperFeatures.gtk = true;
 
-    config = lib.recursiveUpdate swayConfig outputConfig inputConfig;
+    config = lib.recursiveUpdate (lib.recursiveUpdate swayConfig outputConfig) inputConfig;
     inherit extraConfig;
 
   };
