@@ -12,7 +12,7 @@ in
   programs.vscode = {
 				enable = true;
 				profiles.default.extensions = extensionSettings.extensions;
-
+				package=pkgs.vscode-fhs;
 				profiles.default.userSettings = lib.recursiveUpdate {
 							"editor.fontFamily" = "'Fira Code'";
 							"editor.fontLigatures" = true;
