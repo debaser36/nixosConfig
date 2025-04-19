@@ -3,6 +3,7 @@
   outputConfig?{},
   inputConfig?{},
   extraConfig ? (import ./swayDefaultExtraConfig.nix),
+  startupArray ? [],
   pkgs,
   ...
 }:
@@ -18,6 +19,7 @@ in
     enable=true;
     checkConfig=false;
     wrapperFeatures.gtk = true;
+    startup = startupArray;
 
     config = lib.recursiveUpdate (lib.recursiveUpdate swayConfig outputConfig) inputConfig;
     inherit extraConfig;
