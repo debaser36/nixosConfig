@@ -15,6 +15,7 @@
         usernamehw.errorlens              # Useful Error Lensing
         liamhammett.inline-parameters     # By far the best extension out there
         yoavbls.pretty-ts-errors          # TODO not sure if this works in r/o filesystem
+        be5invis.vscode-custom-css        # Custom CSS and JS for VSCode -- needed to disable default errors
         dsznajder.es7-react-js-snippets   # Snippets for React, Javascript, ...
         ms-vscode.vscode-typescript-next  # latest Typescript features
         clinyong.vscode-css-modules       # Better CSS Modules support
