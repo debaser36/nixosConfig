@@ -4,11 +4,11 @@
   	...
 }:
 let extensionSettings = (import ./default.extensions.nix {inherit pkgs;});
-# homeCssImportFile = extensionSettings.home.file."pretty-ts-errors-hacks.css";
+homeCssImportFile = extensionSettings.home.file."pretty-ts-errors-hacks.css";
 in
 {
 
-  #home.file."pretty-ts-errors-hacks.css" = homeCssImportFile; # nixos readonly file system denies injecting css into vscode
+  home.file."pretty-ts-errors-hacks.css" = homeCssImportFile; # nixos readonly file system denies injecting css into vscode
   programs.vscode = {
 				enable = true;
 				profiles.default.extensions = extensionSettings.extensions;
