@@ -1,5 +1,7 @@
-{pkgs, homeDir ? "/home/nico", ...}:
-rec {
+{pkgs, 
+#homeDir ? "/home/nico",
+ ...}:
+{
   extensions = with pkgs.vscode-extensions; with pkgs.vscode-marketplace; [
 
 				# -------- Nix Language Support  ------------
@@ -14,8 +16,9 @@ rec {
 				prisma.prisma                     # Prisma ORM support
         usernamehw.errorlens              # Useful Error Lensing
         liamhammett.inline-parameters     # By far the best extension out there
-        yoavbls.pretty-ts-errors          # TODO not sure if this works in r/o filesystem
-        be5invis.vscode-custom-css        # Custom CSS and JS for VSCode -- needed to disable default errors
+        # yoavbls.pretty-ts-errors          #  FIXME this works not in r/o filesystem
+        # be5invis.vscode-custom-css        # Custom CSS and JS for VSCode -- needed to disable default errors
+        better-ts-errors.better-ts-errors
         dsznajder.es7-react-js-snippets   # Snippets for React, Javascript, ...
         ms-vscode.vscode-typescript-next  # latest Typescript features
         clinyong.vscode-css-modules       # Better CSS Modules support
@@ -61,15 +64,21 @@ rec {
 
   ];
 
-  home.file."pretty-ts-errors-hacks.css" = {
+ /*  home.file."pretty-ts-errors-hacks.css" = {
     text = (import ./custom_css/pretty-ts-errors-hack.css.nix);
     target = "vscode/custom-css/pretty-ts-errors-hack.css";
-  };
+  }; */
 
-  customCssFileTarget = home.file."pretty-ts-errors-hacks.css".target;
-  targetUrlCompletePath = "file://" + homeDir + "/" + customCssFileTarget;
+  #customCssFileTarget = home.file."pretty-ts-errors-hacks.css".target;
+  #targetUrlCompletePath = "file://" + homeDir + "/" + customCssFileTarget;
  
   userSettings = {
+      "betterTypeScriptErrors.prettify"=  true;
+      "extensions.experimental.affinity"= {
+        "better-ts-errors.better-ts-errors"= 1;
+    };
+      
+      
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
       "nix.serverSettings" = {
@@ -89,7 +98,7 @@ rec {
         "markdown"= true;
         "nix" = false;
       };
-      "vscode_custom_css.imports"= [ targetUrlCompletePath ];
+      # "vscode_custom_css.imports"= [ "" ];
 
       "reactSnippets.settings.prettierEnabled"= false;
 
