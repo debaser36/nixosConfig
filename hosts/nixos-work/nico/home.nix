@@ -4,7 +4,7 @@ let
 		outputConfig = (import ../hardware/swayMonitorSettings.nix);
 		inputConfig = (import ../hardware/swayInputSettings.nix);
 		extraConfig = (import ./swayExtraConfig.nix);
-		startupArray = (import ./swayStartup.nix);
+		startupConfig = (import ./swayStartup.nix);
 #/sway
 
 		packageList = (import ./packageList.nix {inherit pkgs;});
@@ -28,7 +28,7 @@ in
 				inherit inputConfig;
 				inherit outputConfig;
 				inherit extraConfig;
-				inherit startupArray;
+				inherit startupConfig;
 				inherit pkgs;
 			})
 
