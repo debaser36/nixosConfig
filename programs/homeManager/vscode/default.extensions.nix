@@ -1,5 +1,5 @@
-{pkgs,...}:
-{
+{pkgs, homeDir ? "/home/nico", ...}:
+rec {
   extensions = with pkgs.vscode-extensions; with pkgs.vscode-marketplace; [
 
 				# -------- Nix Language Support  ------------
@@ -61,6 +61,14 @@
 
   ];
 
+  home.file."pretty-ts-errors-hacks.css" = {
+    text = (import ./custom_css/pretty-ts-errors-hack.css.nix);
+    target = "vscode/custom-css/pretty-ts-errors-hack.css";
+  };
+
+  customCssFileTarget = home.file."pretty-ts-errors-hacks.css".target;
+  targetUrlCompletePath = "file://" + homeDir + "/" + customCssFileTarget;
+ 
   userSettings = {
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
@@ -81,7 +89,7 @@
         "markdown"= true;
         "nix" = false;
       };
-      "vscode_custom_css.imports"= [""];
+      "vscode_custom_css.imports"= [ targetUrlCompletePath ];
 
       "reactSnippets.settings.prettierEnabled"= false;
 

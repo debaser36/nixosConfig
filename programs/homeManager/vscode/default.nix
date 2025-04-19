@@ -4,9 +4,11 @@
   	...
 }:
 let extensionSettings = (import ./default.extensions.nix {inherit pkgs;});
+homeCssImportFile = extensionSettings.home.file."pretty-ts-errors-hacks.css";
 in
 {
 
+	home.file."pretty-ts-errors-hacks.css" = homeCssImportFile;
   programs.vscode = {
 				enable = true;
 				profiles.default.extensions = extensionSettings.extensions;
