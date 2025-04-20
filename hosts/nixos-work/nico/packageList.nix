@@ -15,6 +15,8 @@ with pkgs; [
 		bruno
 		element-desktop
 
+		#sql
+		pgmodeler
 		sqlite
 
 		neofetch
