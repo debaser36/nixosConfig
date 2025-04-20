@@ -10,5 +10,5 @@
 		"...." = "cd ../../..";
 		"....." = "cd ../../../..";
 	};
-	programs.bash.bashrcExtra = "export PATH=\"$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin\"";
+	programs.bash.bashrcExtra = "export PATH=\"$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin\:$HOME/.npm-global/bin\"";
 }
