@@ -15,12 +15,12 @@ in
 				package=pkgs.vscode-fhs;
 				profiles.default.userSettings = lib.recursiveUpdate {
 
-						"terminal.integrated.profiles.linux" =
+						/* "terminal.integrated.profiles.linux" =
 						{
 							"kitty"= {
 								"path" = "/nix/store/lfl14ziff7iwrbawfrss4ls4sfabn1xp-kitty-0.40.1/bin/kitty";
 							};
-						};
+						}; */
 
 							"editor.fontFamily" = "'Fira Code'";
 							"editor.fontLigatures" = true;
