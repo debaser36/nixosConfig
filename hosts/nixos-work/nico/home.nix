@@ -17,6 +17,12 @@ in
 {
 	home.username = "nico";
 	home.homeDirectory = "/home/nico";
+	home.sessionPath = [
+			"$HOME/bin"
+			"$HOME/.npm-global/bin"
+			"$HOME/.local/bin"
+			"$HOME/go/bin"
+	];
 
 	# Packages not configurable via home manager config settings
 	home.packages = packageList;
@@ -31,6 +37,9 @@ in
 				inherit startupConfig;
 				inherit pkgs;
 			})
+
+			# fish
+			(import ../../../programs/homeManager/fish/default.nix {inherit pkgs;})
 
 			# nvim
 			(import ../../../programs/homeManager/neovim/default.nix {inherit pkgs;})

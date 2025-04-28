@@ -37,13 +37,13 @@
   #virtualisation.virtualbox.guest.enable = true;
   console.keyMap = "de";	
 
-  users.defaultUserShell = pkgs.kitty;
+  users.defaultUserShell = pkgs.fish;
   users.users.nico = {
 		isNormalUser = true;
 		description = "Default user for personal use of this system!";
 		extraGroups = ["networkmanager" "wheel" "video"];
 		home = "/home/nico";
-    shell = pkgs.kitty;
+    shell = pkgs.fish;
   };
 
 

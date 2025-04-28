@@ -16,6 +16,7 @@
 
     # sway related stuff
   programs.sway.enable = true;
+	programs.fish.enable = true;
 
 	# displayManager
 	services.displayManager.defaultSession = "sway";
