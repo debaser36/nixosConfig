@@ -19,7 +19,7 @@ in
 	home.homeDirectory = "/home/nico";
 	home.sessionPath = [
 			"$HOME/bin"
-			"$HOME/.pnpm-global/bin"
+			"$HOME/.pnpm-global"
 			"$HOME/.npm-global/bin"
 			"$HOME/.local/bin"
 			"$HOME/go/bin"
