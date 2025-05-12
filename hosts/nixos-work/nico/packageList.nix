@@ -82,4 +82,6 @@ with pkgs; [
 
 		#other
 		nil
+
+		zoom-us
 	]
