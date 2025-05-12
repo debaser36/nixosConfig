@@ -27,10 +27,10 @@ in
 
 	# Packages not configurable via home manager config settings
 	home.packages = packageList;
-	home.sessioNVariables = {
-		"EDITOR" = "nvim";
-		"VISUAL" = "nvim";
-		"PNPM_HOME" = "$HOME/.pnpm-global";
+	home.sessionVariables = {
+		EDITOR = "nvim";
+		VISUAL = "nvim";
+		PNPM_HOME = "$HOME/.pnpm-global";
 
 	};
 
