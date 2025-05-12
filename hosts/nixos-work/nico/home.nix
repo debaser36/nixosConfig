@@ -19,6 +19,7 @@ in
 	home.homeDirectory = "/home/nico";
 	home.sessionPath = [
 			"$HOME/bin"
+			"$HOME/.pnpm-global/bin"
 			"$HOME/.npm-global/bin"
 			"$HOME/.local/bin"
 			"$HOME/go/bin"
@@ -26,6 +27,12 @@ in
 
 	# Packages not configurable via home manager config settings
 	home.packages = packageList;
+	home.sessioNVariables = {
+		"EDITOR" = "nvim";
+		"VISUAL" = "nvim";
+		"PNPM_HOME" = "$HOME/.pnpm-global";
+
+	};
 
 	# Packages configurable via home manager config settings
 	imports = [

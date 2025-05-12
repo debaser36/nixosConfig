@@ -9,7 +9,6 @@
 		pulseaudio
 		wlroots
 		xorg.xrandr
-		yarn
 		procps
 	];
 	

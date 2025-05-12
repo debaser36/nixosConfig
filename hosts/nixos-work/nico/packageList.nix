@@ -1,5 +1,8 @@
 {pkgs}:
 with pkgs; [
+		exercism
+		corepack
+
 		# WACOM TABLET
 		xf86_input_wacom
 		wacomtablet
