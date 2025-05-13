@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{  pkgs, ... }:
 
 let
   vars = import ./vars.nix;
@@ -63,20 +63,20 @@ in
      neovim
      wget
      nginx
-		 nodejs
-		 nodePackages.pnpm
+		nodejs
+		nodePackages.pnpm
   ];
 
   nix = {
-	  package = pkgs.nixVersions.latest;
-	  extraOptions = ''
-			experimental-features = nix-command flakes
+	 package = pkgs.nixVersions.latest;
+	 extraOptions = ''
+			experimental-features = nix-command flakes 
 			trusted-users = nico root
 			sandbox = false
 			'';
 
-  };
-
+  };  
+  
   environment.variables.EDITOR = "nvim";
   # Enable the OpenSSH daemon.
   services.openssh = {

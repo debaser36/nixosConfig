@@ -1,9 +1,9 @@
 #nginx setup -- just inherit everything
-{config, pkgs, unhalteproblem-website, ...}:
+{ ...}:
 {
   services.nginx = {
- 	  enable = true;
-	  recommendedGzipSettings = true;
+ 	 enable = true;
+	 recommendedGzipSettings = true;
     	recommendedOptimisation = true;
     	recommendedProxySettings = true;
     	recommendedTlsSettings = true;
@@ -17,15 +17,15 @@
 		locations."/" = {	
 			index = "index.html";
 			extraConfig = ''
-				try_files $uri $uri/ =404;
+				try_files $uri /index.html;
 			'';
 		};
 	};
   security.acme = {
   	acceptTerms = true;
-	  defaults.group = "nginx";
-	  defaults.email = "admin@unhalteproblem.de";
+	 defaults.group = "nginx";
+	 defaults.email = "admin@unhalteproblem.de";
   };
-
+  
   users.users.nginx.extraGroups = ["acme"];
 }
