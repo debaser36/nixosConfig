@@ -84,4 +84,6 @@ with pkgs; [
 		nil
 
 		zoom-us
+
+		cmakeWithGui
 	]
