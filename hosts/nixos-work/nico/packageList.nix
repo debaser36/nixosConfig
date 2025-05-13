@@ -85,5 +85,6 @@ with pkgs; [
 		
 		libgcc
 		gcc
+		rocmPackages_5.llvm.clang-unwrapped
 		cmakeWithGui
 	]
