@@ -10,8 +10,6 @@ with pkgs; [
 
 		discord
 
-		libgcc
-
 		obsidian
 		isabelle
 		
@@ -84,6 +82,8 @@ with pkgs; [
 		nil
 
 		zoom-us
-
+		
+		libgcc
+		gcc
 		cmakeWithGui
 	]
