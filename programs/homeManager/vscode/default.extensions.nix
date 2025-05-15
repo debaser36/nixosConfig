@@ -30,6 +30,7 @@ rec {
 
         ## -------- C++/C/CMake --------
         ms-vscode.cpptools-extension-pack
+        jeff-hykin.better-cpp-syntax
 
         ## -------- ISABELLE --------
         makarius.isabelle                 # Official Makarius Isabelle Extension, integrated into the current version of the IDE
