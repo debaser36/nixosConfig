@@ -45,6 +45,9 @@ in
 				inherit pkgs;
 			})
 
+			# sagemath
+			(import ../../../programs/homeManager/sagemath/default.nix)
+
 			# fish
 			(import ../../../programs/homeManager/fish/default.nix {inherit pkgs;})
 
