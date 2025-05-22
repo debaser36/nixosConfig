@@ -2,6 +2,9 @@
 with pkgs; [
 		exercism
 		corepack
+		python313Full
+		python313Packages.pip
+
 
 		# WACOM TABLET
 		xf86_input_wacom
