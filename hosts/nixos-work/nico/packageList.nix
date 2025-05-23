@@ -4,6 +4,8 @@ with pkgs; [
 		corepack
 		python313Full
 		python313Packages.pip
+		alsa-utils
+		alsa-plugins
 
 
 		# WACOM TABLET
