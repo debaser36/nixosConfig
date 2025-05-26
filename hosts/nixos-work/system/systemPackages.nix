@@ -5,15 +5,12 @@
 	[
 		git 
 		vim 
-		wget 
-		pulseaudio
+		wget
 		wlroots
 		xorg.xrandr
 		procps
 	];
 	
-  	
-
     # sway related stuff
   programs.sway.enable = true;
 	programs.fish.enable = true;

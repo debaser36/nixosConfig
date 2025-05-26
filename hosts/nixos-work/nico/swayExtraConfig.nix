@@ -6,4 +6,9 @@
 			bindsym Print+Shift		exec shotman -c region -C
 			bindsym Print+Shift+Control	exec shotman -c window -C
 			bindsym L+K+J exec swaylock
+
+      bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+			bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+			bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+			bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 ''

@@ -46,10 +46,6 @@
     shell = pkgs.fish;
   };
 
-
-
-
-
   security.polkit.enable = true;
   hardware.graphics.enable = true;
 	hardware.graphics.enable32Bit = true;
@@ -61,12 +57,6 @@
 		alsa.support32Bit = true;
 		pulse.enable = true;
   };
-
-
-
-
-
-
 
 	services.xserver.wacom.enable = true;
 	services.xserver.videoDrivers = ["modesetting"];
