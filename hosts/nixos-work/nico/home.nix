@@ -1,8 +1,16 @@
 { pkgs,lib, ...}:
 let 
+
+		monitors = (import ../hardware/monitorInfo.nix);
 # sway
-		outputConfig = (import ../hardware/swayMonitorSettings.nix);
-		inputConfig = (import ../hardware/swayInputSettings.nix);
+		outputConfig = (import ../hardware/swayMonitorSettings.nix {
+			left_monitor = monitors.left_monitor;
+			center_monitor = monitors.center_monitor;
+			right_monitor = monitors.right_monitor;
+		});
+		inputConfig = (import ../hardware/swayInputSettings.nix {
+			initial_output = monitors.center_monitor.name;
+		});
 		extraConfig = (import ./swayExtraConfig.nix);
 		startupConfig = (import ./swayStartup.nix);
 #/sway
