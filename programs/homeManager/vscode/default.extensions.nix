@@ -27,7 +27,8 @@ rec {
         meganrogge.template-string-converter
         vincaslt.highlight-matching-tag
 				bradlc.vscode-tailwindcss
-
+				zardoy.ts-essential-plugins
+				
         ## -------- C++/C/CMake --------
         ms-vscode.cpptools-extension-pack
         jeff-hykin.better-cpp-syntax
