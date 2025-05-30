@@ -6,6 +6,7 @@ with pkgs; [
 		python313Packages.pip
 		alsa-utils
 		alsa-plugins
+		edid-decode
 
 
 		# WACOM TABLET

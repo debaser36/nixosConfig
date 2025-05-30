@@ -63,6 +63,9 @@ rec {
         # brandonkirbyson.vscode-animations
         vscode-icons-team.vscode-icons
 
+        # turbo language server
+        vercel.turbo-vsc
+
   ];
 
  home.file."pretty-ts-errors-hacks.css" = {
