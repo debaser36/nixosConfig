@@ -3,7 +3,9 @@
 {
   imports =
     [
+
       ../hardware/hardware-configuration.nix
+      (import ./wireguardConfig.nix)
 			(import ./environment.etc.nix)
 			(import ./systemPackages.nix {inherit pkgs;})
       (import ../../../programs/system/npm.nix)
