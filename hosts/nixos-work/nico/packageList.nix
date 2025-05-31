@@ -1,5 +1,7 @@
 {pkgs}:
 with pkgs; [
+	 git-crypt
+
 		exercism
 		corepack
 		python313Full
