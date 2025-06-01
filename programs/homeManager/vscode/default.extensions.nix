@@ -55,9 +55,9 @@ rec {
         streetsidesoftware.code-spell-checker-german
         gruntfuggly.todo-tree
         edwinhuish.better-comments-next
+        crystal-spider.jsdoc-generator # JSDoc Generator
 
 				shd101wyy.markdown-preview-enhanced
-        oouo-diogo-perdigao.docthis       # Automated function documenting
         kshetline.ligatures-limited
         mechatroner.rainbow-csv           # different colors for different columns
         albert.tabout                     # easy tabout from quotes and brackets
@@ -82,6 +82,11 @@ rec {
       "extensions.experimental.affinity"= {
         "better-ts-errors.better-ts-errors"= 1;
     };
+
+      "jsdoc-generator" = {
+        "author" = "Nico Burkholder";
+        "dateFormat" = "YYYY-MM-DD";
+      };
       
       
       "nix.enableLanguageServer" = true;

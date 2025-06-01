@@ -5,7 +5,6 @@
     [
 
       ../hardware/hardware-configuration.nix
-      (import ./wireguardConfig.nix)
 			(import ./environment.etc.nix)
 			(import ./systemPackages.nix {inherit pkgs;})
       (import ../../../programs/system/npm.nix)
@@ -64,8 +63,12 @@
 	services.xserver.videoDrivers = ["modesetting"];
 	systemd.services.dlm.wantedBy = ["multi-user.target"];
   networking.networkmanager.enable = true;
-	networking.firewall.checkReversePath = false;
+  networking.firewall = {
+    checkReversePath = false;
+    allowedUDPPorts = [ 51820 ];
+  };
 	networking.wireguard.enable = true;
+
 	services.wg-netmanager.enable = true;
 
 

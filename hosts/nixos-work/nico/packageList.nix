@@ -1,6 +1,7 @@
 {pkgs}:
 with pkgs; [
 	 git-crypt
+	 wireguard-tools
 
 		exercism
 		corepack
