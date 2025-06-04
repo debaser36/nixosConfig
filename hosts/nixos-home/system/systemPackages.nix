@@ -2,7 +2,7 @@
 let 
 	sddm-astronaut-theme = (import ../assets/sddm_themes/derivation.nix {inherit pkgs;});
 in
-{
+rec {
   #packages needed for flakes to work
   environment.systemPackages = with pkgs; 
 	[
