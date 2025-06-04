@@ -7,7 +7,7 @@ pkgs.stdenv.mkDerivation {
       owner = "Keyitdev";
       repo = "sddm-astronaut-theme";
       rev="master";
-      hash="";
+      hash="sha256-JMCG7oviLqwaymfgxzBkpCiNi18BUzPGvd3AF9BYSeo=";
     };
 
     buildInputs = [];
