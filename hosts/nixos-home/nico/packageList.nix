@@ -1,5 +1,9 @@
 {pkgs}:
 with pkgs; [
+	# own derivations
+	(import ./assets/sddm_themes/derivation.nix {inherit pkgs;})
+
+
 	 git-crypt
 	 wireguard-tools
 
