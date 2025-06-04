@@ -22,7 +22,7 @@ with pkgs; [
 		obsidian
 		isabelle
 		
-		bruno
+		
 		element-desktop
 
 		#sql
