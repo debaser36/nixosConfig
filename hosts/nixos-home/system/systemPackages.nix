@@ -24,7 +24,7 @@ in
 	services.xserver.enable = true;
 	services.displayManager.sddm = {
 		enable = true;
-		theme = "${pkgs.sddm-astronat-theme}/share/sddm/themes/astronaut"
+		theme = "${pkgs.sddm-astronat-theme}/share/sddm/themes/astronaut";
 	};
 
 	# psql
