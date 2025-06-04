@@ -1,6 +1,6 @@
 {pkgs}:
 let 
-	sddm-astronaut-theme = pkgs.callPackage (../assets/sddm_themes/derivation.nix {inherit pkgs;});
+	sddm-astronaut-theme = (import ../assets/sddm_themes/derivation.nix {inherit pkgs;});
 in
 {
   #packages needed for flakes to work
@@ -24,7 +24,7 @@ in
 	services.xserver.enable = true;
 	services.displayManager.sddm = {
 		enable = true;
-		theme = "${pkgs.sddm-astronat-theme}/share/sddm/themes/astronaut";
+		theme = "${pkgs.sddm-astronaut-theme}/share/sddm/themes/astronaut";
 	};
 
 	# psql
