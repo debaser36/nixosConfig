@@ -10,7 +10,11 @@ rec {
   environment.systemPackages = with pkgs; 
 	[
 		custom-sddm-astronaut
-		# kdePackages.qtmultimedia
+		kdePackages.qtbase
+		kdePackages.qtmultimedia
+		kdePackages.qttools
+		kdePackages.qtvirtualkeyboard
+		kdePackages.qtsvg
 		git 
 		vim 
 		wget
@@ -28,6 +32,11 @@ rec {
 	services.xserver.enable = true;
 	services.displayManager.sddm = {
 		enable = true;
+		package = pkgs.kdePackages.sddm;
+		wayland = {
+			enable = true;
+			compositor = "weston";
+		};
 		theme = "sddm-astronaut-theme";
 		autoNumlock = true;
     	enableHidpi = true;
