@@ -13,7 +13,8 @@ pkgs.stdenv.mkDerivation {
     buildInputs = [];
     buildPhase = '' '';
     installPhase = '' 
-      mkdir -p $out/sddm_themes
+      mkdir -p $out/share/sddm/themes
+      cp -r ./Themes/* $out/share/sddm/themes
     '';
   }
 

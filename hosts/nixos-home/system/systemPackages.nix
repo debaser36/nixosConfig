@@ -1,8 +1,12 @@
 {pkgs}:
+let 
+	sddm-astronaut-theme = pkgs.callPackage (../assets/sddm_themes/derivation.nix {inherit pkgs;});
+in
 {
   #packages needed for flakes to work
   environment.systemPackages = with pkgs; 
 	[
+		sddm-astronaut-theme
 		git 
 		vim 
 		wget
@@ -12,7 +16,7 @@
 	];
 	
     # sway related stuff
-  programs.sway.enable = true;
+  	programs.sway.enable = true;
 	programs.fish.enable = true;
 
 	# displayManager
@@ -20,6 +24,7 @@
 	services.xserver.enable = true;
 	services.displayManager.sddm = {
 		enable = true;
+		theme = "${pkgs.sddm-astronat-theme}/share/sddm/themes/astronaut"
 	};
 
 	# psql
