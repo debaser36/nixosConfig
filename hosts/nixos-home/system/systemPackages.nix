@@ -1,12 +1,16 @@
 {pkgs}:
-let 
-	sddm-astronaut-theme = (import ../assets/sddm_themes/derivation.nix {inherit pkgs;});
+let
+  custom-sddm-astronaut = pkgs.sddm-astronaut.override {
+    embeddedTheme = "hyprland_kath";
+  };
+
 in
 rec {
   #packages needed for flakes to work
   environment.systemPackages = with pkgs; 
 	[
-		sddm-astronaut-theme
+		custom-sddm-astronaut
+		# kdePackages.qtmultimedia
 		git 
 		vim 
 		wget
@@ -24,7 +28,19 @@ rec {
 	services.xserver.enable = true;
 	services.displayManager.sddm = {
 		enable = true;
-		theme = "${pkgs.sddm-astronaut-theme}/share/sddm/themes/astronaut";
+		theme = "sddm-astronaut-theme";
+		autoNumlock = true;
+    	enableHidpi = true;
+		settings = {
+			Theme = {
+				Current = "sddm-astronaut-theme";
+				CursorTheme = "Bibata-Modern-Ice";
+				CursorSize = 24;
+			};
+    	};
+		extraPackages = with pkgs; [
+      		custom-sddm-astronaut
+    	];
 	};
 
 	# psql
