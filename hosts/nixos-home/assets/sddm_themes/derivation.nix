@@ -1,6 +1,6 @@
 { pkgs, }:
-{
-  sddm-astronaut-theme = pkgs.stdenv.mkDerivation {
+
+pkgs.stdenv.mkDerivation {
     pname = "sddm-astronaut-theme";
     version = "1.0";
     src = pkgs.fetchFromGitHub {
@@ -15,5 +15,5 @@
     installPhase = '' 
       mkdir -p $out/sddm_themes
     '';
-  };
-}
+  }
+
