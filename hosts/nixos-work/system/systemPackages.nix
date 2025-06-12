@@ -1,8 +1,22 @@
 {pkgs}:
+let
+	custom-sddm-astronaut = pkgs.sddm-astronaut.override {
+		embeddedTheme = "pixel_sakura";
+	};
+in
 {
   #packages needed for flakes to work
-  environment.systemPackages = with pkgs; 
+  environment.systemPackages = with pkgs; with pkgs.kdePackages;
 	[
+		# sddm theme
+		custom-sddm-astronaut
+		qtbase
+		qtmultimedia
+		qttools
+		qtvirtualkeyboard
+		qtsvg
+
+		# needed base programs
 		git 
 		vim 
 		wget
@@ -20,6 +34,22 @@
 	services.xserver.enable = true;
 	services.displayManager.sddm = {
 		enable = true;
+		package = pkgs.kdePackages.sddm;
+		wayland = {
+			enable = true;
+			compositor = "weston";
+		};
+		theme = "sddm-astronaut-theme";
+		autoNumlock = true;
+		enableHidpi = true;
+		settings = {
+			Theme = {
+				Current = "sddm-astronaut-theme";
+				CursorTheme = "Bibata-Modern-Ice";
+				CursorSize = 24;
+			};
+		};
+		extraPackages = with pkgs; [custom-sddm-astronaut];
 	};
 
 	# psql
