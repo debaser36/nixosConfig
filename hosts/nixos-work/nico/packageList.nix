@@ -1,7 +1,8 @@
 {pkgs}:
 with pkgs; [
-	 git-crypt
-	 wireguard-tools
+		duckdb
+	 	git-crypt
+	 	wireguard-tools
 
 		exercism
 		corepack
