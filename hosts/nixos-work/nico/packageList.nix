@@ -1,5 +1,42 @@
 {pkgs}:
+let
+	tex = (pkgs.texlive.combine) {
+		inherit (pkgs.texlive) 
+			scheme-basic
+			dvisvgm dvipng
+			wrapfig amsmath ulem hyperref 
+			geometry # page layout and margins
+			fancyhdr # custom headers and footers
+			titlesec # customize section headings
+			parskip # better paragraph spacing
+			setspace
+			graphicx
+			float # better floating positioning with [H]
+			subfig
+			tikz pgfplots
+			booktabs
+			longtable
+			array
+			multirow
+			biblatex
+			biber
+			natbib
+			amssymb amsthm
+			mathtools
+			fontenc
+			inputenc
+			babel
+			csquotes
+			microtype
+			xcolor
+			listings
+			enumitem
+			url
+			capt-of;
+	};
+in
 with pkgs; [
+		tex
 		duckdb
 	 	git-crypt
 	 	wireguard-tools
