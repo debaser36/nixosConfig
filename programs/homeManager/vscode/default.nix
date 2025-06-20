@@ -3,8 +3,9 @@
 	lib,
   	...
 }:
-let extensionSettings = (import ./default.extensions.nix {inherit pkgs;});
-homeCssImportFile = extensionSettings.home.file."pretty-ts-errors-hacks.css";
+let 
+	extensionSettings = (import ./default.extensions.nix {inherit pkgs;});
+	homeCssImportFile = extensionSettings.home.file."pretty-ts-errors-hacks.css";
 in
 {
 
