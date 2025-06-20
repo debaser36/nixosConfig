@@ -1,0 +1,26 @@
+name: Check Nix
+
+on:
+  push:
+    paths:
+      - '**.nix'
+      - 'flake.lock'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v23
+
+      - name: Check flake syntax
+        run: nix flake check
+
+      - name: Format check
+        run: nixpkgs-fmt --check .
+
+      - name: Lint with statix
+        run: nix run nixpkgs#statix check
+
+      - name: Dry-build system
+        run: nixos-rebuild build --flake .#your-hostname
