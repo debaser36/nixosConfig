@@ -15,7 +15,18 @@ jobs:
       - uses: cachix/install-nix-action@v23
 
       - name: Check flake syntax
-        run: nix flake check
+        run: | 
+          echo "Checking flake syntax for home Computer!"
+          cd hosts/nixos-home
+          nix flake check
+
+          echo "Checking flake syntax for work Computer!"
+          cd ../nixos-work
+          nix flake check
+
+          echo "Checking flake syntax for Oracle unhalteproblem.de Server!"
+          cd ../nixos-oracle
+          nix flake check
 
       - name: Format check
         run: nixpkgs-fmt --check .
@@ -23,5 +34,5 @@ jobs:
       - name: Lint with statix
         run: nix run nixpkgs#statix check
 
-      - name: Dry-build system
+      - name: Dry-build system home
         run: nixos-rebuild build --flake .#your-hostname
