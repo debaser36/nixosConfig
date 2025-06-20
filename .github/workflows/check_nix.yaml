@@ -5,6 +5,7 @@ on:
     paths:
       - '**.nix'
       - 'flake.lock'
+  workflow_dispatch:
 
 jobs:
   check:
