@@ -29,10 +29,18 @@ jobs:
           nix flake check
 
       - name: Format check
-        run: nixpkgs-fmt --check .
+        run: nix run nixpkgs#nixpkgs-fmt -- --check
 
       - name: Lint with statix
-        run: nix run nixpkgs#statix check
+        run: nix run nixpkgs#statix -- check
 
-      - name: Dry-build system home
-        run: nixos-rebuild build --flake .#your-hostname
+      - name: Dry-build systems
+        run: |
+          echo "Dry-building home system"
+          cd hosts/nixos-home && nixos-rebuild build --flake .
+          
+          echo "Dry-building work system"
+          cd ../nixos-work && nixos-rebuild build --flake .
+          
+          echo "Dry-building oracle system"
+          cd ../nixos-oracle && nixos-rebuild build --flake .
