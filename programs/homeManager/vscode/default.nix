@@ -1,36 +1,41 @@
 {
-  	pkgs,
-	lib,
-  	...
+  pkgs,
+  lib,
+  ...
 }:
-let 
-	extensionSettings = (import ./default.extensions.nix {inherit pkgs;});
-	homeCssImportFile = extensionSettings.home.file."pretty-ts-errors-hacks.css";
+let
+  extensionSettings = import ./default.extensions.nix { inherit pkgs; };
+
+  # Import the raw CSS from the .nix file
+  customCss = import ./custom_css/pretty-ts-errors-hack.css.nix;
+
+  # Inject custom CSS into the built VSCode
+  patchedVSCode = pkgs.vscode-fhs.overrideAttrs (old: {
+    postInstall = ''
+      workbenchFile=$(find $out -name "workbench.html" | head -n 1)
+      if [ -n "$workbenchFile" ]; then
+        echo "Injecting custom CSS into $workbenchFile"
+        sed -i '/<\/html>/i <style>'"${customCss}"'</style>' "$workbenchFile"
+      fi
+    '';
+  });
+
 in
 {
+  # Declare your home file (makes the CSS available in user’s home directory)
+  # home.file."pretty-ts-errors-hacks.css" = homeCssImportFile;
 
-  home.file."pretty-ts-errors-hacks.css" = homeCssImportFile; # nixos readonly file system denies injecting css into vscode
   programs.vscode = {
-				enable = true;
-				profiles.default.extensions = extensionSettings.extensions;
-				package=pkgs.vscode-fhs;
-				profiles.default.userSettings = lib.recursiveUpdate {
-
-						/* "terminal.integrated.profiles.linux" =
-						{
-							"kitty"= {
-								"path" = "/nix/store/lfl14ziff7iwrbawfrss4ls4sfabn1xp-kitty-0.40.1/bin/kitty";
-							};
-						}; */
-
-							"editor.fontFamily" = "'Fira Code'";
-							"editor.fontLigatures" = true;
-							"editor.fontWeight" = "400";
-      				"telemetry.enableTelemetry" = false;
-
-							"explorer.sortOrder" = "type";
-							"explorer.confirmDelete" = false;
-				}
-				extensionSettings.userSettings;
-		 };
+    enable = true;
+    package = patchedVSCode;
+    profiles.default.extensions = extensionSettings.extensions;
+    profiles.default.userSettings = lib.recursiveUpdate {
+      "editor.fontFamily" = "'Fira Code'";
+      "editor.fontLigatures" = true;
+      "editor.fontWeight" = "400";
+      "telemetry.enableTelemetry" = false;
+      "explorer.sortOrder" = "type";
+      "explorer.confirmDelete" = false;
+    } extensionSettings.userSettings;
+  };
 }
