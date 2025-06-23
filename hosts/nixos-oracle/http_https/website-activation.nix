@@ -1,6 +1,6 @@
-{pkgs}:
+{ pkgs }:
 {
-system.activationScripts = {
+  system.activationScripts = {
     deployWebsite = {
       text = ''
         # Create website directory

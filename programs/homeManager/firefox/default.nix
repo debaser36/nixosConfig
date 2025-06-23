@@ -1,20 +1,20 @@
-{pkgs, lib ? pkgs.lib, ...}:
-let 
-	packages = (import ./default.extensions.nix {inherit pkgs;});
+{ pkgs, lib ? pkgs.lib, ... }:
+let
+  packages = (import ./default.extensions.nix { inherit pkgs; });
 in
 {
-    programs.firefox = {
-		enable = true;
-		profiles."nico" = {
-			extensions = {
-				force = true;
-				inherit packages;
-			};
+  programs.firefox = {
+    enable = true;
+    profiles."nico" = {
+      extensions = {
+        force = true;
+        inherit packages;
+      };
 
-			settings = {
-				"extensions.autoDisableScopes" = 0;
+      settings = {
+        "extensions.autoDisableScopes" = 0;
 
-				# thanks Misterio77 at github
+        # thanks Misterio77 at github
         "app.shield.optoutstudies.enabled" = false;
         "browser.discovery.enabled" = false;
         "browser.newtabpage.activity-stream.feeds.telemetry" = false;
@@ -39,7 +39,7 @@ in
         "toolkit.telemetry.unified" = false;
         "toolkit.telemetry.unifiedIsOptIn" = false;
         "toolkit.telemetry.updatePing.enabled" = false;
-				"browser.disableResetPrompt" = true;
+        "browser.disableResetPrompt" = true;
         "browser.download.panel.shown" = true;
         "browser.feeds.showFirstRunUI" = false;
         "browser.messaging-system.whatsNewPanel.enabled" = false;
@@ -52,7 +52,7 @@ in
         "trailhead.firstrun.didSeeAboutWelcome" = true;
         "browser.bookmarks.restore_default_bookmarks" = false;
         "browser.bookmarks.addedImportButton" = true;
-				"browser.newtabpage.activity-stream.feeds.topsites" = false;
+        "browser.newtabpage.activity-stream.feeds.topsites" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts" = false;
         "browser.newtabpage.blocked" = lib.genAttrs [
@@ -68,11 +68,12 @@ in
           "K00ILysCaEq8+bEqV/3nuw=="
           # Twitter
           "T9nJot5PurhJSy8n038xGA=="
-        ] (_: 1);
-				"signon.rememberSignons" = false;
+        ]
+          (_: 1);
+        "signon.rememberSignons" = false;
 
 
-			};
-		};
-	};
+      };
+    };
+  };
 }

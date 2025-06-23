@@ -5,17 +5,17 @@
       MainBar = {
         layer = "top";
         potition = "top";
-        modules-left = ["sway/workspaces" "sway/mode"];
-        modules-center = ["sway/window"];
-        modules-right = ["battery" "clock"];
+        modules-left = [ "sway/workspaces" "sway/mode" ];
+        modules-center = [ "sway/window" ];
+        modules-right = [ "battery" "clock" ];
 
         name = "MainBar";
         reload_style_on_change = false;
 
         # Module Settings
         battery = {
-           format = "{capacity}% {icon}";
-           format-icons = ["" "" "" "" ""];
+          format = "{capacity}% {icon}";
+          format-icons = [ "" "" "" "" "" ];
         };
       };
     };

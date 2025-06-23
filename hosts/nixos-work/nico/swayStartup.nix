@@ -1,15 +1,15 @@
 {
   startup = [
     {
-      command="nohup firefox &";
+      command = "nohup firefox &";
       always = false;
     }
     {
-      command="nohup element-desktop &";
+      command = "nohup element-desktop &";
       always = false;
     }
     {
-      command="nohup thunderbird &";
+      command = "nohup thunderbird &";
       always = true;
     }
   ];

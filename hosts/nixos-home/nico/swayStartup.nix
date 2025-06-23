@@ -1,7 +1,7 @@
 {
   startup = [
     {
-      command="nohup firefox &";
+      command = "nohup firefox &";
       always = false;
     }
     # {

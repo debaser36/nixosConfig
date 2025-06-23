@@ -1,102 +1,102 @@
-{pkgs}:
+{ pkgs }:
 with pkgs; [
-		texlive.combined.scheme-full
-		texstudio
-		duckdb
-	 	git-crypt
-	 	wireguard-tools
+  texlive.combined.scheme-full
+  texstudio
+  duckdb
+  git-crypt
+  wireguard-tools
 
-		exercism
-		corepack
-		python313Full
-		python313Packages.pip
-		alsa-utils
-		alsa-plugins
-		edid-decode
+  exercism
+  corepack
+  python313Full
+  python313Packages.pip
+  alsa-utils
+  alsa-plugins
+  edid-decode
 
 
-		# WACOM TABLET
-		xf86_input_wacom
-		wacomtablet
-		xorg.xev
+  # WACOM TABLET
+  xf86_input_wacom
+  wacomtablet
+  xorg.xev
 
-		discord
+  discord
 
-		obsidian
-		isabelle
-		
-		bruno
-		element-desktop
+  obsidian
+  isabelle
 
-		#sql
-		pgmodeler
-		sqlite
+  bruno
+  element-desktop
 
-		neofetch
-		nnn
+  #sql
+  pgmodeler
+  sqlite
 
-		swaylock
-		swayidle
-		mako
-		waybar
+  neofetch
+  nnn
 
-		# archives
-		zip
-		xz
-		unzip
-		p7zip
+  swaylock
+  swayidle
+  mako
+  waybar
 
-		#utils
-		jq
-		yq-go
+  # archives
+  zip
+  xz
+  unzip
+  p7zip
 
-		#network
-		mtr
-		iperf3
-		dnsutils
-		ldns
-		aria2
-		socat
-		nmap
-		ipcalc
-		
-		#misc
-		which
-		tree
-		gnused
-		zstd
-		gnupg
-		libnotify
-		kitty # terminal emulator
-		alacritty
-		keepassxc
-		mako 
-		wl-clipboard
-		shotman
+  #utils
+  jq
+  yq-go
 
-		#nix-related
-		nix-output-monitor
-		
-		#systools
-		xorg.xmodmap
-		sysstat
-		lm_sensors
-		ethtool
-		pciutils
-		usbutils
-		xorg.xrandr
-		wlroots
+  #network
+  mtr
+  iperf3
+  dnsutils
+  ldns
+  aria2
+  socat
+  nmap
+  ipcalc
 
-		#gaming
-		steam
+  #misc
+  which
+  tree
+  gnused
+  zstd
+  gnupg
+  libnotify
+  kitty # terminal emulator
+  alacritty
+  keepassxc
+  mako
+  wl-clipboard
+  shotman
 
-		#other
-		nil
+  #nix-related
+  nix-output-monitor
 
-		zoom-us
-		
-		libgcc
-		gcc
-		rocmPackages.llvm.clang-unwrapped
-		cmakeWithGui
-	]
+  #systools
+  xorg.xmodmap
+  sysstat
+  lm_sensors
+  ethtool
+  pciutils
+  usbutils
+  xorg.xrandr
+  wlroots
+
+  #gaming
+  steam
+
+  #other
+  nil
+
+  zoom-us
+
+  libgcc
+  gcc
+  rocmPackages.llvm.clang-unwrapped
+  cmakeWithGui
+]

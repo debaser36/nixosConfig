@@ -1,4 +1,4 @@
-{  pkgs, ... }:
+{ pkgs, ... }:
 
 let
   vars = import ./vars.nix;
@@ -7,10 +7,10 @@ in
 {
   imports =
     [
-      	./hardware-configuration.nix
-        ./http_https/system_settings.nix # settings for nginx, acme and the website
-				(import ./http_https/website-activation.nix {inherit pkgs;})
-		];
+      ./hardware-configuration.nix
+      ./http_https/system_settings.nix # settings for nginx, acme and the website
+      (import ./http_https/website-activation.nix { inherit pkgs; })
+    ];
 
   boot = {
     loader = {
@@ -34,7 +34,7 @@ in
     mutableUsers = false;
     users.${vars.default_user.username} = {
       isNormalUser = true;
-      extraGroups = ["networkmanager" "wheel"];
+      extraGroups = [ "networkmanager" "wheel" ];
       openssh.authorizedKeys.keys = [ vars.public_sshKey ];
       home = "/home/" + vars.default_user.username;
     };
@@ -43,11 +43,11 @@ in
   # Enable passwordless sudo.
   security.sudo.extraRules = [
     {
-      users = [vars.default_user.username];
+      users = [ vars.default_user.username ];
       commands = [
         {
           command = "ALL";
-          options = ["NOPASSWD"];
+          options = [ "NOPASSWD" ];
         }
       ];
     }
@@ -56,27 +56,27 @@ in
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-     openssh
-     curl
-     git
-     vim
-     neovim
-     wget
-     nginx
-		nodejs
-		nodePackages.pnpm
+    openssh
+    curl
+    git
+    vim
+    neovim
+    wget
+    nginx
+    nodejs
+    nodePackages.pnpm
   ];
 
   nix = {
-	 package = pkgs.nixVersions.latest;
-	 extraOptions = ''
-			experimental-features = nix-command flakes 
-			trusted-users = nico root
-			sandbox = false
-			'';
+    package = pkgs.nixVersions.latest;
+    extraOptions = ''
+      			experimental-features = nix-command flakes 
+      			trusted-users = nico root
+      			sandbox = false
+      			'';
 
-  };  
-  
+  };
+
   environment.variables.EDITOR = "nvim";
   # Enable the OpenSSH daemon.
   services.openssh = {

@@ -1,7 +1,6 @@
-{
-  pkgs,
-  lib,
-  ...
+{ pkgs
+, lib
+, ...
 }:
 let
   extensionSettings = import ./default.extensions.nix { inherit pkgs; };
@@ -29,13 +28,15 @@ in
     enable = true;
     package = patchedVSCode;
     profiles.default.extensions = extensionSettings.extensions;
-    profiles.default.userSettings = lib.recursiveUpdate {
-      "editor.fontFamily" = "'Fira Code'";
-      "editor.fontLigatures" = true;
-      "editor.fontWeight" = "400";
-      "telemetry.enableTelemetry" = false;
-      "explorer.sortOrder" = "type";
-      "explorer.confirmDelete" = false;
-    } extensionSettings.userSettings;
+    profiles.default.userSettings = lib.recursiveUpdate
+      {
+        "editor.fontFamily" = "'Fira Code'";
+        "editor.fontLigatures" = true;
+        "editor.fontWeight" = "400";
+        "telemetry.enableTelemetry" = false;
+        "explorer.sortOrder" = "type";
+        "explorer.confirmDelete" = false;
+      }
+      extensionSettings.userSettings;
   };
 }
