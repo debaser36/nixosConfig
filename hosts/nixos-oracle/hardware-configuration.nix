@@ -11,23 +11,28 @@ in
       (modulesPath + "/profiles/qemu-guest.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "virtio_scsi" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
-
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-label/lb_filesystem";
-      fsType = "ext4";
+  boot = {
+    kernelModules = [ ];
+    extraModulePackages = [ ];
+    initrd = {
+      availableKernelModules = [ "xhci_pci" "virtio_scsi" ];
+      kernelModules = [ ];
     };
+  };
 
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-label/lb_boot";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
+  fileSystems = {
+    "/" =
+      {
+        device = "/dev/disk/by-label/lb_filesystem";
+        fsType = "ext4";
+      };
+    "/boot" =
+      {
+        device = "/dev/disk/by-label/lb_boot";
+        fsType = "vfat";
+        options = [ "fmask=0022" "dmask=0022" ];
+      };
+  };
 
   swapDevices = [ ];
 

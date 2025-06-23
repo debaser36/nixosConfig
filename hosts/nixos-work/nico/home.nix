@@ -1,21 +1,21 @@
 { pkgs, lib, ... }:
 let
 
-  monitors = (import ../hardware/monitorInfo.nix);
+  monitors = import ../hardware/monitorInfo.nix;
   # sway
-  outputConfig = (import ../hardware/swayMonitorSettings.nix {
-    left_monitor = monitors.left_monitor;
-    center_monitor = monitors.center_monitor;
-    right_monitor = monitors.right_monitor;
-  });
-  inputConfig = (import ../hardware/swayInputSettings.nix {
+  outputConfig = import ../hardware/swayMonitorSettings.nix {
+    inherit (monitors) left_monitor;
+    inherit (monitors) center_monitor;
+    inherit (monitors) right_monitor;
+  };
+  inputConfig = import ../hardware/swayInputSettings.nix {
     initial_output = monitors.center_monitor.name;
-  });
-  extraConfig = (import ./swayExtraConfig.nix);
-  startupConfig = (import ./swayStartup.nix);
+  };
+  extraConfig = import ./swayExtraConfig.nix;
+  startupConfig = import ./swayStartup.nix;
   #/sway
 
-  packageList = (import ./packageList.nix { inherit pkgs; });
+  packageList = import ./packageList.nix { inherit pkgs; };
 
   gitUser = {
     username = "debaser36";
@@ -23,23 +23,25 @@ let
   };
 in
 {
-  home.username = "nico";
-  home.homeDirectory = "/home/nico";
-  home.sessionPath = [
-    "$HOME/bin"
-    "$HOME/.pnpm-global"
-    "$HOME/.npm-global/bin"
-    "$HOME/.local/bin"
-    "$HOME/go/bin"
-  ];
+  home = {
+    username = "nico";
+    homeDirectory = "/home/nico";
+    sessionPath = [
+      "$HOME/bin"
+      "$HOME/.pnpm-global"
+      "$HOME/.npm-global/bin"
+      "$HOME/.local/bin"
+      "$HOME/go/bin"
+    ];
+    packages = packageList;
+    sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      PNPM_HOME = "$HOME/.pnpm-global";
+    };
 
-  # Packages not configurable via home manager config settings
-  home.packages = packageList;
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-    PNPM_HOME = "$HOME/.pnpm-global";
-
+    # ## DONT CHANGE THIS LINE!
+    stateVersion = "25.05";
   };
 
   # Packages configurable via home manager config settings
@@ -90,8 +92,6 @@ in
     (import ../../../programs/homeManager/thunderbird/default.nix)
   ];
 
-  # don't change these Lines!!!
-  home.stateVersion = "25.05";
   programs.home-manager.enable = true;
 }
 

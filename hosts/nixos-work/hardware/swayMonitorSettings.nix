@@ -40,22 +40,23 @@ let
   right_position = "${toString (left_effective_width + center_effective_width)},${toString ((left_effective_height - right_effective_height) / 2)}";
 in
 {
-  output.${left_monitor.name} = {
-    mode = left_mode;
-    position = left_position;
-    transform = left_monitor.rotation;
-  };
+  output = {
+    ${left_monitor.name} = {
+      mode = left_mode;
+      position = left_position;
+      transform = left_monitor.rotation;
+    };
 
-  output.${center_monitor.name} = {
-    mode = center_mode;
-    position = center_position;
-    transform = center_monitor.rotation;
-  };
+    ${center_monitor.name} = {
+      mode = center_mode;
+      position = center_position;
+      transform = center_monitor.rotation;
+    };
 
-
-  output.${right_monitor.name} = {
-    mode = right_mode;
-    position = right_position;
-    transform = right_monitor.rotation;
+    ${right_monitor.name} = {
+      mode = right_mode;
+      position = right_position;
+      transform = right_monitor.rotation;
+    };
   };
 }

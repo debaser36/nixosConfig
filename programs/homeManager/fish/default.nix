@@ -1,16 +1,5 @@
 { pkgs }:
 {
-  #-------------Bash settings------------
-  programs.fish.enable = true;
-  programs.fish.shellAliases = {
-    ll = "ls -l";
-    la = "ls -A";
-    ls = "ls -A --color=tty";
-    ".." = "cd ..";
-    "..." = "cd ../..";
-    "...." = "cd ../../..";
-    "....." = "cd ../../../..";
-  };
   programs.bash.initExtra = ''
     if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
     then
@@ -18,4 +7,16 @@
       exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
     fi
   '';
+  programs.fish = {
+    enable = true;
+    shellAliases = {
+      ll = "ls -l";
+      la = "ls -A";
+      ls = "ls -A --color=tty";
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      "...." = "cd ../../..";
+      "....." = "cd ../../../..";
+    };
+  };
 }

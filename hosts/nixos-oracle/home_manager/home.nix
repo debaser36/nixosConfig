@@ -4,24 +4,27 @@ let
 in
 {
   imports = [
-
     (import ./home_packagelist.nix {
-      pkgs = pkgs;
+      inherit pkgs;
     })
 
     # nvim
     (import ../../../programs/homeManager/neovim/default.nix { inherit pkgs; })
   ];
 
-  programs.git.enable = true;
-  programs.git.userName = "debaser36";
-  programs.git.userEmail = "n.burkholder@tu-berlin.de";
+  programs = {
+    git = {
+      enable = true;
+      userName = "debaser36";
+      userEmail = "n.burkholder@tu-berlin.de";
+    };
+    home-manager.enable = true;
+  };
 
-
-  home.username = vars.default_user.username;
-  home.homeDirectory = vars.default_user.home;
-
-  # don't change these Lines!!!
-  home.stateVersion = "24.11";
-  programs.home-manager.enable = true;
+  home = {
+    inherit (vars.default_user) username;
+    homeDirectory = vars.default_user.home;
+    # don't change these Lines!!!
+    stateVersion = "24.11";
+  };
 }

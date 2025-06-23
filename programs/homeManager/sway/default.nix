@@ -9,7 +9,7 @@
 , ...
 }:
 let
-  lib = pkgs.lib;
+  inherit (pkgs) lib;
 in
 {
   home.sessionVariables = {

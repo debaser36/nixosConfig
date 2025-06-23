@@ -1,6 +1,6 @@
 { pkgs, lib ? pkgs.lib, ... }:
 let
-  packages = (import ./default.extensions.nix { inherit pkgs; });
+  packages = import ./default.extensions.nix { inherit pkgs; };
 in
 {
   programs.firefox = {

@@ -1,5 +1,5 @@
 #nginx setup -- just inherit everything
-{ ... }:
+_:
 {
   services.nginx = {
     enable = true;

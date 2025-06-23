@@ -1,6 +1,8 @@
 { user }:
 {
-  programs.git.enable = true;
-  programs.git.userName = user.username;
-  programs.git.userEmail = user.email;
+  programs.git = {
+    enable = true;
+    userName = user.username;
+    userEmail = user.email;
+  };
 }

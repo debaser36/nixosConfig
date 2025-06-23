@@ -24,8 +24,10 @@ in
   };
   systemd.targets.multi-user.enable = true;
 
-  networking.hostName = vars.hostname;
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = vars.hostname;
+    networkmanager.enable = true;
+  };
 
   time.timeZone = vars.timezone;
   i18n.defaultLocale = vars.locale;
