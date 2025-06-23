@@ -30,7 +30,6 @@ in
   programs.fish.enable = true;
 
   services = {
-    displayManager.
     xserver.enable = true;
     displayManager = {
       defaultSession = "sway";
