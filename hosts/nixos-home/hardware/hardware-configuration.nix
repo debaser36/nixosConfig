@@ -15,7 +15,7 @@
       availableKernelModules = [ "usbhid" "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" "ahci" ];
     };
     kernelModules = [ "kvm-amd" ];
-    boot.extraModulePackages = [ ];
+    extraModulePackages = [ ];
   };
 
   fileSystems."/" =
