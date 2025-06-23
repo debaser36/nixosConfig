@@ -57,7 +57,7 @@
     users.nico = {
       isNormalUser = true;
       description = "Default user for personal use of this system!";
-      extraGroups = [ "networkmanager" "wheel" "video" ];
+      extraGroups = [ "networkmanager" "wheel" "video" "storage" ];
       home = "/home/nico";
       shell = pkgs.fish;
     };
@@ -74,6 +74,8 @@
   };
 
   services = {
+    udisks2.enable = true;
+
     dbus.enable = true;
     pipewire = {
       enable = true;
