@@ -37,10 +37,10 @@ jobs:
       - name: Dry-build systems
         run: |
           echo "Dry-building home system"
-          cd hosts/nixos-home && nix build .#nixosConfigurations.nixos-home.config.system.build.toplevel --dry-run
+          cd hosts/nixos-home && nix build .#nixosConfigurations.nixos.config.system.build.toplevel --dry-run
           
           echo "Dry-building work system"
-          cd ../nixos-work && nix build .#nixosConfigurations.nixos-work.config.system.build.toplevel --dry-run
+          cd ../nixos-work && nix build .#nixosConfigurations.nixos.config.system.build.toplevel --dry-run
           
           echo "Dry-building oracle system"
-          cd ../nixos-oracle && nix build .#nixosConfigurations.nixos-oracle.config.system.build.toplevel --dry-run
+          cd ../nixos-oracle && nix build .#nixosConfigurations.nixos.config.system.build.toplevel --dry-run
