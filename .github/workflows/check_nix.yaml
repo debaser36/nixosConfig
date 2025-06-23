@@ -29,10 +29,10 @@ jobs:
           nix flake check
 
       - name: Format check
-        run: nix run nixpkgs#nixpkgs-fmt -- --check
+        run: nix run nixpkgs#nixpkgs-fmt -- --check .
 
       - name: Lint with statix
-        run: nix run nixpkgs#statix -- check
+        run: nix run nixpkgs#statix -- check .
 
       - name: Dry-build systems
         run: |
