@@ -27,7 +27,6 @@ in
       ## yubikey
       yubikey-manager
       yubioath-flutter
-      yubikey-personalization-gui
     ];
 
   # sway related stuff
