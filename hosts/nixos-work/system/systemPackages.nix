@@ -42,6 +42,7 @@ in
   };
 
   services = {
+    pcscd.enable = true;
     xserver.enable = true;
     displayManager = {
       defaultSession = "sway";
