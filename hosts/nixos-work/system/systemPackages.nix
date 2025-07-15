@@ -34,7 +34,7 @@ in
       ## yubikey
       yubikey-manager
 
-
-      clisp
+      automake117x
+      #clisp
     ];
 }
