@@ -26,7 +26,7 @@ in
 
       ## yubikey
       yubikey-manager
-      yubioath-flutter
+      /* yubioath-flutter */
     ];
 
   # sway related stuff
