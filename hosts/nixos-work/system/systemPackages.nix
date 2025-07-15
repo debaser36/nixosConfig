@@ -33,6 +33,8 @@ in
 
       ## yubikey
       yubikey-manager
-      /* yubioath-flutter */
+
+
+      clisp
     ];
 }
