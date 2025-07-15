@@ -23,7 +23,11 @@ in
       wlroots
       xorg.xrandr
       procps
+
+      ## yubikey
       yubikey-manager
+      yubioath-flutter
+      yubikey-personalization-gui
     ];
 
   # sway related stuff

@@ -28,6 +28,11 @@
   nixpkgs = {
     overlays = [
       nix-vscode-extension.overlays.default
+      (
+        final: prev: {
+          flutter = prev.flutter319;
+        }
+      )
     ];
     config = {
       allowUnfree = true;
