@@ -23,6 +23,7 @@ in
       wlroots
       xorg.xrandr
       procps
+      yubikey-manager
     ];
 
   # sway related stuff
@@ -34,6 +35,10 @@ in
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
     
+  };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
   };
 
   services = {

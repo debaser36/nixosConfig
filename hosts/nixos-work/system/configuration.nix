@@ -75,6 +75,9 @@
 
   services = {
     udisks2.enable = true;
+    udev = {
+      packages = [pkgs.yubikey-personalization];
+    };
 
     dbus.enable = true;
     pipewire = {
