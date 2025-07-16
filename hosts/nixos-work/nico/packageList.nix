@@ -1,5 +1,7 @@
 { pkgs }:
 with pkgs; [
+  texstudio
+
   duckdb
   git-crypt
   wireguard-tools
