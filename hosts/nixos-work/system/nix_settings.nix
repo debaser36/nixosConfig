@@ -1,14 +1,14 @@
-{
-  pkgs,
-  nix-vscode-extension,
+{ pkgs
+, nix-vscode-extension
+,
 }:
 {
-    nix = {
+  nix = {
     package = pkgs.nixVersions.latest;
     extraOptions = "experimental-features = nix-command flakes no-url-literals";
     settings.download-buffer-size = 524288000;
   };
-    nixpkgs = {
+  nixpkgs = {
     overlays = [
       nix-vscode-extension.overlays.default
       /* (

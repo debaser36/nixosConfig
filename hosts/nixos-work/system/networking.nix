@@ -1,5 +1,5 @@
 {
-    networking = {
+  networking = {
     hostName = "nixos";
     networkmanager.enable = true;
     firewall = {
