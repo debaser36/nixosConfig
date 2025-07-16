@@ -1,9 +1,4 @@
-{ pkgs }:
-let
-  custom-sddm-astronaut = pkgs.sddm-astronaut.override {
-    embeddedTheme = "pixel_sakura";
-  };
-in
+{ pkgs, custom-sddm-astronaut }:
 {
   imports = [
     (import ../../../programs/system/npm.nix)

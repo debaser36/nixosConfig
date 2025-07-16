@@ -1,12 +1,16 @@
 { pkgs, nix-vscode-extension, ... }:
-
+let
+  custom-sddm-astronaut = pkgs.sddm-astronaut.override {
+    embeddedTheme = "pixel_sakura";
+  };
+in
 {
   imports =
     [
       ../hardware/hardware-configuration.nix
       (import ./environment.etc.nix)
-      (import ./systemPackages.nix { inherit pkgs; })
-      (import ./services.nix { inherit pkgs; })
+      (import ./systemPackages.nix { inherit pkgs custom-sddm-astronaut; })
+      (import ./services.nix { inherit pkgs custom-sddm-astronaut; })
       (import ./networking.nix)
       (import ./nix_settings.nix { inherit pkgs nix-vscode-extension; })
       (import ./users.nix { inherit pkgs; })
