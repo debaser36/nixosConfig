@@ -18,19 +18,6 @@
       videoDrivers = [ "modesetting" ];
     };
     wg-netmanager.enable = true;
-
-    greetd = {
-      enable = true;
-      settings = {
-        default_session.command = ''
-          ${pkgs.greetd.tuigreet}/bin/tuigreet \
-          --time \
-          --asterisks \
-          --user-menu \
-          --cmd sway
-        '';
-      };
-    };
     pcscd.enable = true;
     xserver.enable = true;
     displayManager = {
