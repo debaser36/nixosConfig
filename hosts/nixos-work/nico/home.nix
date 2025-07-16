@@ -90,6 +90,9 @@ in
 
     # thunderbird
     (import ../../../programs/homeManager/thunderbird/default.nix)
+
+    # texlive
+    (import ../../../programs/homeManager/texlive/default.nix)
   ];
 
   programs.home-manager.enable = true;

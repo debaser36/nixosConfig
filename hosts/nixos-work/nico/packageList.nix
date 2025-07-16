@@ -1,7 +1,5 @@
 { pkgs }:
 with pkgs; [
-  texlive.combined.scheme-full
-  texstudio
   duckdb
   git-crypt
   wireguard-tools
