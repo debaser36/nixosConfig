@@ -1,6 +1,7 @@
 { pkgs }:
 with pkgs; [
   texstudio
+  texliveFull
 
   duckdb
   git-crypt

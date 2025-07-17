@@ -2,7 +2,6 @@
 let
 
   monitors = import ../hardware/monitorInfo.nix;
-  # sway
   outputConfig = import ../hardware/swayMonitorSettings.nix {
     inherit (monitors) left_monitor;
     inherit (monitors) center_monitor;
@@ -13,7 +12,6 @@ let
   };
   extraConfig = import ./swayExtraConfig.nix;
   startupConfig = import ./swayStartup.nix;
-  #/sway
 
   packageList = import ./packageList.nix { inherit pkgs; };
 
