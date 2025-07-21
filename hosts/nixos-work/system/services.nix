@@ -14,12 +14,12 @@
       pulse.enable = true;
     };
     xserver = {
+      enable = true;
       wacom.enable = true;
       videoDrivers = [ "modesetting" ];
     };
     wg-netmanager.enable = true;
     pcscd.enable = true;
-    xserver.enable = true;
     displayManager = {
       defaultSession = "sway";
       sddm = {
