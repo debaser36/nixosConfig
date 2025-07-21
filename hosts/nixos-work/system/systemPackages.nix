@@ -22,7 +22,7 @@
       # Development Tools
       git # Version control system
       vim # Text editor
-      automake117x # GNU build system generator
+      # automake117x # GNU build system generator
 
       # System Utilities
       wget # Network downloader
