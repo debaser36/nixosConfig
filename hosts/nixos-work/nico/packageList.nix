@@ -6,11 +6,11 @@ with pkgs; [
 
   # Development Tools & Languages
   git-crypt # Git encryption
-  exercism # Programming exercises platform
+  # exercism # Programming exercises platform
   corepack # Node.js package manager manager
   python313Full # Python interpreter with all modules
   python313Packages.pip # Python package installer
-  duckdb # In-process SQL database
+  # duckdb # In-process SQL database
   nil # Nix language server
 
   # Development Build Tools & Compilers
