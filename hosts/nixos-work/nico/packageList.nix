@@ -1,103 +1,109 @@
 { pkgs }:
 with pkgs; [
-  texstudio
-  texliveFull
+  # Document Preparation & LaTeX
+  texstudio                          # LaTeX IDE
+  texliveFull                        # Complete TeX Live distribution
 
-  duckdb
-  git-crypt
-  wireguard-tools
+  # Development Tools & Languages
+  git-crypt                          # Git encryption
+  exercism                           # Programming exercises platform
+  corepack                           # Node.js package manager manager
+  python313Full                      # Python interpreter with all modules
+  python313Packages.pip              # Python package installer
+  duckdb                             # In-process SQL database
+  nil                                # Nix language server
 
-  exercism
-  corepack
-  python313Full
-  python313Packages.pip
-  alsa-utils
-  alsa-plugins
-  edid-decode
+  # Development Build Tools & Compilers
+  libgcc                             # GCC runtime library
+  gcc                                # GNU Compiler Collection
+  rocmPackages.llvm.clang-unwrapped  # Clang compiler
+  cmakeWithGui                       # CMake build system with GUI
 
+  # Audio System
+  alsa-utils                         # ALSA sound utilities
+  alsa-plugins                       # ALSA audio plugins
 
-  # WACOM TABLET
-  xf86_input_wacom
-  wacomtablet
-  xorg.xev
+  # Display & Hardware Tools
+  edid-decode                        # EDID decoder utility
+  xf86_input_wacom                   # Wacom tablet X11 driver
+  wacomtablet                        # Wacom tablet configuration
+  xorg.xev                           # X11 event viewer
 
-  discord
+  # Communication & Social
+  discord                            # Voice and text chat
+  element-desktop                    # Matrix client
+  zoom-us                            # Video conferencing
 
-  obsidian
-  isabelle
+  # Productivity & Note-taking
+  obsidian                           # Knowledge management
+  isabelle                           # Proof assistant
+  keepassxc                          # Password manager
 
-  bruno
-  element-desktop
+  # API Development & Database Tools
+  bruno                              # API testing tool
+  pgmodeler                          # PostgreSQL database modeler
+  sqlite                             # SQLite database
 
-  #sql
-  pgmodeler
-  sqlite
+  # Wayland Desktop Environment
+  swaylock                           # Screen locker
+  swayidle                           # Idle management daemon
+  mako                               # Notification daemon
+  waybar                             # Status bar
 
-  neofetch
-  nnn
+  # Terminal Emulators & File Management
+  kitty                              # GPU-based terminal emulator
+  alacritty                          # GPU-accelerated terminal
+  neofetch                           # System information display
+  nnn                                # File manager
 
-  swaylock
-  swayidle
-  mako
-  waybar
+  # Archive & Compression Tools
+  zip                                # ZIP archiver
+  xz                                 # XZ compression
+  unzip                              # ZIP extractor
+  p7zip                              # 7-Zip archiver
+  zstd                               # Zstandard compression
 
-  # archives
-  zip
-  xz
-  unzip
-  p7zip
+  # Data Processing & Text Utilities
+  jq                                 # JSON processor
+  yq-go                              # YAML processor
+  gnused                             # GNU stream editor
+  tree                               # Directory tree display
+  which                              # Command location finder
 
-  #utils
-  jq
-  yq-go
+  # Network Tools & Utilities
+  wireguard-tools                    # WireGuard VPN tools
+  mtr                                # Network diagnostic tool
+  iperf3                             # Network bandwidth testing
+  dnsutils                           # DNS lookup utilities
+  ldns                               # DNS library and tools
+  aria2                              # Download utility
+  socat                              # Socket relay
+  nmap                               # Network scanner
+  ipcalc                             # IP calculator
 
-  #network
-  mtr
-  iperf3
-  dnsutils
-  ldns
-  aria2
-  socat
-  nmap
-  ipcalc
+  # System Monitoring & Hardware Tools
+  xorg.xmodmap                       # X11 key modifier
+  sysstat                            # System activity tools
+  lm_sensors                         # Hardware monitoring
+  ethtool                            # Ethernet device configuration
+  pciutils                           # PCI utilities
+  usbutils                           # USB utilities
+  xorg.xrandr                        # Display configuration
+  wlroots                            # Wayland compositor library
 
-  #misc
-  which
-  tree
-  gnused
-  zstd
-  gnupg
-  libnotify
-  kitty # terminal emulator
-  alacritty
-  keepassxc
-  mako
-  wl-clipboard
-  shotman
+  # Clipboard & Screenshots
+  wl-clipboard                       # Wayland clipboard utilities
+  shotman                            # Screenshot tool
 
-  #nix-related
-  nix-output-monitor
+  # Security & Encryption
+  gnupg                              # GNU Privacy Guard
 
-  #systools
-  xorg.xmodmap
-  sysstat
-  lm_sensors
-  ethtool
-  pciutils
-  usbutils
-  xorg.xrandr
-  wlroots
+  # System Notifications & Libraries
+  libnotify                          # Desktop notification library
 
-  #gaming
-  steam
+  # Nix Ecosystem Tools
+  nix-output-monitor                 # Nix build output monitor
 
-  #other
-  nil
-
-  zoom-us
-
-  libgcc
-  gcc
-  rocmPackages.llvm.clang-unwrapped
-  cmakeWithGui
+  # Gaming
+  steam                              # Gaming platform
 ]

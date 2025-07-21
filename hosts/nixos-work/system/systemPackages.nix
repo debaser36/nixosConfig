@@ -7,29 +7,32 @@
     (import ../../../programs/system/steam.nix)
     (import ../../../programs/system/gnupg.nix)
   ];
-  #packages needed for flakes to work
-  environment.systemPackages = with pkgs; with pkgs.kdePackages;
+    environment.systemPackages = with pkgs; with pkgs.kdePackages;
     [
-      # sddm theme
-      custom-sddm-astronaut
-      qtbase
-      qtmultimedia
-      qttools
-      qtvirtualkeyboard
-      qtsvg
+      # Display Manager & Desktop Environment
+      custom-sddm-astronaut    # Custom SDDM theme
 
-      # needed base programs
-      git
-      vim
-      wget
-      wlroots
-      xorg.xrandr
-      procps
+      # Qt Framework & Components
+      qtbase                   # Core Qt library
+      qtmultimedia             # Qt multimedia support
+      qttools                  # Qt development tools
+      qtvirtualkeyboard        # Qt virtual keyboard
+      qtsvg                    # Qt SVG support
 
-      ## yubikey
-      yubikey-manager
+      # Development Tools
+      git                      # Version control system
+      vim                      # Text editor
+      automake117x             # GNU build system generator
 
-      automake117x
-      #clisp
+      # System Utilities
+      wget                     # Network downloader
+      xorg.xrandr              # Display configuration utility
+      procps                   # Process monitoring tools
+
+      # Wayland Compositor
+      wlroots                  # Wayland compositor library
+
+      # Security & Authentication
+      yubikey-manager          # YubiKey management tool
     ];
 }
