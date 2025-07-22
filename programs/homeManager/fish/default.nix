@@ -9,7 +9,7 @@
   '';
   programs.fish = {
     functions = {
-      detach = ''
+      d = ''
         if test (count $argv) -eq 0
             echo "Usage: detach <command> [args ...]"
             return 1
