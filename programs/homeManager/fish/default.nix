@@ -8,6 +8,16 @@
     fi
   '';
   programs.fish = {
+    functions = {
+      detach = ''
+        if test (count $argv) -eq 0
+            echo "Usage: detach <command> [args ...]"
+            return 1
+        end
+        echo "Detaching command: $argv"
+        nohup $argv > /dev/null & disown; and exit
+      '';
+    };
     enable = true;
     shellAliases = {
       ll = "ls -l";
