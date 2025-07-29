@@ -2,6 +2,7 @@
   programs.anki = {
     enable = true;
     spacebarRatesCard = true;
-    theme = "followSystem";
+    language = "en_US";
+		theme = "followSystem";
   };
 }
