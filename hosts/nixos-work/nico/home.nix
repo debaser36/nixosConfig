@@ -91,6 +91,9 @@ in
 
     # texlive
     (import ../../../programs/homeManager/texlive/default.nix)
+
+    # anki
+    (import ../../../programs/homeManager/anki/default.nix)
   ];
 
   programs.home-manager.enable = true;
