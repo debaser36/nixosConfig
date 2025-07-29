@@ -2,8 +2,8 @@
 with pkgs; [
   # Document Preparation & LaTeX
   texstudio # LaTeX IDE
-	kdePackages.okular # pdf viewer
-	texliveFull # Complete TeX Live distribution
+  kdePackages.okular # pdf viewer
+  texliveFull # Complete TeX Live distribution
 
   # Development Tools & Languages
   git-crypt # Git encryption
