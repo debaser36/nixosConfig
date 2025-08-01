@@ -108,6 +108,6 @@ with pkgs; [
   # Gaming
   steam # Gaming platform
 
-	# Media creating and editing
-	gimp3-with-plugins # the best image editor known to men and women
+  # Media creating and editing
+  gimp3-with-plugins # the best image editor known to men and women
 ]
