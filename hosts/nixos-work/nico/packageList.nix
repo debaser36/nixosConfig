@@ -6,7 +6,8 @@ with pkgs; [
   texliveFull # Complete TeX Live distribution
 
   # Emulation
-  anbox
+	waydroid
+	waydroid-helper
 
   # Development Tools & Languages
   git-crypt # Git encryption
