@@ -3,6 +3,6 @@
     enable = true;
     spacebarRatesCard = true;
     language = "en_US";
-		theme = "followSystem";
+    theme = "followSystem";
   };
 }

@@ -5,8 +5,8 @@ with pkgs; [
   kdePackages.okular # pdf viewer
   texliveFull # Complete TeX Live distribution
 
-	# Emulation
-	anbox
+  # Emulation
+  anbox
 
   # Development Tools & Languages
   git-crypt # Git encryption
