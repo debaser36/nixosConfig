@@ -6,9 +6,9 @@ with pkgs; [
   texliveFull # Complete TeX Live distribution
 
   # Emulation
-	waydroid
-	waydroid-helper
-	nur.repos.ataraxiasjel.waydroid-script
+  waydroid
+  waydroid-helper
+  nur.repos.ataraxiasjel.waydroid-script
 
   # Development Tools & Languages
   git-crypt # Git encryption
