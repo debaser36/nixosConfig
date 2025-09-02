@@ -32,7 +32,7 @@ with pkgs; [
   # Display & Hardware Tools
   edid-decode # EDID decoder utility
   xf86_input_wacom # Wacom tablet X11 driver
-  wacomtablet # Wacom tablet configuration
+  kdePackages.wacomtablet # Wacom tablet configuration
   xorg.xev # X11 event viewer
 
   # Communication & Social
