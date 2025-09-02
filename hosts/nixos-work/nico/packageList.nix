@@ -8,6 +8,7 @@ with pkgs; [
   # Emulation
 	waydroid
 	waydroid-helper
+	nur.repos.ataraxiasjel.waydroid-script
 
   # Development Tools & Languages
   git-crypt # Git encryption
