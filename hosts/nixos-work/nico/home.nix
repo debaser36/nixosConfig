@@ -55,9 +55,9 @@ in
 
     # sagemath
     #(import ../../../programs/homeManager/sagemath/default.nix)
-		
-		# Go
-		(import ../../../programs/homeManager/go/default.nix)
+
+    # Go
+    (import ../../../programs/homeManager/go/default.nix)
 
     # fish
     (import ../../../programs/homeManager/fish/default.nix { inherit pkgs; })
