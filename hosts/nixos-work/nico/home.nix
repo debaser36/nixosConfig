@@ -96,7 +96,8 @@ in
     (import ../../../programs/homeManager/texlive/default.nix)
 
     # anki
-    (import ../../../programs/homeManager/anki/default.nix)
+    # (import ../../../programs/homeManager/anki/default.nix)
+    # TODO see https://github.com/NixOS/nixpkgs/pull/438958
   ];
 
   programs.home-manager.enable = true;
