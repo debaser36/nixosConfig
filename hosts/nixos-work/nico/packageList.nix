@@ -1,7 +1,7 @@
 { pkgs }:
 with pkgs; [
-	lutris-free
-	# Document Preparation & LaTeX
+  lutris-free
+  # Document Preparation & LaTeX
   texstudio # LaTeX IDE
   kdePackages.okular # pdf viewer
   texliveFull # Complete TeX Live distribution

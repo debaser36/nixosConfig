@@ -9,8 +9,8 @@
   ];
   environment.systemPackages = with pkgs; with pkgs.kdePackages;
     [
-			# gaming emulation
-			# lutris-unwrapped
+      # gaming emulation
+      # lutris-unwrapped
 
       # Display Manager & Desktop Environment
       custom-sddm-astronaut # Custom SDDM theme
