@@ -43,6 +43,11 @@
       };
     };
 
+		virtualisation.docker = {
+			enable = true;
+			enableOnBoot = true;
+		};
+
     postgresql = {
       enable = true;
       ensureDatabases = [ "pb_app" ];
