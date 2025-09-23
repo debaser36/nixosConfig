@@ -1,6 +1,6 @@
 { pkgs }:
 with pkgs; [
-  docker-client
+  docker
 	lutris-free
   # Document Preparation & LaTeX
   texstudio # LaTeX IDE
