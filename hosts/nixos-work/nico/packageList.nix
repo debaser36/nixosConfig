@@ -2,7 +2,7 @@
 with pkgs; [
   docker
   lutris-free
-	wineWowPackages.full
+  wineWowPackages.full
   # Document Preparation & LaTeX
   texstudio # LaTeX IDE
   kdePackages.okular # pdf viewer
