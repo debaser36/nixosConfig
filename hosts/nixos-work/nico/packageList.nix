@@ -1,7 +1,7 @@
 { pkgs }:
 with pkgs; [
   docker
-	lutris-free
+  lutris-free
   # Document Preparation & LaTeX
   texstudio # LaTeX IDE
   kdePackages.okular # pdf viewer
