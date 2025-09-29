@@ -1,6 +1,8 @@
 { pkgs }:
 with pkgs; [
   docker
+  R
+  rstudio
   lutris-free
   wineWowPackages.full
   # Document Preparation & LaTeX
