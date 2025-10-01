@@ -1,8 +1,20 @@
 { pkgs }:
-with pkgs; [
+with pkgs;
+let
+  rstudioCustom = rstudioWrapper.override{ packages = with rPackages; [ 
+		ggplot2 
+		dplyr 
+		xts 
+		shiny 
+		learnr
+		nycflights13
+		tidyverse
+		]; };
+in 
+[
   docker
   R
-  rstudio
+	rstudioCustom
   lutris-free
   wineWowPackages.full
   # Document Preparation & LaTeX

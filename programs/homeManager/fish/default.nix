@@ -17,6 +17,14 @@
         echo "Detaching command: $argv"
         nohup $argv > /dev/null & disown; and exit
       '';
+      deleteAllFolders = ''
+        if test (count $argv) -eq 0
+            echo "Usage: deleteAll <nameOfFolders>"
+            return 1
+        end
+        echo "Deleting all folders named: $argv"
+        find . -type d -name $argv -exec rm -rf {} +;
+      '';
     };
     enable = true;
     shellAliases = {
