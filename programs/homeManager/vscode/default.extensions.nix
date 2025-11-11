@@ -36,7 +36,8 @@
 		## -------- RUST --------------
 		dustypomerleau.rust-syntax
 		rust-lang.rust-analyzer
-		serayuzgur.crates
+		#serayuzgur.crates --> migrated to dependi.io
+		fill-labs.dependi
 		njpwerner.autodocstring
 
     ## -------- ISABELLE --------
