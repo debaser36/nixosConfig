@@ -14,7 +14,7 @@ let
   };
 in
 [
-	rustup # Rust Toolchain, including rustc, cargo, and everything else
+  rustup # Rust Toolchain, including rustc, cargo, and everything else
 
   protontricks
   docker
