@@ -34,8 +34,10 @@
     jeff-hykin.better-cpp-syntax
 
 		## -------- RUST --------------
-		1yib.rust-bundle
 		dustypomerleau.rust-syntax
+		rust-lang.rust-analyzer
+		serayuzgur.crates
+		njpwerner.autodocstring
 
     ## -------- ISABELLE --------
     makarius.isabelle # Official Makarius Isabelle Extension, integrated into the current version of the IDE
