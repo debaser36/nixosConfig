@@ -33,6 +33,10 @@
     ms-vscode.cpptools-extension-pack
     jeff-hykin.better-cpp-syntax
 
+		## -------- RUST --------------
+		1yib.rust-bundle
+		dustypomerleau.rust-syntax
+
     ## -------- ISABELLE --------
     makarius.isabelle # Official Makarius Isabelle Extension, integrated into the current version of the IDE
 
