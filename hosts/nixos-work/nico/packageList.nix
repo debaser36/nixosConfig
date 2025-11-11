@@ -14,6 +14,8 @@ let
   };
 in
 [
+	rustup # Rust Toolchain, including rustc, cargo, and everything else
+
   protontricks
   docker
   R
