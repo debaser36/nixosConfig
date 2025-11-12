@@ -8,6 +8,7 @@
       #dejavu_fonts
       #liberation_ttf
       fira-code
+      font-awesome
       #eb-garamond
       #nerd-fonts.overpass
       #nerd-fonts.zed-mono
