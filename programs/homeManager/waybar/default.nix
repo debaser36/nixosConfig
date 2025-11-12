@@ -10,7 +10,7 @@
         modules-right = [ "battery" "clock" ];
 
         name = "MainBar";
-        reload_style_on_change = false;
+        reload_style_on_change = true;
 
         # Module Settings
         battery = {
