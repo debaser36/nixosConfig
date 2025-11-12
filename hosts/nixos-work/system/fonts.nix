@@ -9,6 +9,7 @@
       #liberation_ttf
       fira-code
       font-awesome
+      otf-font-awesome
       #eb-garamond
       #nerd-fonts.overpass
       #nerd-fonts.zed-mono
