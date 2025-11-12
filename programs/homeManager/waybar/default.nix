@@ -19,12 +19,12 @@
         };
         clock = {
           interval = 60;
-          format= "{:%d.%b %Y - %H:%M }";
+          format = "{:%d.%b %Y - %H:%M }";
         };
-        "sway/workspaces"= {
-          "format"= "{icon}";
-          "on-click"= "activate";
-          "format-icons"= {
+        "sway/workspaces" = {
+          "format" = "{icon}";
+          "on-click" = "activate";
+          "format-icons" = {
             "1" = "1";
             "2" = "2";
             "3" = "3";
@@ -34,13 +34,13 @@
             "7" = "7";
             "8" = "8";
             "9" = "9";
-            "10"= "10";
+            "10" = "10";
 
-            "urgent"= "";
-            "active"= "";
-            "default"= "";
+            "urgent" = "";
+            "active" = "";
+            "default" = "";
           };
-          "sort-by-number"= true;
+          "sort-by-number" = true;
         };
       };
     };

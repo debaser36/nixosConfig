@@ -33,12 +33,12 @@
     ms-vscode.cpptools-extension-pack
     jeff-hykin.better-cpp-syntax
 
-		## -------- RUST --------------
-		dustypomerleau.rust-syntax
-		rust-lang.rust-analyzer
-		#serayuzgur.crates --> migrated to dependi.io
-		fill-labs.dependi
-		njpwerner.autodocstring
+    ## -------- RUST --------------
+    dustypomerleau.rust-syntax
+    rust-lang.rust-analyzer
+    #serayuzgur.crates --> migrated to dependi.io
+    fill-labs.dependi
+    njpwerner.autodocstring
 
     ## -------- ISABELLE --------
     makarius.isabelle # Official Makarius Isabelle Extension, integrated into the current version of the IDE
