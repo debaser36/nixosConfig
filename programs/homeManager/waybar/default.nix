@@ -18,7 +18,8 @@
           format-icons = [ "" "" "" "" "" ];
         };
         clock = {
-          format = "%a %d %b %Y %H:%M";
+          interval = 60;
+          format= "{:%d:%b:%Y:%H:%M}  ";
         };
       };
     };
