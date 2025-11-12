@@ -19,7 +19,7 @@
         };
         clock = {
           interval = 60;
-          format= "{:%d.%b %Y - %H:%M}";
+          format= "{:%d.%b %Y - %H:%M }";
         };
         "sway/workspaces"= {
           "format"= "{icon}";
