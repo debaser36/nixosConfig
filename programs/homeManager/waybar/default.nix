@@ -17,6 +17,9 @@
           format = "{capacity}% {icon}";
           format-icons = [ "" "" "" "" "" ];
         };
+        clock = {
+          format = "%a %d %b %Y %H:%M";
+        };
       };
     };
   };
