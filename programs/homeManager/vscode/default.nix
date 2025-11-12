@@ -30,7 +30,7 @@ in
     profiles.default.extensions = extensionSettings.extensions;
     profiles.default.userSettings = lib.recursiveUpdate
       {
-        "editor.fontFamily" = "'Fira Code'";
+        "editor.fontFamily" = "'Fira Code' 'Font Awesome 7 Free' 'Font Awesome 7 Brands' 'Font Awesome 7 Free Solid'";
         "editor.fontLigatures" = true;
         "editor.fontWeight" = "400";
         "telemetry.enableTelemetry" = false;
