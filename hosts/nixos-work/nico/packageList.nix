@@ -16,12 +16,10 @@ in
 [
   rustup # Rust Toolchain, including rustc, cargo, and everything else
 
-  protontricks
   docker
   R
   rstudioCustom
   lutris-free
-  wineWowPackages.full
   # Document Preparation & LaTeX
   texstudio # LaTeX IDE
   kdePackages.okular # pdf viewer
