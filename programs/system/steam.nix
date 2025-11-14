@@ -1,3 +1,4 @@
+{pkgs}:
 {
   programs.steam = {
     enable = true;
@@ -7,5 +8,13 @@
     protontricks = {
       enable = true;
     };
+    package = pkgs.steam.override {
+    extraPkgs = pkgs: with pkgs; [
+      freetype
+      fontconfig
+      libpng
+      libpulseaudio
+    ];
+  };
   };
 }
