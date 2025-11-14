@@ -21,7 +21,6 @@ let
   };
 in
 {
-
   home = {
     username = "nico";
     homeDirectory = "/home/nico";
