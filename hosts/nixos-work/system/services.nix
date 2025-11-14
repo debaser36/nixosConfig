@@ -21,7 +21,7 @@
       enable = true;
       wacom.enable = true;
       videoDrivers = [ "modesetting" ];
-      windowManager.notion.enable = true;
+      #windowManager.notion.enable = true;
     };
     wg-netmanager.enable = true;
     pcscd.enable = true;

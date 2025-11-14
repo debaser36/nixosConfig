@@ -11,6 +11,7 @@
     [
       # gaming emulation
       # lutris-unwrapped
+      notion-app
 
       # Display Manager & Desktop Environment
       custom-sddm-astronaut # Custom SDDM theme
