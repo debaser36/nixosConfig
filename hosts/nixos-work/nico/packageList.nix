@@ -128,9 +128,6 @@ in
   # Nix Ecosystem Tools
   nix-output-monitor # Nix build output monitor
 
-  # Gaming
-  steam # Gaming platform
-
   # Media creating and editing
   gimp3-with-plugins # the best image editor known to men and women
 ]
