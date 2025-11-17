@@ -4,18 +4,17 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    unhalteproblem-website.url = "github:debaser36/unhalteproblem.de/main";
+    #unhalteproblem-website.url = "github:debaser36/unhalteproblem.de/main";
   };
-  outputs = { nixpkgs, home-manager, unhalteproblem-website, ... }:
+  outputs = { nixpkgs, home-manager, ... }:
     let
       vars = import ./vars.nix;
     in
     {
-      packages.${vars.architeture}.website = unhalteproblem-website.packages.${vars.architeture}.default;
+      #packages.${vars.architeture}.website = unhalteproblem-website.packages.${vars.architeture}.default;
       nixosConfigurations = {
         nixos-oracle = nixpkgs.lib.nixosSystem {
           system = vars.architeture;
-          specialArgs = { inherit unhalteproblem-website; };
           modules = [
             {
               environment.etc."website-build.nix".source = ./http_https/website-build.nix;
