@@ -4,7 +4,7 @@
     (import ../../../programs/system/npm.nix)
     (import ../../../programs/system/fish.nix)
     (import ../../../programs/system/sway.nix)
-    (import ../../../programs/system/steam.nix {inherit pkgs;})
+    (import ../../../programs/system/steam.nix { inherit pkgs; })
     (import ../../../programs/system/gnupg.nix)
   ];
   environment.systemPackages = with pkgs; with pkgs.kdePackages;

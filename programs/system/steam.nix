@@ -1,4 +1,4 @@
-{pkgs}:
+{ pkgs }:
 {
   programs.steam = {
     enable = true;
@@ -9,12 +9,12 @@
       enable = true;
     };
     package = pkgs.steam.override {
-    extraPkgs = pkgs: with pkgs; [
-      freetype
-      fontconfig
-      libpng
-      libpulseaudio
-    ];
-  };
+      extraPkgs = pkgs: with pkgs; [
+        freetype
+        fontconfig
+        libpng
+        libpulseaudio
+      ];
+    };
   };
 }
