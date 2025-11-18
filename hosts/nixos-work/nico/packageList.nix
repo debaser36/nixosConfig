@@ -16,7 +16,7 @@ in
 [
   rustup # Rust Toolchain, including rustc, cargo, and everything else
 
-  docker
+  /* docker */
   R
   rstudioCustom
   lutris-free

@@ -1,9 +1,9 @@
 { pkgs, custom-sddm-astronaut }:
 {
-  virtualisation.docker = {
+  /* virtualisation.docker = {
     enable = true;
     enableOnBoot = true;
-  };
+  }; */
   services = {
     udisks2.enable = true;
     udev = {
