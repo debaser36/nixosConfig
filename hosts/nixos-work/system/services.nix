@@ -1,8 +1,8 @@
 { pkgs, custom-sddm-astronaut }:
 {
-  virtualisation.docker = {
+  virtualisation.docker.rootless = {
     enable = true;
-    enableOnBoot = true;
+    setSocketVariable = true;
   };
   services = {
     udisks2.enable = true;
