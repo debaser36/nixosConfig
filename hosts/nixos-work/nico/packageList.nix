@@ -14,6 +14,10 @@ let
   };
 in
 [
+
+  # minecraft
+  prismlauncher
+
   rustup # Rust Toolchain, including rustc, cargo, and everything else
 
   /* docker */
