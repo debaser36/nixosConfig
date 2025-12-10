@@ -21,7 +21,7 @@ in
   rustup # Rust Toolchain, including rustc, cargo, and everything else
 
   /* docker */
-  R
+  # R
   rstudioCustom
   lutris-free
   # Document Preparation & LaTeX
