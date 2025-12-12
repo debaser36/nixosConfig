@@ -40,7 +40,8 @@ in
   corepack # Node.js package manager manager
   python314 # Python interpreter with all modules
   nil # Nix language server
-  nodeenv # Node.js version manager
+  #nodeenv # Node.js version manager
+  nodejs_25
 
   # Development Build Tools & Compilers
   libgcc # GCC runtime library
