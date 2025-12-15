@@ -3,7 +3,7 @@
 }:
 {
   extensions = with pkgs.vscode-extensions; with pkgs.vscode-marketplace; [
-
+	  dbaeumer.vscode-eslint
     # -------- Nix Language Support  ------------
     bbenoist.nix # Nix language syntax highlighting
     jnoortheen.nix-ide # Enhanced Nix IDE features
