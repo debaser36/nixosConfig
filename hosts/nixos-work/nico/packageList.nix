@@ -66,7 +66,7 @@ in
 
   # Productivity & Note-taking
   obsidian # Knowledge management
-  isabelle # Proof assistant
+  # isabelle # Proof assistant
   keepassxc # Password manager
 
   # API Development & Database Tools

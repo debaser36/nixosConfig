@@ -4,7 +4,7 @@
     enable = true;
   };
   services = {
-    postgresql = {
+    /* postgresql = {
       enable = true;
       ensureDatabases = [ "pb_app" ];
       enableTCPIP = true;
@@ -22,7 +22,7 @@
                 CREATE ROLE nico WITH LOGIN PASSWORT 'postgres';
                 GRANT ALL PRIVILEGES ON DATABASE pb_app TO nico;
             '';
-    };
+    }; */
     udisks2.enable = true;
     udev = {
       packages = [ pkgs.yubikey-personalization ];
