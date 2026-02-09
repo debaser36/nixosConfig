@@ -63,7 +63,7 @@ in
     (import ../../../programs/homeManager/go/default.nix)
 
     # fish
-    (import ../../../programs/homeManager/fish/default.nix { inherit pkgs; })
+    (import ../../../programs/homeManager/fish/default.nix { inherit pkgs; inherit lib; })
 
     # nvim
     (import ../../../programs/homeManager/neovim/default.nix { inherit pkgs; })

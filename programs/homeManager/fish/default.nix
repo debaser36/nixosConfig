@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, lib }:
 {
   programs.bash.initExtra = ''
     if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
@@ -8,7 +8,7 @@
     fi
   '';
   programs.fish = {
-    functions = {
+    functions = lib.mkBefore {
       d = ''
         if test (count $argv) -eq 0
             echo "Usage: detach <command> [args ...]"
