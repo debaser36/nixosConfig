@@ -23,7 +23,6 @@ in
   /* docker */
   # R
   rstudioCustom
-  lutris-free
   # Document Preparation & LaTeX
   texstudio # LaTeX IDE
   kdePackages.okular # pdf viewer

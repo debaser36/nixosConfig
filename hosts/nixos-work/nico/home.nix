@@ -95,9 +95,8 @@ in
     # texlive
     (import ../../../programs/homeManager/texlive/default.nix)
 
-    # anki
-    # (import ../../../programs/homeManager/anki/default.nix)
-    # TODO see https://github.com/NixOS/nixpkgs/pull/438958
+    # lutris
+    (import ../../../programs/homeManager/lutris/default.nix {inherit pkgs;})
   ];
 
   programs.home-manager.enable = true;
