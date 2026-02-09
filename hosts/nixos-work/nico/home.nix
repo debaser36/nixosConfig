@@ -56,6 +56,9 @@ in
     # sagemath
     #(import ../../../programs/homeManager/sagemath/default.nix)
 
+    # Discord
+    (import ../../../programs/homeManager/discord/default.nix)
+
     # Go
     (import ../../../programs/homeManager/go/default.nix)
 

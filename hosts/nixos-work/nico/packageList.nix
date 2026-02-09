@@ -58,7 +58,6 @@ in
   xorg.xev # X11 event viewer
 
   # Communication & Social
-  discord # Voice and text chat
   element-desktop # Matrix client
   zoom-us # Video conferencing
 
