@@ -26,7 +26,6 @@ in
   # Document Preparation & LaTeX
   texstudio # LaTeX IDE
   kdePackages.okular # pdf viewer
-  texliveFull # Complete TeX Live distribution
 
   # Emulation
   waydroid

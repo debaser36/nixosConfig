@@ -97,6 +97,9 @@ in
 
     # lutris
     (import ../../../programs/homeManager/lutris/default.nix {inherit pkgs;})
+
+    # texlive
+    (import ../../../programs/homeManager/texlive/default.nix)
   ];
 
   programs.home-manager.enable = true;
