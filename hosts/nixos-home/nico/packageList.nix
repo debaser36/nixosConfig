@@ -15,7 +15,7 @@ with pkgs; [
   # WACOM TABLET
   xf86_input_wacom
   wacomtablet
-  xorg.xev
+  xev
 
   discord
 
@@ -75,13 +75,13 @@ with pkgs; [
   nix-output-monitor
 
   #systools
-  xorg.xmodmap
+  xmodmap
   sysstat
   lm_sensors
   ethtool
   pciutils
   usbutils
-  xorg.xrandr
+  xrandr
   wlroots
 
   #gaming

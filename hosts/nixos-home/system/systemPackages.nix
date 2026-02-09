@@ -19,7 +19,7 @@ rec {
       vim
       wget
       wlroots
-      xorg.xrandr
+      xrandr
       procps
     ];
 

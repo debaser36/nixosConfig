@@ -30,7 +30,7 @@
 
       # System Utilities
       wget # Network downloader
-      xorg.xrandr # Display configuration utility
+      xrandr # Display configuration utility
       procps # Process monitoring tools
 
       # Wayland Compositor

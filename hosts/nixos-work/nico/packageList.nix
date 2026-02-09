@@ -55,8 +55,7 @@ in
   edid-decode # EDID decoder utility
   xf86_input_wacom # Wacom tablet X11 driver
   kdePackages.wacomtablet # Wacom tablet configuration
-  xorg.xev # X11 event viewer
-
+  xev # X11 event viewer
   # Communication & Social
   element-desktop # Matrix client
   zoom-us # Video conferencing
@@ -109,13 +108,13 @@ in
   ipcalc # IP calculator
 
   # System Monitoring & Hardware Tools
-  xorg.xmodmap # X11 key modifier
+  xmodmap # X11 key modifier
   sysstat # System activity tools
   lm_sensors # Hardware monitoring
   ethtool # Ethernet device configuration
   pciutils # PCI utilities
   usbutils # USB utilities
-  xorg.xrandr # Display configuration
+  xrandr # Display configuration
   wlroots # Wayland compositor library
 
   # Clipboard & Screenshots
