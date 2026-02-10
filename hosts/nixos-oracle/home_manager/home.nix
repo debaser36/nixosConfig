@@ -15,8 +15,8 @@ in
   programs = {
     git = {
       enable = true;
-      userName = "debaser36";
-      userEmail = "n.burkholder@tu-berlin.de";
+      settings.user.name = "debaser36";
+      settings.user.email = "n.burkholder@tu-berlin.de";
     };
     home-manager.enable = true;
   };
