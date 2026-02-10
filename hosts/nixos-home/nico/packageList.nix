@@ -12,8 +12,8 @@ with pkgs; [
 
 
   # WACOM TABLET
-  xf86_input_wacom
-  wacomtablet
+  xf86_input_wacom # Wacom tablet X11 driver
+  kdePackages.wacomtablet # Wacom tablet configuration
   xev
 
   discord
