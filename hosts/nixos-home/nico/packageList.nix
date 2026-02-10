@@ -5,8 +5,7 @@ with pkgs; [
 
   exercism
   corepack
-  python313Full
-  python313Packages.pip
+  python314
   alsa-utils
   alsa-plugins
   edid-decode
