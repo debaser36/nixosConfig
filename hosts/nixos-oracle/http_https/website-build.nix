@@ -10,9 +10,9 @@ pkgs.stdenv.mkDerivation rec {
     rev = "main"; # Or specific commit/tag
 
 
-    #sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-
-    sha256 = "sha256-ht/PTroA26IwlVEyy9kUWu7ksHoWfaPbimVdIoavwS4=";
+#    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+		sha256 = "sha256-ASMi+s1Q4JG0Kph2XAZBK+aEJ/1qd710EYPBg9u3N5Y=";
+    #sha256 = "sha256-ht/PTroA26IwlVEyy9kUWu7ksHoWfaPbimVdIoavwS4=";
     #sha256 = "sha256-dXyXhRtNpTHxH4zpaVsJkxTtCUbUB/d5P8a66p91PIM=";
     #sha256 = "sha256-WQXMCAWrQ9GKTGLpnIRy/KaPk6pcAixKtiGoyHFmDw4=";
     #sha256 = "sha256-GdBLZUby/xmSZ4aD0MHg2EjsFjtqNorD18uCegga1sY=";
@@ -31,8 +31,8 @@ pkgs.stdenv.mkDerivation rec {
 
 
     #hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-
-    hash = "sha256-V5Aeq/FGBv04BHJA4PVBrSp7C58UU6nrqDOppm/8WoY=";
+		hash = "sha256-U9zy5vDqFagh8Uu0W5SBqP9g9zWITUXKvB6sOqpKggc=";
+    #hash = "sha256-V5Aeq/FGBv04BHJA4PVBrSp7C58UU6nrqDOppm/8WoY=";
     #hash = "sha256-L9YP+kixiwW2DsuI46evKmW9AbbcxhNHJ0PWOleqwKg=";
     #hash = "sha256-0Xz8l6OE0yZAxQE6SYS5Oj/CfKci2SttUWZQpa++9FA=";
     #hash = "sha256-8lelLqJWQET99xUtrYNnZxGxTGlDZdZqV6vhuPnDjGk=";
