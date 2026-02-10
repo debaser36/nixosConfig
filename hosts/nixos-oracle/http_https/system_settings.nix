@@ -9,6 +9,18 @@ _:
     recommendedTlsSettings = true;
   };
 
+  environment.etc."keycloak-database-pass".txt = "PWD";
+  services.keycloak = {
+    enable = true;
+    settings = {
+      hostname = "localhost/keycloak";
+      http-enabled = true;
+      hostname-strict-https = false;
+    };
+    database.passwordFile = "/etc/keycloak-database-pass";
+  };
+
+
 
   services.nginx.virtualHosts."unhalteproblem.de" = {
     forceSSL = true;
