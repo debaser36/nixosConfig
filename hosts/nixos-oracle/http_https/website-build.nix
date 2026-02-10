@@ -29,7 +29,7 @@ pkgs.stdenv.mkDerivation rec {
 
     inherit pname version src;
 
-
+    fetcherVersion = 1;
     #hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
     hash = "sha256-U9zy5vDqFagh8Uu0W5SBqP9g9zWITUXKvB6sOqpKggc=";
     #hash = "sha256-V5Aeq/FGBv04BHJA4PVBrSp7C58UU6nrqDOppm/8WoY=";
