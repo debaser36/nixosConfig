@@ -31,7 +31,7 @@ pkgs.stdenv.mkDerivation rec {
 
     fetcherVersion = 1;
     #hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-    hash="sha256-7x0FARVhcMkYpdQErpdWwHy6i6nzyczFtUzbaDBCxQg=";
+    hash = "sha256-7x0FARVhcMkYpdQErpdWwHy6i6nzyczFtUzbaDBCxQg=";
     #hash = "sha256-U9zy5vDqFagh8Uu0W5SBqP9g9zWITUXKvB6sOqpKggc=";
     #hash = "sha256-V5Aeq/FGBv04BHJA4PVBrSp7C58UU6nrqDOppm/8WoY=";
     #hash = "sha256-L9YP+kixiwW2DsuI46evKmW9AbbcxhNHJ0PWOleqwKg=";
