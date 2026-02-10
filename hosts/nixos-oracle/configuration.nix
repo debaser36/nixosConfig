@@ -57,6 +57,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
+  environment.etc."keycloak-database-pass".txt = "PWD";
   environment.systemPackages = with pkgs; [
     openssh
     curl

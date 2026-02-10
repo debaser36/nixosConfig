@@ -9,7 +9,6 @@ _:
     recommendedTlsSettings = true;
   };
 
-  environment.etc."keycloak-database-pass".txt = "PWD";
   services.keycloak = {
     enable = true;
     settings = {
