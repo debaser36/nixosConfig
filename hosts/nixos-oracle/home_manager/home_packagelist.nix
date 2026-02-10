@@ -42,6 +42,6 @@
     ethtool
     pciutils
     usbutils
-    xrandr
+    xorg.xrandr
   ];
 }
