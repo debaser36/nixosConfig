@@ -2,5 +2,5 @@
   programs.vesktop = {
     enable = true;
   };
-  home.shellAliases = {"discord" = "vesktop";};
+  home.shellAliases = { "discord" = "vesktop"; };
 }

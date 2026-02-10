@@ -57,7 +57,7 @@ in
     (import ../../../programs/homeManager/sagemath/default.nix)
 
     # fish
-    (import ../../../programs/homeManager/fish/default.nix { inherit pkgs; inherit lib;})
+    (import ../../../programs/homeManager/fish/default.nix { inherit pkgs; inherit lib; })
 
     # nvim
     (import ../../../programs/homeManager/neovim/default.nix { inherit pkgs; })

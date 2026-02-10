@@ -99,7 +99,7 @@ in
     (import ../../../programs/homeManager/texlive/default.nix)
 
     # lutris
-    (import ../../../programs/homeManager/lutris/default.nix {inherit pkgs;})
+    (import ../../../programs/homeManager/lutris/default.nix { inherit pkgs; })
 
     # texlive
     (import ../../../programs/homeManager/texlive/default.nix)
