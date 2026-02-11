@@ -38,7 +38,7 @@
       hostname = "unhalteproblem.de";
       http-relative-path = "/keycloak";
       http-port = 38080;
-      proxy = "passthrough";
+      proxy-headers = "xforwarded";
       http-enabled = true;
     };
   };
