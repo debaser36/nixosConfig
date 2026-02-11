@@ -8,6 +8,9 @@ in
       inherit pkgs;
     })
 
+    # firefox
+    (import ../../../programs/homeManager/firefox/default.nix { inherit pkgs; inherit lib; })
+
     # nvim
     (import ../../../programs/homeManager/neovim/default.nix { inherit pkgs; })
 
