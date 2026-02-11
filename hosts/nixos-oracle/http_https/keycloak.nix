@@ -1,6 +1,6 @@
-{...}:
+{ ... }:
 {
-    services.keycloak = {
+  services.keycloak = {
     enable = true;
 
     database = {

@@ -1,6 +1,6 @@
-{lib, ...}:
+{ lib, ... }:
 {
-    services.postgresql = {
+  services.postgresql = {
     enable = true;
     enableTCPIP = true;
     authentication = lib.mkOverride 10 ''
