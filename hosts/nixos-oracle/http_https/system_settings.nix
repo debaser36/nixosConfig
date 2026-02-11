@@ -12,7 +12,7 @@ _:
   services.keycloak = {
     enable = true;
     settings = {
-      hostname = "localhost/keycloak";
+      hostname = "localhost";
       http-enabled = true;
       hostname-strict-https = false;
     };
