@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   services.nginx = {
     enable = true;
@@ -21,7 +21,15 @@
       proxyPass = "http://localhost:${toString config.services.keycloak.settings.http-port}/keycloak/";
     };
   };
-  services.postgresql.enable = true;
+  services.postgresql = {
+    enable = true;
+    enableTCPIP = true;
+    authentication = lib.mkOverride 10 ''
+      local all all trust
+      host all all 130.61.234.104/32 md5
+      host all all ::/0 md5
+    '';
+  };
   services.keycloak = {
     enable = true;
 
