@@ -28,6 +28,11 @@
       packages = [ pkgs.yubikey-personalization ];
     };
 
+    pgadmin = {
+      enable = true;
+      initialEmail = "nico.burkholder@web.de";
+    };
+
     dbus.enable = true;
     pipewire = {
       enable = true;
