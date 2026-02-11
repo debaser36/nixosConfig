@@ -53,7 +53,7 @@ in
   # Packages configurable via home manager config settings
   imports = [
     # sway
-  ../../../programs/homeManager/sway/default.nix 
+    ../../../programs/homeManager/sway/default.nix
 
     # fish
     ../../../programs/homeManager/fish/default.nix
