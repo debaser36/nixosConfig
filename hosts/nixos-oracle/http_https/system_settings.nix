@@ -41,6 +41,7 @@
       proxy-headers = "xforwarded";
       http-enabled = true;
     };
+    initialAdminPassword = "admin";
   };
   security.acme = {
     acceptTerms = true;
