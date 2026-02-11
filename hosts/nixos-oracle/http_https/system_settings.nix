@@ -27,8 +27,6 @@
 
     database = {
       type = "postgresql";
-      createLocally = true;
-
       username = "keycloak";
       passwordFile = "/var/secrets/keycloak_psql_pass";
     };
