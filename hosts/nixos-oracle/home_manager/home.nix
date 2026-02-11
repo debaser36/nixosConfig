@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   vars = import ../vars.nix;
 in
@@ -12,7 +12,7 @@ in
     (import ../../../programs/homeManager/neovim/default.nix { inherit pkgs; })
 
     # fish
-    (import ../../../programs/homeManager/fish/default.nix { inherit pkgs; })
+    (import ../../../programs/homeManager/fish/default.nix { inherit pkgs; inherit lib; })
   ];
 
   programs = {
