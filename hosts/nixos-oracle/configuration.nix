@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, ... }:
 
 let
   vars = import ./vars.nix;
@@ -8,8 +8,11 @@ in
   imports =
     [
       ./hardware-configuration.nix
-      (import ./http_https/system_settings.nix { inherit config; inherit lib; }) # settings for nginx, acme and the website
-      (import ./http_https/website-activation.nix { inherit pkgs; })
+      ./http_https/acme.nix
+      ./http_https/nginx.nix
+      ./http_https/keycloak.nix
+      ./http_https/postgres.nix
+      ./http_https/website-activation.nix
     ];
 
   boot = {
