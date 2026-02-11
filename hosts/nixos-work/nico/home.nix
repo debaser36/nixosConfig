@@ -42,16 +42,18 @@ in
     stateVersion = "25.05";
   };
 
+  _module.args = {
+    inherit inputConfig;
+    inherit outputConfig;
+    inherit extraConfig;
+    inherit startupConfig;
+    inherit gitUser;
+  };
+
   # Packages configurable via home manager config settings
   imports = [
     # sway
-    (import ../../../programs/homeManager/sway/default.nix {
-      inherit inputConfig;
-      inherit outputConfig;
-      inherit extraConfig;
-      inherit startupConfig;
-      inherit pkgs;
-    })
+    ../../../programs/homeManager/sway/default.nix
 
     # Discord
     ../../../programs/homeManager/discord/default.nix
@@ -66,7 +68,7 @@ in
     ../../../programs/homeManager/neovim/default.nix
 
     # git
-    (import ../../../programs/homeManager/git/default.nix { user = gitUser; })
+    ../../../programs/homeManager/git/default.nix
 
     # vscode
     ../../../programs/homeManager/vscode/default.nix

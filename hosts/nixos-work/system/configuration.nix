@@ -5,14 +5,18 @@ let
   };
 in
 {
+  _module.args = {
+    inherit custom-sddm-astronaut;
+    inherit nix-vscode-extension;
+  };
   imports =
     [
       ../hardware/hardware-configuration.nix
       ./environment.etc.nix
-      (import ./systemPackages.nix { inherit pkgs custom-sddm-astronaut; })
-      (import ./services.nix { inherit pkgs custom-sddm-astronaut; })
+      ./systemPackages.nix
+      ./services.nix
       ./networking.nix
-      (import ./nix_settings.nix { inherit pkgs nix-vscode-extension; })
+      ./nix_settings.nix
       ./users.nix
       ./environment.variables.nix
       ./fonts.nix
