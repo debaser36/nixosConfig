@@ -44,16 +44,18 @@ in
 
 
   _module.args = {
-    inherit inputConfig;
-    inherit outputConfig;
-    inherit extraConfig;
-    inherit startupConfig;
-    inherit gitUser;
+    user = gitUser;
   };
   # Packages configurable via home manager config settings
   imports = [
     # sway
-    ../../../programs/homeManager/sway/default.nix
+    (import ../../../programs/homeManager/sway/default.nix {
+      inherit inputConfig;
+      inherit outputConfig;
+      inherit extraConfig;
+      inherit startupConfig;
+      inherit pkgs;
+    })
 
     # fish
     ../../../programs/homeManager/fish/default.nix

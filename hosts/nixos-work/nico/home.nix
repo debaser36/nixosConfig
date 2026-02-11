@@ -43,11 +43,7 @@ in
   };
 
   _module.args = {
-    inherit inputConfig;
-    inherit outputConfig;
-    inherit extraConfig;
-    inherit startupConfig;
-    inherit gitUser;
+    user = gitUser;
   };
 
   # Packages configurable via home manager config settings
