@@ -15,7 +15,7 @@
             return 1
         end
         echo "Detaching command: $argv"
-        nohup $argv > /dev/null & disown; and exit
+        nohup $argv > /dev/null & disown; and sleep 1; and exit
       '';
       deleteAllFolders = ''
         if test (count $argv) -eq 0
