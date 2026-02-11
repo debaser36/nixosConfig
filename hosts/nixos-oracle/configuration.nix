@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 let
   vars = import ./vars.nix;
@@ -8,7 +8,7 @@ in
   imports =
     [
       ./hardware-configuration.nix
-      ./http_https/system_settings.nix # settings for nginx, acme and the website
+      ./http_https/system_settings.nix {inherit config;} # settings for nginx, acme and the website
       (import ./http_https/website-activation.nix { inherit pkgs; })
     ];
 
@@ -57,7 +57,6 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.etc."keycloak-database-pass".text = "PWD";
   environment.systemPackages = with pkgs; [
     openssh
     curl

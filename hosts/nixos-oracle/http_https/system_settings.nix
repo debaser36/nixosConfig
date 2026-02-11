@@ -1,5 +1,4 @@
-#nginx setup -- just inherit everything
-_:
+{ config, ... }:
 {
   services.nginx = {
     enable = true;
@@ -8,19 +7,6 @@ _:
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
   };
-
-  services.keycloak = {
-    enable = true;
-    settings = {
-      hostname = "localhost";
-      http-enabled = true;
-      hostname-strict-https = false;
-    };
-    database.passwordFile = "/etc/keycloak-database-pass";
-  };
-
-
-
   services.nginx.virtualHosts."unhalteproblem.de" = {
     forceSSL = true;
     enableACME = true;
@@ -30,6 +16,30 @@ _:
       extraConfig = ''
         				try_files $uri /index.html;
         			'';
+    };
+    locations."/keycloak/" = {
+      proxyPass = "http://localhost:${toString config.services.keycloak.settings.http-port}/keycloak/";
+    };
+  };
+  services.postgresql.enable = true;
+  environment.etc."keycloak_psql_pass".text = "PWD";
+  services.keycloak = {
+    enable = true;
+
+    database = {
+      type = "postgresql";
+      createLocally = true;
+
+      username = "keycloak";
+      passwordFile = "/etc/keycloak_psql_pass";
+    };
+
+    settings = {
+      hostname = "unhalteproblem.de";
+      http-relative-path = "/keycloak";
+      http-port = 38080;
+      proxy = "passthrough";
+      http-enabled = true;
     };
   };
   security.acme = {
