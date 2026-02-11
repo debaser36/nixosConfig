@@ -13,6 +13,7 @@
     pgadmin = {
       enable = true;
       initialEmail = "nico.burkholder@web.de";
+      initialPasswordFile = "/var/secrets/pgadmin_pass";
     };
 
     dbus.enable = true;

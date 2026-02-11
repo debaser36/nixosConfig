@@ -93,7 +93,7 @@ in
   services.getty.autologinUser = null;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 22 80 443 5432 ];
 
   # Disable documentation for minimal install.
   documentation.enable = false;
