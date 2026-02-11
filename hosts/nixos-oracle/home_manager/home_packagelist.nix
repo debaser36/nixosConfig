@@ -4,6 +4,8 @@
     neofetch
     nnn
 
+    browsh
+
     # archives
     zip
     xz
