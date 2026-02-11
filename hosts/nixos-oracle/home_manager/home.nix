@@ -1,21 +1,19 @@
-{ pkgs, lib, ... }:
+_:
 let
   vars = import ../vars.nix;
 in
 {
   imports = [
-    (import ./home_packagelist.nix {
-      inherit pkgs;
-    })
+    ./home_packagelist.nix
 
     # firefox
-    (import ../../../programs/homeManager/firefox/default.nix { inherit pkgs; inherit lib; })
+    ../../../programs/homeManager/firefox/default.nix
 
     # nvim
-    (import ../../../programs/homeManager/neovim/default.nix { inherit pkgs; })
+    ../../../programs/homeManager/neovim/default.nix
 
     # fish
-    (import ../../../programs/homeManager/fish/default.nix { inherit pkgs; inherit lib; })
+    ../../../programs/homeManager/fish/default.nix
   ];
 
   programs = {

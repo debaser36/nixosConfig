@@ -1,4 +1,4 @@
-{ pkgs, custom-sddm-astronaut }:
+{ pkgs, custom-sddm-astronaut, ... }:
 {
   virtualisation.docker = {
     enable = true;

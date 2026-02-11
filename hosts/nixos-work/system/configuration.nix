@@ -8,14 +8,14 @@ in
   imports =
     [
       ../hardware/hardware-configuration.nix
-      (import ./environment.etc.nix)
+      ./environment.etc.nix
       (import ./systemPackages.nix { inherit pkgs custom-sddm-astronaut; })
       (import ./services.nix { inherit pkgs custom-sddm-astronaut; })
-      (import ./networking.nix)
+      ./networking.nix
       (import ./nix_settings.nix { inherit pkgs nix-vscode-extension; })
-      (import ./users.nix { inherit pkgs; })
-      (import ./environment.variables.nix)
-      (import ./fonts.nix { inherit pkgs; })
+      ./users.nix
+      ./environment.variables.nix
+      ./fonts.nix
     ];
 
   #DONT CHANGE THIS LINE

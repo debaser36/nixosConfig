@@ -1,11 +1,11 @@
-{ pkgs, custom-sddm-astronaut }:
+{ pkgs, custom-sddm-astronaut, ... }:
 {
   imports = [
-    (import ../../../programs/system/npm.nix)
-    (import ../../../programs/system/fish.nix)
-    (import ../../../programs/system/sway.nix)
-    (import ../../../programs/system/steam.nix { inherit pkgs; })
-    (import ../../../programs/system/gnupg.nix)
+    ../../../programs/system/npm.nix
+    ../../../programs/system/fish.nix
+    ../../../programs/system/sway.nix
+    ../../../programs/system/steam.nix
+    ../../../programs/system/gnupg.nix
   ];
   environment.systemPackages = with pkgs; with pkgs.kdePackages;
     [

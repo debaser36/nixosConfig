@@ -1,3 +1,4 @@
+_:
 {
   #-------------Bash settings------------
   programs.bash = {

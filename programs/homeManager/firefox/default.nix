@@ -1,4 +1,4 @@
-{ pkgs, lib ? pkgs.lib, ... }:
+{ pkgs, lib, ... }:
 let
   packages = import ./default.extensions.nix { inherit pkgs; };
 in

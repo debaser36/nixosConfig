@@ -1,6 +1,6 @@
 { pkgs
 , nix-vscode-extension
-,
+, ...
 }:
 {
   nix = {

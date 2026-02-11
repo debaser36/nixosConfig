@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 let
 
   monitors = import ../hardware/monitorInfo.nix;
@@ -53,56 +53,53 @@ in
       inherit pkgs;
     })
 
-    # sagemath
-    #(import ../../../programs/homeManager/sagemath/default.nix)
-
     # Discord
-    (import ../../../programs/homeManager/discord/default.nix)
+    ../../../programs/homeManager/discord/default.nix
 
     # Go
-    (import ../../../programs/homeManager/go/default.nix)
+    ../../../programs/homeManager/go/default.nix
 
     # fish
-    (import ../../../programs/homeManager/fish/default.nix { inherit pkgs; inherit lib; })
+    ../../../programs/homeManager/fish/default.nix
 
     # nvim
-    (import ../../../programs/homeManager/neovim/default.nix { inherit pkgs; })
+    ../../../programs/homeManager/neovim/default.nix
 
     # git
     (import ../../../programs/homeManager/git/default.nix { user = gitUser; })
 
     # vscode
-    (import ../../../programs/homeManager/vscode/default.nix { inherit pkgs; inherit lib; })
+    ../../../programs/homeManager/vscode/default.nix
 
     # bash
-    (import ../../../programs/homeManager/bash/default.nix)
+    ../../../programs/homeManager/bash/default.nix
 
     # firefox
-    (import ../../../programs/homeManager/firefox/default.nix { inherit pkgs; inherit lib; })
+    ../../../programs/homeManager/firefox/default.nix
 
     # kitty
-    (import ../../../programs/homeManager/kitty/default.nix)
+    ../../../programs/homeManager/kitty/default.nix
 
     # waybar
-    (import ../../../programs/homeManager/waybar/default.nix)
+    ../../../programs/homeManager/waybar/default.nix
 
     # wofi
-    (import ../../../programs/homeManager/wofi/default.nix)
+    ../../../programs/homeManager/wofi/default.nix
 
     # direnv
-    (import ../../../programs/homeManager/direnv/default.nix)
+    ../../../programs/homeManager/direnv/default.nix
 
     # thunderbird
-    (import ../../../programs/homeManager/thunderbird/default.nix)
+    ../../../programs/homeManager/thunderbird/default.nix
 
     # texlive
-    (import ../../../programs/homeManager/texlive/default.nix)
+    ../../../programs/homeManager/texlive/default.nix
 
     # lutris
-    (import ../../../programs/homeManager/lutris/default.nix { inherit pkgs; })
+    ../../../programs/homeManager/lutris/default.nix
 
     # texlive
-    (import ../../../programs/homeManager/texlive/default.nix)
+    ../../../programs/homeManager/texlive/default.nix
   ];
 
   programs.home-manager.enable = true;

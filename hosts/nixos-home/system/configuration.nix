@@ -4,9 +4,9 @@
   imports =
     [
       ../hardware/hardware-configuration.nix
-      (import ./environment.etc.nix)
-      (import ./systemPackages.nix { inherit pkgs; })
-      (import ../../../programs/system/npm.nix)
+      ./environment.etc.nix
+      ./systemPackages.nix
+      ../../../programs/system/npm.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
