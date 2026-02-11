@@ -33,6 +33,7 @@
       la = "ls -A";
       ls = "ls -A --color=tty";
       nvi = "vi";
+      pgadmin = "firefox --new-window http://localhost:5050";
       ".." = "cd ..";
       "..." = "cd ../..";
       "...." = "cd ../../..";
