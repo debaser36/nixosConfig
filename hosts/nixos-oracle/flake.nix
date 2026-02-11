@@ -4,9 +4,13 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     #unhalteproblem-website.url = "github:debaser36/unhalteproblem.de/main";
   };
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, nur, ... }:
     let
       vars = import ./vars.nix;
     in
@@ -28,6 +32,7 @@
                 users.nico = import ./home_manager/home.nix;
               };
             }
+            nur.modules.nixos.default
           ];
         };
       };
