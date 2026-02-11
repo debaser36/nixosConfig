@@ -22,7 +22,6 @@
     };
   };
   services.postgresql.enable = true;
-  environment.etc."keycloak_psql_pass".text = "PWD";
   services.keycloak = {
     enable = true;
 
@@ -31,7 +30,7 @@
       createLocally = true;
 
       username = "keycloak";
-      passwordFile = "/etc/keycloak_psql_pass";
+      passwordFile = "/var/secrets/keycloak_psql_pass";
     };
 
     settings = {
