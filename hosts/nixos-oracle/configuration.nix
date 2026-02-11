@@ -8,8 +8,7 @@ in
   imports =
     [
       ./hardware-configuration.nix
-      ./http_https/system_settings.nix
-      { inherit config; } # settings for nginx, acme and the website
+      (import ./http_https/system_settings.nix { inherit config; }) # settings for nginx, acme and the website
       (import ./http_https/website-activation.nix { inherit pkgs; })
     ];
 
