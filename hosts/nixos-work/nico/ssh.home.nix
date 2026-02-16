@@ -1,4 +1,4 @@
-{ lib, ...}:
+{ lib, ... }:
 {
   programs.ssh = {
     enable = true;
@@ -14,7 +14,7 @@
   };
   home.file.".ssh/config".force = true;
   home.activation = {
-    fixSSHPermissions = lib.hm.dag.entryAfter ["linkGeneration"] ''
+    fixSSHPermissions = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
       run install -d -m 0700 "$HOME/.ssh"
       if [ -L "$HOME/.ssh/config" ]; then
         src="$(readlink -f "$HOME/.ssh/config")"

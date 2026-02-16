@@ -1,6 +1,7 @@
 {
   description = "Flake for Oracle Server hosting unhalteproblem.de";
   inputs = {
+    inputs.vscode-server.url = "github:nix-community/nixos-vscode-server";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -10,7 +11,7 @@
     };
     #unhalteproblem-website.url = "github:debaser36/unhalteproblem.de/main";
   };
-  outputs = { nixpkgs, home-manager, nur, ... }:
+  outputs = { nixpkgs, home-manager, nur, vscode-server, ... }:
     let
       vars = import ./vars.nix;
     in
@@ -20,10 +21,19 @@
         nixos-oracle = nixpkgs.lib.nixosSystem {
           system = vars.architeture;
           modules = [
+            vscode-server.nixosModules.default
+
+            ({ config, pkgs, ... }: {
+              services.vscode-server.enable = true;
+            })
+
             {
               environment.etc."website-build.nix".source = ./http_https/website-build.nix;
+
             }
+
             ./configuration.nix
+
             home-manager.nixosModules.home-manager
             {
               home-manager = {
@@ -32,6 +42,7 @@
                 users.nico = import ./home_manager/home.nix;
               };
             }
+
             nur.modules.nixos.default
           ];
         };
