@@ -57,6 +57,9 @@ in
       inherit pkgs;
     })
 
+    # ssh 
+    ./ssh.home.nix
+
     # Discord
     ../../../programs/homeManager/discord/default.nix
 
