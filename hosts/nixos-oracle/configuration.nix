@@ -42,6 +42,7 @@ in
       extraGroups = [ "networkmanager" "wheel" ];
       openssh.authorizedKeys.keys = [ vars.public_sshKey ];
       home = "/home/" + vars.default_user.username;
+      shell = pkgs.fish;
     };
   };
 
