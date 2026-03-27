@@ -1,0 +1,102 @@
+{ pkgs, ... }:
+with pkgs; [
+
+  scrcpy
+  android-tools
+
+  git-crypt
+  wireguard-tools
+
+  exercism
+  corepack
+  python314
+  alsa-utils
+  alsa-plugins
+  edid-decode
+
+
+  # WACOM TABLET
+  xf86_input_wacom # Wacom tablet X11 driver
+  kdePackages.wacomtablet # Wacom tablet configuration
+  xev
+
+  discord
+
+  obsidian
+  isabelle
+
+
+  element-desktop
+
+  #sql
+  pgmodeler
+  sqlite
+
+  neofetch
+  nnn
+
+  swaylock
+  swayidle
+  mako
+  waybar
+
+  # archives
+  zip
+  xz
+  unzip
+  p7zip
+
+  #utils
+  jq
+  yq-go
+
+  #network
+  mtr
+  iperf3
+  dnsutils
+  ldns
+  aria2
+  socat
+  nmap
+  ipcalc
+
+  #misc
+  which
+  tree
+  gnused
+  zstd
+  gnupg
+  libnotify
+  kitty # terminal emulator
+  alacritty
+  keepassxc
+  mako
+  wl-clipboard
+  shotman
+
+  #nix-related
+  nix-output-monitor
+
+  #systools
+  xmodmap
+  sysstat
+  lm_sensors
+  ethtool
+  pciutils
+  usbutils
+  xrandr
+  wlroots
+
+  #gaming
+  steam
+
+  #other
+  nil
+
+  zoom-us
+
+  libgcc
+  gcc
+  rocmPackages.llvm.clang-unwrapped
+  cmakeWithGui
+]
