@@ -57,6 +57,9 @@ in
       inherit pkgs;
     })
 
+    # ssh 
+    ./ssh.home.nix
+
     # fish
     ../../../programs/homeManager/fish/default.nix
     # nvim

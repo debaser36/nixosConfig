@@ -29,8 +29,8 @@ with pkgs; [
   element-desktop
 
   #sql
-  pgmodeler
-  sqlite
+  #pgmodeler
+  #sqlite
 
   neofetch
   nnn
