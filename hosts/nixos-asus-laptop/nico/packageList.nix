@@ -8,7 +8,7 @@ with pkgs; [
   wireguard-tools
 
   exercism
-  corepack
+  pnpm
   nodejs_25
   python314
   alsa-utils
