@@ -1,8 +1,12 @@
 { pkgs, custom-sddm-astronaut, ... }:
 {
+  specialisation."PERFORMANCE" = {
+      services.blueman.enable = true;
+      services.udev.extraRules = "";
+  };
   services = {
     # power savings
-    services.udev.extraRules = ''
+    udev.extraRules = ''
       # Remove NVIDIA USB xHCI Host Controller devices, if present
       ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
 
@@ -15,10 +19,6 @@
       # Remove NVIDIA VGA/3D controller devices
       ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
     '';
-    specialisation."PERFORMANCE" = {
-      blueman.enable = true;
-      services.udev.extraRules = "";
-    };
     udisks2.enable = true;
     dbus.enable = true;
     pipewire = {
