@@ -1,8 +1,11 @@
 _: {
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
     hardware.nvidia = {
     open = false;
       prime = {
-       # TODO think about maybe using this only when saving battery instead of the stuff below ?
        offload = {
          enable = true;
          enableOffloadCmd = true;
