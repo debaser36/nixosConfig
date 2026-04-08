@@ -5,6 +5,7 @@
 , startupConfig ? {
     startup = [ ];
   }
+, extraOptions ?  []
 , pkgs
 , ...
 }:
@@ -27,6 +28,7 @@ in
         inputConfig)
       startupConfig;
     inherit extraConfig;
+    inherit extraOptions;
 
   };
 }
