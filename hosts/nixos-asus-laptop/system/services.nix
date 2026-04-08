@@ -3,6 +3,7 @@
   specialisation."PERFORMANCE" = {
       services.blueman.enable = true;
       services.udev.extraRules = "";
+      services.xserver.videoDrivers = ["amdgpu" "nvidia"];
   };
   services = {
     # power savings
@@ -30,7 +31,7 @@
     xserver = {
       enable = true;
       wacom.enable = true;
-      videoDrivers = [ "amdgpu" "nvidia" ];
+      videoDrivers = [ "amdgpu" ];
     };
     wg-netmanager.enable = true;
     pcscd.enable = true;
