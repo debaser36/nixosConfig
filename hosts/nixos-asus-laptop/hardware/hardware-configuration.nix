@@ -77,7 +77,7 @@
   # TODO disable on battery save   
   hardware.nvidia = {
     open = false;
-    modesetting.enable = true;
+    #modesetting.enable = true;
     prime = {
       # TODO think about maybe using this only when saving battery instead of the stuff below ?
       offload = {
