@@ -27,10 +27,10 @@
 
   boot = {
     initrd = {
-      kernelModules = [ "amdgpu" ];
+      kernelModules = [ ];
       availableKernelModules = [ "usbhid" "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" "ahci" ];
     };
-    kernelModules = [ "kvm-amd" "amdgpu"];
+    kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
     loader = {
       systemd-boot.enable = true;
@@ -77,16 +77,16 @@
   # TODO disable on battery save   
   hardware.nvidia = {
     open = false;
-    modesetting.enable = false;
-    prime = {
-      # TODO think about maybe using this only when saving battery instead of the stuff below ?
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };  
-      nvidiaBusId = "PCI:1:0:0";
-      amdgpuBusId = "PCI:5:0:0";
-    };
+    # modesetting.enable = false;
+    # prime = {
+    #   # TODO think about maybe using this only when saving battery instead of the stuff below ?
+    #  offload = {
+    #    enable = true;
+    #    enableOffloadCmd = true;
+    #  };  
+    #  nvidiaBusId = "PCI:1:0:0";
+    #  amdgpuBusId = "PCI:5:0:0";
+    # };
   };
 
   # TODO enable on battery save
