@@ -3,7 +3,7 @@ _: {
       enable = true;
       enable32Bit = true;
     };
-    specialisation."PERFORMANCE" = {
+    specialisation."PERFORMANCE".configuration = {
     hardware.nvidia = {
       open = false;
       prime = {

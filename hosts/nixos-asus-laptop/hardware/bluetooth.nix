@@ -1,6 +1,6 @@
 _:
 {
-  specialisation."PERFORMANCE" = {
+  specialisation."PERFORMANCE".configuration = {
     hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;

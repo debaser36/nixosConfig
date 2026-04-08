@@ -1,6 +1,6 @@
 { pkgs, custom-sddm-astronaut, ... }:
 {
-  specialisation."PERFORMANCE" = {
+  specialisation."PERFORMANCE".configuration = {
       services.blueman.enable = true;
       services.udev.extraRules = "";
       services.xserver.videoDrivers = ["amdgpu" "nvidia"];

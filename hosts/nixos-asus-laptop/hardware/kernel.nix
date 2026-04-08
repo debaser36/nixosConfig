@@ -11,7 +11,7 @@ _:{
       "nvidia_drm"
       "nvidia_modeset"
     ]; 
-  specialisation."PERFORMANCE" = {
+  specialisation."PERFORMANCE".configuration = {
     boot.extraModprobeConfig = "";
     boot.blacklistedKernelModules = [];
   };
