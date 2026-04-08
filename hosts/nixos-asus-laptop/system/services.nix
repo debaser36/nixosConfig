@@ -12,7 +12,7 @@
     xserver = {
       enable = true;
       wacom.enable = true;
-      videoDrivers = [ "modesetting" "nvidia" ];
+      videoDrivers = [ "amdgpu" "nvidia" ];
     };
     wg-netmanager.enable = true;
     pcscd.enable = true;
