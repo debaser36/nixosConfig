@@ -7,6 +7,7 @@
   imports =
     [
       (modulesPath + "/installer/scan/not-detected.nix")
+      ./graphics.nix
     ];
 
   time.timeZone = "Pacific/Auckland";
@@ -71,23 +72,6 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  
-  
-  # TODO outsource
-  # TODO disable on battery save   
-  hardware.nvidia = {
-    open = false;
-    # modesetting.enable = false;
-    # prime = {
-    #   # TODO think about maybe using this only when saving battery instead of the stuff below ?
-    #  offload = {
-    #    enable = true;
-    #    enableOffloadCmd = true;
-    #  };  
-    #  nvidiaBusId = "PCI:1:0:0";
-    #  amdgpuBusId = "PCI:5:0:0";
-    # };
-  };
 
   # TODO enable on battery save
   /* boot.extraModprobeConfig = ''
