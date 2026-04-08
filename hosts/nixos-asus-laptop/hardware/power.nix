@@ -1,7 +1,7 @@
   {lib,...}:
   {
     powerManagement.powertop.enable = true;
-    services.tlp = {
+    services.tlp = lib.mkDefault{
       enable = true;
       settings = {      
         # always run on battery mode
