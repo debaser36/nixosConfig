@@ -1,4 +1,4 @@
-_:{
+{lib,...}:{
     # on normal mode, just disable nvidia generally
     boot.extraModprobeConfig = ''
       blacklist nouveau
@@ -12,8 +12,8 @@ _:{
       "nvidia_modeset"
     ]; 
   specialisation."PERFORMANCE".configuration = {
-    boot.extraModprobeConfig = "";
-    boot.blacklistedKernelModules = [];
+    boot.extraModprobeConfig = lib.mkForce "";
+    boot.blacklistedKernelModules = lib.mkForce [];
   };
   boot = {
     initrd = {

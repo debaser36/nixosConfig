@@ -1,7 +1,7 @@
-_:
+{lib,...}:
 {
   specialisation."PERFORMANCE".configuration = {
-    hardware.bluetooth = {
+    hardware.bluetooth = lib.mkForce {
     enable = true;
     powerOnBoot = true;
     settings = {

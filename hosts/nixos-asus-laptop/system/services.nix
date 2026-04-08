@@ -1,9 +1,9 @@
-{ pkgs, custom-sddm-astronaut, ... }:
+{ pkgs, lib, custom-sddm-astronaut, ... }:
 {
   specialisation."PERFORMANCE".configuration = {
-      services.blueman.enable = true;
-      services.udev.extraRules = "";
-      services.xserver.videoDrivers = ["amdgpu" "nvidia"];
+      services.blueman.enable = lib.mkForce true;
+      services.udev.extraRules = lib.mkForce "";
+      services.xserver.videoDrivers = lib.mkForce ["nvidia" "amdgpu"];
   };
   services = {
     # power savings

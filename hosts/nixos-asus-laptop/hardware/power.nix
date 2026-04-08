@@ -1,4 +1,4 @@
-  _:
+  {lib,...}:
   {
     powerManagement.powertop.enable = true;
     services.tlp = {
@@ -25,7 +25,7 @@
       };
     };
     specialisation."PERFORMANCE".configuration = {
-      services.tlp = {
+      services.tlp = lib.mkForce {
         enable = true;
         settings = {
           CPU_BOOST_ON_BAT = 0;

@@ -1,10 +1,10 @@
-_: {
+{lib,...}: {
     hardware.graphics = {
       enable = true;
       enable32Bit = true;
     };
     specialisation."PERFORMANCE".configuration = {
-    hardware.nvidia = {
+    hardware.nvidia = lib.mkForce {
       open = false;
       prime = {
         offload = {
