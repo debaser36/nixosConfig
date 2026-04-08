@@ -71,19 +71,29 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-/*   hardware.nvidia.open = false;
-  hardware.nvidia.prime = {
-    nvidiaBusId = "PCI:0@0:0:0";
-    amdgpuBusId = "PCI:5@0:0:0";
+  
+  
+  # TODO outsource
+  # TODO disable on battery save   
+  hardware.nvidia = {
+    open = false;
+    modesetting.enable = true;
+    prime = {
+      # TODO think about maybe using this only when saving battery instead of the stuff below ?
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };  
+      nvidiaBusId = "PCI:0@0:0:0";
+      amdgpuBusId = "PCI:5@0:0:0";
+    };
+  };
 
-  }; */
-
-  boot.extraModprobeConfig = ''
+  # TODO enable on battery save
+  /* boot.extraModprobeConfig = ''
     blacklist nouveau
     options nouveau modeset=0
   '';
-
-
   services.udev.extraRules = ''
     # Remove NVIDIA USB xHCI Host Controller devices, if present
     ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
@@ -102,23 +112,26 @@
     "nvidia"
     "nvidia_drm"
     "nvidia_modeset"
-  ];
+  ]; */
 
-  #hardware.bluetooth = {
-  #  enable = true;
-  #  powerOnBoot = true;
-  #  settings = {
-  #    General = {
-  #      Experimental = true;
-  #      FastConnectable = true;
-  #    };
-  #    Policy = {
-  #      AutoEnable = true;
-  #    };
-  #  };
-  #};
-  #services.blueman.enable = true;
+  # TODO disable bluetooth on battery saving mode
+  # TODO outsource
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Experimental = true;
+        FastConnectable = true;
+      };
+      Policy = {
+        AutoEnable = true;
+      };
+    };
+  };
+  services.blueman.enable = true;
 
+  # TODO outsource
   powerManagement.powertop.enable = true;
   services.tlp = {
       enable = true;
