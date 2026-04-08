@@ -1,8 +1,8 @@
 { pkgs, custom-sddm-astronaut, ... }:
 {
   services = {
-    # TODO specialization battery save ENABLE
-    /* services.udev.extraRules = ''
+    # power savings
+    services.udev.extraRules = ''
       # Remove NVIDIA USB xHCI Host Controller devices, if present
       ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
 
@@ -14,9 +14,11 @@
 
       # Remove NVIDIA VGA/3D controller devices
       ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
-    ''; */
-    # TODO specialization battery save DISABLE
-    blueman.enable = true;
+    '';
+    specialisation."PERFORMANCE" = {
+      blueman.enable = true;
+      services.udev.extraRules = "";
+    };
     udisks2.enable = true;
     dbus.enable = true;
     pipewire = {

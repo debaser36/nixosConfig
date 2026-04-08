@@ -1,16 +1,20 @@
 _:{
-  # TODO enable on battery save
-  /* boot.extraModprobeConfig = ''
-    blacklist nouveau
-    options nouveau modeset=0
-  '';
+    # on normal mode, just disable nvidia generally
+    boot.extraModprobeConfig = ''
+      blacklist nouveau
+      options nouveau modeset=0
+    '';
 
-  boot.blacklistedKernelModules = [
-    "nouveau"
-    "nvidia"
-    "nvidia_drm"
-    "nvidia_modeset"
-  ]; */
+    boot.blacklistedKernelModules = [
+      "nouveau"
+      "nvidia"
+      "nvidia_drm"
+      "nvidia_modeset"
+    ]; 
+  specialisation."PERFORMANCE" = {
+    boot.extraModprobeConfig = "";
+    boot.blacklistedKernelModules = [];
+  };
   boot = {
     initrd = {
       kernelModules = [ ];

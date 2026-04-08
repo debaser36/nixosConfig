@@ -1,6 +1,7 @@
 _:
 {
-   hardware.bluetooth = {
+  specialisation."PERFORMANCE" = {
+    hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
     settings = {
@@ -12,5 +13,6 @@ _:
         AutoEnable = true;
       };
     };
+  };
   };
 }
