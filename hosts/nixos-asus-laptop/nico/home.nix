@@ -11,7 +11,7 @@ let
   };
   extraConfig = import ./swayExtraConfig.nix;
   startupConfig = import ./swayStartup.nix;
-  #/sway
+  extraOptions = ["--unsupported-gpu"];
 
   packageList = import ./packageList.nix { inherit pkgs; };
 
@@ -54,6 +54,7 @@ in
       inherit outputConfig;
       inherit extraConfig;
       inherit startupConfig;
+      inherit extraOptions;
       inherit pkgs;
     })
 
