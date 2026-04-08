@@ -9,6 +9,7 @@ with pkgs; [
 
   exercism
   corepack
+  nodejs_25
   python314
   alsa-utils
   alsa-plugins
