@@ -5,7 +5,10 @@
 {
   nix = {
     package = pkgs.nixVersions.latest;
-    extraOptions = "experimental-features = nix-command flakes lint-url-literals = fatal";
+    extraOptions = ''
+      experimental-features = nix-command flakes 
+      lint-url-literals = fatal
+    '';
     settings.download-buffer-size = 524288000;
   };
   virtualisation.waydroid.enable = true;
