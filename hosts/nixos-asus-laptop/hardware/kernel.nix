@@ -13,7 +13,6 @@
     ]; 
   specialisation."PERFORMANCE".configuration = {
     
-    initrd.kernelModules = lib.mkForce [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
     boot.extraModprobeConfig = lib.mkForce "";
     boot.blacklistedKernelModules = lib.mkForce [];
   };
@@ -27,7 +26,7 @@
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-      timeout = 2;
+      timeout = 5;
     };
   };
 }

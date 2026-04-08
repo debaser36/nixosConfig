@@ -26,6 +26,9 @@
       wlroots
       xrandr
       procps
+
+      # graphic testing
+      mesa-demos
     ];
 
 
