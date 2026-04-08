@@ -13,6 +13,8 @@
       pkgs.vimPlugins.gruvbox-material
       pkgs.vimPlugins.mini-nvim
     ];
+    withRuby = false;
+    withPython3 = false;
     extraConfig = ''
       set tabstop=2
       set softtabstop=2
