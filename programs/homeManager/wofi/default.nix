@@ -19,7 +19,6 @@ _: {
       key_left = "K";
       key_right = "L";
 
-
     };
 
   };

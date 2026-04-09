@@ -5,16 +5,15 @@ let
 
 in
 {
-  imports =
-    [
-      ../../programs/system/fish.nix
-      ./hardware-configuration.nix
-      ./http_https/acme.nix
-      ./http_https/nginx.nix
-      ./http_https/keycloak.nix
-      ./http_https/postgres.nix
-      ./http_https/website-activation.nix
-    ];
+  imports = [
+    ../../programs/system/fish.nix
+    ./hardware-configuration.nix
+    ./http_https/acme.nix
+    ./http_https/nginx.nix
+    ./http_https/keycloak.nix
+    ./http_https/postgres.nix
+    ./http_https/website-activation.nix
+  ];
 
   boot = {
     loader = {
@@ -40,7 +39,10 @@ in
     mutableUsers = false;
     users.${vars.default_user.username} = {
       isNormalUser = true;
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+      ];
       openssh.authorizedKeys.keys = [ vars.public_sshKey ];
       home = "/home/" + vars.default_user.username;
       shell = pkgs.fish;
@@ -98,7 +100,12 @@ in
   services.getty.autologinUser = null;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 80 443 5432 ];
+  networking.firewall.allowedTCPPorts = [
+    22
+    80
+    443
+    5432
+  ];
 
   # Disable documentation for minimal install.
   documentation.enable = false;

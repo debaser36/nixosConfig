@@ -5,7 +5,7 @@
 , startupConfig ? {
     startup = [ ];
   }
-, extraOptions ?  []
+, extraOptions ? [ ]
 , pkgs
 , ...
 }:
@@ -22,11 +22,7 @@ in
     checkConfig = false;
     wrapperFeatures.gtk = true;
 
-    config = lib.recursiveUpdate
-      (lib.recursiveUpdate
-        (lib.recursiveUpdate swayConfig outputConfig)
-        inputConfig)
-      startupConfig;
+    config = lib.recursiveUpdate (lib.recursiveUpdate (lib.recursiveUpdate swayConfig outputConfig) inputConfig) startupConfig;
     inherit extraConfig;
     inherit extraOptions;
 

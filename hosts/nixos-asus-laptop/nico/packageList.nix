@@ -1,5 +1,6 @@
 { pkgs, ... }:
-with pkgs; [
+with pkgs;
+[
 
   scrcpy
   android-tools
@@ -15,7 +16,6 @@ with pkgs; [
   alsa-plugins
   edid-decode
 
-
   # WACOM TABLET
   xf86_input_wacom # Wacom tablet X11 driver
   kdePackages.wacomtablet # Wacom tablet configuration
@@ -25,7 +25,6 @@ with pkgs; [
 
   obsidian
   isabelle
-
 
   element-desktop
 

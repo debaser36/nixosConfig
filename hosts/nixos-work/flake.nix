@@ -20,7 +20,8 @@
     , nur
     , nix-vscode-extension
     , ...
-    }: {
+    }:
+    {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";

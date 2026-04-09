@@ -1,5 +1,4 @@
-_:
-{
+_: {
   programs.anki = {
     enable = true;
     spacebarRatesCard = true;

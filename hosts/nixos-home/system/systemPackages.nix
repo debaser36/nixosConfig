@@ -7,21 +7,20 @@ let
 in
 {
   #packages needed for flakes to work
-  environment.systemPackages = with pkgs;
-    [
-      custom-sddm-astronaut
-      kdePackages.qtbase
-      kdePackages.qtmultimedia
-      kdePackages.qttools
-      kdePackages.qtvirtualkeyboard
-      kdePackages.qtsvg
-      git
-      vim
-      wget
-      wlroots
-      xrandr
-      procps
-    ];
+  environment.systemPackages = with pkgs; [
+    custom-sddm-astronaut
+    kdePackages.qtbase
+    kdePackages.qtmultimedia
+    kdePackages.qttools
+    kdePackages.qtvirtualkeyboard
+    kdePackages.qtsvg
+    git
+    vim
+    wget
+    wlroots
+    xrandr
+    procps
+  ];
 
   # sway related stuff
   programs.sway.enable = true;
@@ -73,6 +72,5 @@ in
         		'';
     };
   };
-
 
 }

@@ -72,7 +72,6 @@ in
           (_: 1);
         "signon.rememberSignons" = false;
 
-
       };
     };
   };

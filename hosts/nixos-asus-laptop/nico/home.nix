@@ -11,7 +11,7 @@ let
   };
   extraConfig = import ./swayExtraConfig.nix;
   startupConfig = import ./swayStartup.nix;
-  extraOptions = ["--unsupported-gpu"];
+  extraOptions = [ "--unsupported-gpu" ];
 
   packageList = import ./packageList.nix { inherit pkgs; };
 
@@ -42,7 +42,6 @@ in
     stateVersion = "25.05";
   };
 
-
   _module.args = {
     user = gitUser;
   };
@@ -58,7 +57,7 @@ in
       inherit pkgs;
     })
 
-    # ssh 
+    # ssh
     ./ssh.home.nix
 
     # fish
@@ -96,7 +95,3 @@ in
 
   programs.home-manager.enable = true;
 }
-
-
-
-

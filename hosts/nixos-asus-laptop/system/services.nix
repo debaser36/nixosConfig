@@ -1,9 +1,16 @@
-{ pkgs, lib, custom-sddm-astronaut, ... }:
+{ pkgs
+, lib
+, custom-sddm-astronaut
+, ...
+}:
 {
-   specialisation."PERFORMANCE".configuration = {
-      services.blueman.enable = lib.mkForce true;
-      services.xserver.videoDrivers = lib.mkForce ["amdgpu" "nvidia"];
-  }; 
+  specialisation."PERFORMANCE".configuration = {
+    services.blueman.enable = lib.mkForce true;
+    services.xserver.videoDrivers = lib.mkForce [
+      "amdgpu"
+      "nvidia"
+    ];
+  };
   services = {
     udisks2.enable = true;
     dbus.enable = true;
@@ -13,7 +20,7 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
-    xserver =  {
+    xserver = {
       enable = true;
       videoDrivers = lib.mkDefault [ "amdgpu" ];
     };

@@ -1,13 +1,12 @@
 { pkgs, nix-vscode-extension, ... }:
 
 {
-  imports =
-    [
-      ../hardware/hardware-configuration.nix
-      ./environment.etc.nix
-      ./systemPackages.nix
-      ../../../programs/system/npm.nix
-    ];
+  imports = [
+    ../hardware/hardware-configuration.nix
+    ./environment.etc.nix
+    ./systemPackages.nix
+    ../../../programs/system/npm.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
@@ -56,7 +55,11 @@
     users.nico = {
       isNormalUser = true;
       description = "Default user for personal use of this system!";
-      extraGroups = [ "networkmanager" "wheel" "video" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "video"
+      ];
       home = "/home/nico";
       shell = pkgs.fish;
     };

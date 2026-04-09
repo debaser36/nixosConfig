@@ -5,9 +5,15 @@ _: {
       MainBar = {
         layer = "top";
         potition = "top";
-        modules-left = [ "sway/workspaces" "sway/mode" ];
+        modules-left = [
+          "sway/workspaces"
+          "sway/mode"
+        ];
         modules-center = [ "sway/window" ];
-        modules-right = [ "battery" "clock" ];
+        modules-right = [
+          "battery"
+          "clock"
+        ];
 
         name = "MainBar";
         reload_style_on_change = true;
@@ -15,7 +21,13 @@ _: {
         # Module Settings
         battery = {
           format = "{capacity}% {icon}";
-          format-icons = [ "" "" "" "" "" ];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
         clock = {
           interval = 60;

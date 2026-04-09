@@ -20,9 +20,10 @@
   inherit colors;
 
   input = {
-    "*" = { xkb_layout = "de"; };
+    "*" = {
+      xkb_layout = "de";
+    };
   };
-
 
   output."*".bg = bgPath;
 

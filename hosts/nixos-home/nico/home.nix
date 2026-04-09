@@ -42,7 +42,6 @@ in
     stateVersion = "25.05";
   };
 
-
   _module.args = {
     user = gitUser;
   };
@@ -92,7 +91,3 @@ in
 
   programs.home-manager.enable = true;
 }
-
-
-
-

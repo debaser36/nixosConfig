@@ -10,7 +10,9 @@
   ];
 
   #packages needed for flakes to work
-  environment.systemPackages = with pkgs; with pkgs.kdePackages;
+  environment.systemPackages =
+    with pkgs;
+    with pkgs.kdePackages;
     [
       custom-sddm-astronaut
       qtbase
@@ -30,6 +32,5 @@
       # graphic testing
       mesa-demos
     ];
-
 
 }

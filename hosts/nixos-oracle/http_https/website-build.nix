@@ -9,7 +9,6 @@ pkgs.stdenv.mkDerivation rec {
     repo = "unhalteproblem.de";
     rev = "main"; # Or specific commit/tag
 
-
     #    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
     sha256 = "sha256-ASMi+s1Q4JG0Kph2XAZBK+aEJ/1qd710EYPBg9u3N5Y=";
     #sha256 = "sha256-ht/PTroA26IwlVEyy9kUWu7ksHoWfaPbimVdIoavwS4=";
@@ -45,7 +44,6 @@ pkgs.stdenv.mkDerivation rec {
     # Build the web service
     pnpm build
   '';
-
 
   installPhase = ''
     		set -x

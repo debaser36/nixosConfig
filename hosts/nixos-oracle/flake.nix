@@ -11,7 +11,13 @@
     };
     #unhalteproblem-website.url = "github:debaser36/unhalteproblem.de/main";
   };
-  outputs = { nixpkgs, home-manager, nur, vscode-server, ... }:
+  outputs =
+    { nixpkgs
+    , home-manager
+    , nur
+    , vscode-server
+    , ...
+    }:
     let
       vars = import ./vars.nix;
     in
@@ -23,9 +29,12 @@
           modules = [
             vscode-server.nixosModules.default
 
-            ({ config, pkgs, ... }: {
-              services.vscode-server.enable = true;
-            })
+            (
+              { config, pkgs, ... }:
+              {
+                services.vscode-server.enable = true;
+              }
+            )
 
             {
               environment.etc."website-build.nix".source = ./http_https/website-build.nix;

@@ -6,32 +6,35 @@ let
   vars = import ./vars.nix;
 in
 {
-  imports =
-    [
-      (modulesPath + "/profiles/qemu-guest.nix")
-    ];
+  imports = [
+    (modulesPath + "/profiles/qemu-guest.nix")
+  ];
 
   boot = {
     kernelModules = [ ];
     extraModulePackages = [ ];
     initrd = {
-      availableKernelModules = [ "xhci_pci" "virtio_scsi" ];
+      availableKernelModules = [
+        "xhci_pci"
+        "virtio_scsi"
+      ];
       kernelModules = [ ];
     };
   };
 
   fileSystems = {
-    "/" =
-      {
-        device = "/dev/disk/by-label/lb_filesystem";
-        fsType = "ext4";
-      };
-    "/boot" =
-      {
-        device = "/dev/disk/by-label/lb_boot";
-        fsType = "vfat";
-        options = [ "fmask=0022" "dmask=0022" ];
-      };
+    "/" = {
+      device = "/dev/disk/by-label/lb_filesystem";
+      fsType = "ext4";
+    };
+    "/boot" = {
+      device = "/dev/disk/by-label/lb_boot";
+      fsType = "vfat";
+      options = [
+        "fmask=0022"
+        "dmask=0022"
+      ];
+    };
   };
 
   swapDevices = [ ];

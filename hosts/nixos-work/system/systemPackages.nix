@@ -7,7 +7,9 @@
     ../../../programs/system/steam.nix
     ../../../programs/system/gnupg.nix
   ];
-  environment.systemPackages = with pkgs; with pkgs.kdePackages;
+  environment.systemPackages =
+    with pkgs;
+    with pkgs.kdePackages;
     [
       # gaming emulation
       # lutris-unwrapped

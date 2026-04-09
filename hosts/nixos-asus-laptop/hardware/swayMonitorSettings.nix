@@ -5,6 +5,7 @@
     refresh_rate = 60.003;
     rotation = "normal";
   }
+,
 }:
 let
   center_mode = "${toString center_monitor.width}x${toString center_monitor.height}@${toString center_monitor.refresh_rate}Hz";

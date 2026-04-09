@@ -1,5 +1,4 @@
-_:
-{
+_: {
   services.keycloak = {
     enable = true;
 

@@ -1,5 +1,4 @@
-_:
-{
+_: {
   security.acme = {
     acceptTerms = true;
     defaults.group = "nginx";

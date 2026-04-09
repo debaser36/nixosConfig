@@ -1,5 +1,4 @@
-_:
-{
+_: {
   #-------------Bash settings------------
   programs.bash = {
     enable = true;

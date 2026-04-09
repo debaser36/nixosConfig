@@ -57,7 +57,7 @@ in
       inherit pkgs;
     })
 
-    # ssh 
+    # ssh
     ./ssh.home.nix
 
     # Discord
@@ -111,7 +111,3 @@ in
 
   programs.home-manager.enable = true;
 }
-
-
-
-
