@@ -6,7 +6,6 @@
     specialisation."PERFORMANCE".configuration = {
     hardware.nvidia = lib.mkForce {
       open = false;
-      modesetting.enable = true;
       prime = {
         offload = {
           enable = true;

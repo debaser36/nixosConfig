@@ -4,9 +4,6 @@
     services.tlp = lib.mkDefault{
       enable = true;
       settings = {      
-        # always run on battery mode
-        TLP_DEFAULT_MODE = "BAT";
-        TLP_PERSISTENT_DEFAULT = 1;
         CPU_BOOST_ON_BAT = 0;
         CPU_SCALING_GOVERNOR_ON_AC = "powersave";
         CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
