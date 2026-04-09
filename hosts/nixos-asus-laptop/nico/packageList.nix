@@ -9,16 +9,16 @@ with pkgs;
   wireguard-tools
 
   exercism
-  pnpm
-  nodejs_25
-  python314
+  /* pnpm */
+  /* nodejs_25 */
+  /* python314 */
   alsa-utils
   alsa-plugins
   edid-decode
 
   # WACOM TABLET
-  xf86_input_wacom # Wacom tablet X11 driver
-  kdePackages.wacomtablet # Wacom tablet configuration
+  /* xf86_input_wacom */ # Wacom tablet X11 driver
+  /* kdePackages.wacomtablet */ # Wacom tablet configuration
   xev
 
   discord
@@ -95,8 +95,8 @@ with pkgs;
 
   zoom-us
 
-  libgcc
-  gcc
-  rocmPackages.llvm.clang-unwrapped
-  cmakeWithGui
+  /* libgcc */
+  /* gcc */
+  /* rocmPackages.llvm.clang-unwrapped */
+  /* cmakeWithGui */
 ]
