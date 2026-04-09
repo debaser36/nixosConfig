@@ -11,7 +11,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: cachix/install-nix-action@v31
 
       - name: Check flake syntax
@@ -28,6 +28,10 @@ jobs:
           cd ../nixos-oracle
           nix flake check
 
+          echo "Checking flake syntax for Asus Laptop!"
+          cd ../nixos-asus-laptop
+          nix flake check
+
       - name: Format check
         run: nix run nixpkgs#nixpkgs-fmt -- --check .
 
@@ -38,7 +42,11 @@ jobs:
         run: |
           echo "Dry-building home system"
           cd hosts/nixos-home && nix build .#nixosConfigurations.nixos.config.system.build.toplevel --dry-run
-          
+
+          echo "Dry-building asus laptop system system"
+          cd hosts/nixos-asus-laptop && nix build .#nixosConfigurations.nixos.config.system.build.toplevel --dry-run
+  
+
           echo "Dry-building work system"
           cd ../nixos-work && nix build .#nixosConfigurations.nixos.config.system.build.toplevel --dry-run
           
