@@ -2,7 +2,6 @@
 {
 
   imports = [
-    ../../../programs/system/npm.nix
     ../../../programs/system/fish.nix
     ../../../programs/system/sway.nix
     ../../../programs/system/steam.nix
