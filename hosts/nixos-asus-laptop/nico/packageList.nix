@@ -1,6 +1,7 @@
 { pkgs, ... }:
 with pkgs;
 [
+  mixxx
 
   scrcpy
   android-tools
