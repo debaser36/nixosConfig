@@ -2,6 +2,7 @@
 with pkgs;
 [
   mixxx
+  yt-dlp # download tracks 
 
   scrcpy
   android-tools
