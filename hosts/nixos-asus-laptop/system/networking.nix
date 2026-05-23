@@ -8,7 +8,7 @@ _: {
     };
     wireguard.enable = true;
   };
-  services.create_ap = {
+  /* services.create_ap = {
   enable = true;
   settings = {
     INTERNET_IFACE = "enp5s0f3u2";
@@ -16,5 +16,5 @@ _: {
     SSID = "TetherTest";
     PASSPHRASE = "Passwort";
   };
-};
+}; */
 }
