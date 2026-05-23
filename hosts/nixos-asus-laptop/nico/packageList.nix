@@ -1,7 +1,9 @@
 { pkgs, ... }:
 with pkgs;
 [
-  mixxx
+	shotcut
+	
+	mixxx
   yt-dlp # download tracks 
 
   scrcpy
