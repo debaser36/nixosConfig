@@ -1,14 +1,13 @@
-{
-  swayConfig ? (import ./swayConfigDefault.nix { }),
-  outputConfig ? { },
-  inputConfig ? { },
-  extraConfig ? (import ./swayDefaultExtraConfig.nix),
-  startupConfig ? {
+{ swayConfig ? (import ./swayConfigDefault.nix { })
+, outputConfig ? { }
+, inputConfig ? { }
+, extraConfig ? (import ./swayDefaultExtraConfig.nix)
+, startupConfig ? {
     startup = [ ];
-  },
-  extraOptions ? [ ],
-  pkgs,
-  ...
+  }
+, extraOptions ? [ ]
+, pkgs
+, ...
 }:
 let
   inherit (pkgs) lib;

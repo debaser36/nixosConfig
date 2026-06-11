@@ -3,7 +3,7 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "unhalteproblem.de" = {
         addKeysToAgent = "yes";
         hostname = "unhalteproblem.de";

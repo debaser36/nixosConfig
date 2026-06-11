@@ -1,8 +1,7 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
+{ pkgs
+, lib
+, config
+, ...
 }:
 let
   packages = import ./default.extensions.nix { inherit pkgs; };
@@ -75,7 +74,8 @@ in
           "K00ILysCaEq8+bEqV/3nuw=="
           # Twitter
           "T9nJot5PurhJSy8n038xGA=="
-        ] (_: 1);
+        ]
+          (_: 1);
         "signon.rememberSignons" = false;
 
       };

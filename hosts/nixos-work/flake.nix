@@ -14,13 +14,12 @@
     nix-vscode-extension.url = "github:nix-community/nix-vscode-extensions";
   };
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      home-manager,
-      nur,
-      nix-vscode-extension,
-      ...
+    inputs@{ self
+    , nixpkgs
+    , home-manager
+    , nur
+    , nix-vscode-extension
+    , ...
     }:
     {
       nixosConfigurations = {
