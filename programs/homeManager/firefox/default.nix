@@ -10,12 +10,13 @@ in
 {
   programs.firefox = {
     enable = true;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
+
     profiles."nico" = {
       extensions = {
         force = true;
         inherit packages;
       };
-      configPath = "${config.xdg.configHome}/mozilla/firefox";
 
       settings = {
         "extensions.autoDisableScopes" = 0;
