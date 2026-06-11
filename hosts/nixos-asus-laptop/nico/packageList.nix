@@ -2,10 +2,10 @@
 with pkgs;
 [
   # Video Editing
-	# openshot-qt
-	# shotcut
-	
-	mixxx
+  # openshot-qt
+  # shotcut
+
+  mixxx
   yt-dlp # download tracks 
 
   scrcpy
