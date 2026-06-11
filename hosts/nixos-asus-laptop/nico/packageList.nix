@@ -1,7 +1,9 @@
 { pkgs, ... }:
 with pkgs;
 [
-	shotcut
+  # Video Editing
+	# openshot-qt
+	# shotcut
 	
 	mixxx
   yt-dlp # download tracks 
