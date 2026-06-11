@@ -1,6 +1,7 @@
-{ pkgs
-, nix-vscode-extension
-, ...
+{
+  pkgs,
+  nix-vscode-extension,
+  ...
 }:
 {
   nix = {

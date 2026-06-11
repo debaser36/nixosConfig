@@ -1,7 +1,8 @@
-{ pkgs
-, lib
-, custom-sddm-astronaut
-, ...
+{
+  pkgs,
+  lib,
+  custom-sddm-astronaut,
+  ...
 }:
 {
   specialisation."PERFORMANCE".configuration = {

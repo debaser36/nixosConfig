@@ -12,11 +12,12 @@
     #unhalteproblem-website.url = "github:debaser36/unhalteproblem.de/main";
   };
   outputs =
-    { nixpkgs
-    , home-manager
-    , nur
-    , vscode-server
-    , ...
+    {
+      nixpkgs,
+      home-manager,
+      nur,
+      vscode-server,
+      ...
     }:
     let
       vars = import ./vars.nix;

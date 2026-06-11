@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   packages = import ./default.extensions.nix { inherit pkgs; };
 in
@@ -10,6 +15,7 @@ in
         force = true;
         inherit packages;
       };
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
 
       settings = {
         "extensions.autoDisableScopes" = 0;
@@ -68,8 +74,7 @@ in
           "K00ILysCaEq8+bEqV/3nuw=="
           # Twitter
           "T9nJot5PurhJSy8n038xGA=="
-        ]
-          (_: 1);
+        ] (_: 1);
         "signon.rememberSignons" = false;
 
       };

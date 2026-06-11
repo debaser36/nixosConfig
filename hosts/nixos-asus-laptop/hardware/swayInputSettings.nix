@@ -1,5 +1,5 @@
-{ initial_output ? "eDP-1"
-,
+{
+  initial_output ? "eDP-1",
 }:
 {
   input."1386:890:Wacom_One_by_Wacom_S_Pen" = {

@@ -1,8 +1,9 @@
-{ modifier ? "Mod4"
-, terminal ? "kitty"
-, colors ? (import ./swayColorsDefault.nix)
-, bgPath ? "/etc/default_wallpaper.jpg fill"
-, ...
+{
+  modifier ? "Mod4",
+  terminal ? "kitty",
+  colors ? (import ./swayColorsDefault.nix),
+  bgPath ? "/etc/default_wallpaper.jpg fill",
+  ...
 }:
 {
   focus.followMouse = false;
