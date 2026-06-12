@@ -21,6 +21,7 @@ let
   };
 in
 {
+  xdg.enable = true;
   home = {
     username = "nico";
     homeDirectory = "/home/nico";
@@ -35,10 +36,6 @@ in
       EDITOR = "nvim";
       VISUAL = "nvim";
       PNPM_HOME = "$HOME/.pnpm-global";
-      XDG_CACHE_HOME = "$HOME/.cache";
-      XDG_CONFIG_HOME = "$HOME/.config";
-      XDG_DATA_HOME = "$HOME/.local/share";
-      XDG_STATE_HOME = "$HOME/.local/state";
     };
     packages = packageList;
 
