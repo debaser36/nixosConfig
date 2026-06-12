@@ -16,6 +16,10 @@ in
   home.sessionVariables = {
     WLR_RENDERER = "gles2";
     WLR_RENDERER_ALLOW_SOFTWARE = "1";
+    XDG_CACHE_HOME = "$HOME/.cache";
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_STATE_HOME = "$HOME/.local/state";
   };
   wayland.windowManager.sway = {
     enable = true;
