@@ -73,7 +73,7 @@ in
     wget
     nginx
     nodejs
-    nodePackages.pnpm
+    pnpm
   ];
 
   nix = {
