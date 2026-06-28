@@ -39,7 +39,7 @@ in
   python314 # Python interpreter with all modules
   nil # Nix language server
   #nodeenv # Node.js version manager
-  nodejs_25
+  # nodejs_25
 
   # Development Build Tools & Compilers
   libgcc # GCC runtime library
