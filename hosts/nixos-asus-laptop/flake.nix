@@ -29,6 +29,7 @@
             home-manager.nixosModules.home-manager
             {
               home-manager = {
+                backupFileExtension = "backup";
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.nico = import ./nico/home.nix;
