@@ -79,7 +79,7 @@ in
   # Terminal Emulators & File Management
   kitty # GPU-based terminal emulator
   alacritty # GPU-accelerated terminal
-  neofetch # System information display
+  fastfetch # System information display
   nnn # File manager
 
   # Archive & Compression Tools

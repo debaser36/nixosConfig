@@ -27,7 +27,7 @@ with pkgs;
   pgmodeler
   sqlite
 
-  neofetch
+  fastfetch
   nnn
 
   swaylock
