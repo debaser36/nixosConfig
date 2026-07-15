@@ -21,6 +21,7 @@ let
   };
 in
 {
+  services.udiskie.enable = true;
   xdg.enable = true;
   home = {
     username = "nico";
