@@ -34,6 +34,10 @@ in
           "'Fira Code', 'Font Awesome 7 Free', 'Font Awesome 7 Brands', 'Font Awesome 7 Free Solid'";
         "editor.fontLigatures" = true;
         "remote.SSH.loglevel" = "trace";
+        "remote.SSH.connectTimeout" = 60;
+        # TODO: use a more dynamic way to get the user's home directory instead of hardcoding it
+        "remote.SSH.configFile" = "/home/nico/.ssh/config";
+        "remote.SSH.useLocalServer" = false;
         "editor.fontWeight" = "400";
         "telemetry.enableTelemetry" = false;
         "explorer.sortOrder" = "type";
