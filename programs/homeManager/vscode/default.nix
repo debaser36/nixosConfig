@@ -33,10 +33,12 @@ in
         "editor.fontFamily" =
           "'Fira Code', 'Font Awesome 7 Free', 'Font Awesome 7 Brands', 'Font Awesome 7 Free Solid'";
         "editor.fontLigatures" = true;
+        "remote.SSH.loglevel" = "trace";
         "editor.fontWeight" = "400";
         "telemetry.enableTelemetry" = false;
         "explorer.sortOrder" = "type";
         "explorer.confirmDelete" = false;
+        "terminal.integrated.sendKeybindingsToShell" = true;
       }
       extensionSettings.userSettings;
   };
