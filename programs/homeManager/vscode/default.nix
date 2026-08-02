@@ -38,6 +38,7 @@ in
         # TODO: use a more dynamic way to get the user's home directory instead of hardcoding it
         "remote.SSH.configFile" = "/home/nico/.ssh/config";
         "remote.SSH.useLocalServer" = false;
+        "remote.SSH.remotePlatform.unhalteProblem.de" = "linux";
         "editor.fontWeight" = "400";
         "telemetry.enableTelemetry" = false;
         "explorer.sortOrder" = "type";
