@@ -19,7 +19,9 @@
       locations."/keycloak/" = {
         proxyPass = "http://localhost:${toString config.services.keycloak.settings.http-port}/keycloak/";
       };
-      virtualHosts."plane.unhalteproblem.de" = {
+    };
+
+    virtualHosts."plane.unhalteproblem.de" = {
         forceSSL = true;
         enableACME = true;
 
@@ -28,6 +30,5 @@
           proxyWebsockets = true;
         };
       };
-    };
   };
 }
