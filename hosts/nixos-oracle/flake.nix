@@ -20,6 +20,7 @@
     , home-manager
     , nur
     , vscode-server
+    , compose2nix
     , ...
     }:
     let
@@ -46,6 +47,9 @@
             }
 
             ./configuration.nix
+            {
+              _module.args.compose2nix = compose2nix;
+            }
 
             home-manager.nixosModules.home-manager
             {

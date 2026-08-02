@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, compose2nix, ... }:
 
 let
   vars = import ./vars.nix;
@@ -66,7 +66,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    inputs.compose2nix.packages.${vars.architeture}.default
+    compose2nix.packages.${vars.architeture}.default
     openssh
     curl
     git
