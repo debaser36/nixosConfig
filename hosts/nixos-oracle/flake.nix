@@ -9,6 +9,10 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    compose2nix = {
+      url = "github:aksiksi/compose2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     #unhalteproblem-website.url = "github:debaser36/unhalteproblem.de/main";
   };
   outputs =

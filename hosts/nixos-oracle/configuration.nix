@@ -42,6 +42,7 @@ in
       extraGroups = [
         "networkmanager"
         "wheel"
+        "docker"
       ];
       openssh.authorizedKeys.keys = [ vars.public_sshKey ];
       home = "/home/" + vars.default_user.username;
@@ -65,6 +66,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    inputs.compose2nix.packages.${vars.architeture}.default
     openssh
     curl
     git
@@ -106,6 +108,9 @@ in
     443
     5432
   ];
+
+  # TODO: modularize this better
+  virtualisation.docker.enable = true;
 
   # Disable documentation for minimal install.
   documentation.enable = false;
