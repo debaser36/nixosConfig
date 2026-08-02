@@ -16,6 +16,9 @@
           				try_files $uri /index.html;
           			'';
       };
+      locations."/keycloak/" = {
+        proxyPass = "http://localhost:${toString config.services.keycloak.settings.http-port}/keycloak/";
+      };
       virtualHosts."plane.unhalteproblem.de" = {
         forceSSL = true;
         enableACME = true;
@@ -24,9 +27,6 @@
           proxyPass = "http://127.0.0.1:8080";
           proxyWebsockets = true;
         };
-      };
-      locations."/keycloak/" = {
-        proxyPass = "http://localhost:${toString config.services.keycloak.settings.http-port}/keycloak/";
       };
     };
   };
