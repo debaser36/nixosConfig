@@ -21,7 +21,7 @@
 
   input = {
     "*" = {
-      xkb_layout = "de";
+      xkb_layout = "us";
     };
   };
 
