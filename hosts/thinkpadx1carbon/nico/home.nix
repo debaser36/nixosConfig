@@ -59,6 +59,9 @@ in
       inherit pkgs;
     })
 
+    # swayosd
+    ../../../programs/homeManager/swayosd/default.nix
+
     # ssh
     ./ssh.home.nix
 
