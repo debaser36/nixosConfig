@@ -22,13 +22,13 @@
     };
 
     virtualHosts."plane.unhalteproblem.de" = {
-        forceSSL = true;
-        enableACME = true;
+      forceSSL = true;
+      enableACME = true;
 
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:8080";
-          proxyWebsockets = true;
-        };
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:8080";
+        proxyWebsockets = true;
       };
+    };
   };
 }

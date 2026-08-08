@@ -13,5 +13,5 @@ _: {
     ];
   };
 
-  swapDevices = [];
+  swapDevices = [ ];
 }

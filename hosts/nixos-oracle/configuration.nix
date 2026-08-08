@@ -112,7 +112,7 @@ in
   # TODO: modularize this better
   virtualisation.docker.enable = true;
   # TODO: at 02/08/2026, this is (in stable) docker_28, which isn't maintained since 11/25
-  nixpkgs.config.permittedInsecurePackages = ["docker-28.5.2"];
+  nixpkgs.config.permittedInsecurePackages = [ "docker-28.5.2" ];
 
   # Disable documentation for minimal install.
   documentation.enable = false;
