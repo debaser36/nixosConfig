@@ -12,6 +12,7 @@
     ];
   };
   services = {
+    upower.enable = true;
     udisks2.enable = true;
     dbus.enable = true;
     pipewire = {
