@@ -1,4 +1,4 @@
-{ }:
+_:
 {
   powerManagement.powertop.enable = true;
   services.tlp = {
@@ -16,7 +16,7 @@
       CPU_MIN_PERF_ON_BAT = 0;
       CPU_MAX_PERF_ON_BAT = 20;
 
-      START_CHARGE_THRESH_BAT0 = 100;
+      START_CHARGE_THRESH_BAT0 = 96;
       STOP_CHARGE_THRESH_BAT0 = 100;
     };
   };
