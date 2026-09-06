@@ -13,6 +13,7 @@
   };
   services = {
     udisks2.enable = true;
+    gvfs.enable = true;
     dbus.enable = true;
     pipewire = {
       enable = true;
