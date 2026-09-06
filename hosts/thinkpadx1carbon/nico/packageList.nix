@@ -5,6 +5,8 @@ with pkgs;
   # openshot-qt
   # shotcut
 
+  glib
+
   mixxx
   yt-dlp # download tracks
 
