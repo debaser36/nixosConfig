@@ -34,7 +34,7 @@ Run from the repo root.
 - Validate a host: `nix build .#nixosConfigurations.<host>.config.system.build.toplevel --dry-run`
 - Flake check (evaluates all hosts): `nix flake check`
 - Format: `nix run nixpkgs#nixpkgs-fmt -- .` (CI runs it with `--check`)
-- Lint: `nix run nixpkgs#statix -- check .`
+- Lint: `nix run nixpkgs#statix -- check .` (`statix.toml` skips generated `hardware-configuration.nix` files)
 - Update the desktop inputs: `nix flake update nixpkgs home-manager nur nix-vscode-extension`
 - Update the server inputs: `nix flake update nixpkgs-stable home-manager-stable nur-stable vscode-server compose2nix`
 - The user applies a host with `sudo nixos-rebuild switch --flake .#<host>`
@@ -46,7 +46,12 @@ Never run `sudo`, `nixos-rebuild switch|boot|test` or garbage collection: the us
 configurations themselves.
 
 CI (`.github/workflows/check_nix.yaml`) runs format, statix and `nix flake check`, plus a
-dry-build per host. A new host must be added to `flake.nix`, the CI matrix and `README.md`.
+dry-build for every host it lists from the flake.
+
+New hosts are created with the interactive tool `programs/tools/nixos_manager/nixosmanager.fish`
+(it also rebuilds hosts and collects garbage). It writes `hosts/<name>/`, inserts a `mkHost` entry
+above the `# nixos_manager: …` marker line in `flake.nix` (keep that line) and adds the host to
+`README.md`. When adding a host by hand, do the same.
 
 ## Looking things up
 

@@ -66,6 +66,49 @@
           ];
         };
 
+      # Generic builder for hosts created with programs/tools/nixos_manager.
+      # `channel` picks the input set ("unstable" or "stable"), `modules` the optional flake modules.
+      mkHost =
+        { host
+        , system
+        , channel
+        , user
+        , modules ? [ ]
+        }:
+        let
+          inputSet = {
+            unstable = { inherit nixpkgs home-manager nur; };
+            stable = {
+              nixpkgs = nixpkgs-stable;
+              home-manager = home-manager-stable;
+              nur = nur-stable;
+            };
+          }.${channel};
+          flakeModules = {
+            home-manager = [
+              inputSet.home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  users.${user} = import ./hosts/${host}/home.nix;
+                };
+              }
+            ];
+            nur = [ inputSet.nur.modules.nixos.default ];
+            nix-vscode-extension = [{ nixpkgs.overlays = [ nix-vscode-extension.overlays.default ]; }];
+            vscode-server = [
+              vscode-server.nixosModules.default
+              { services.vscode-server.enable = true; }
+            ];
+            compose2nix = [{ environment.systemPackages = [ compose2nix.packages.${system}.default ]; }];
+          };
+        in
+        inputSet.nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [ ./hosts/${host}/configuration.nix ] ++ builtins.concatMap (m: flakeModules.${m}) modules;
+        };
+
       oracleVars = import ./hosts/nixos-oracle/vars.nix;
     in
     {
@@ -102,6 +145,8 @@
             nur-stable.modules.nixos.default
           ];
         };
+
+        # nixos_manager: new hosts are inserted above this line
       };
     };
 }

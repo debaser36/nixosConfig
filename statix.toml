@@ -1,0 +1,4 @@
+# hardware-configuration.nix files come from nixos-generate-config. Its output repeats keys
+# (boot.initrd.*, boot.kernelModules, ...), which statix rejects, and it is not meant to be
+# edited by hand, so these files are not linted. nixpkgs-fmt still checks their formatting.
+ignore = [".direnv", "**/hardware-configuration.nix"]

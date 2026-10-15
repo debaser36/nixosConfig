@@ -24,18 +24,26 @@ jobs:
       - name: Check flake
         run: nix flake check
 
+  hosts:
+    runs-on: ubuntu-latest
+    outputs:
+      list: ${{ steps.list.outputs.list }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: cachix/install-nix-action@v31
+
+      - name: List hosts from the flake
+        id: list
+        run: echo "list=$(nix eval --json .#nixosConfigurations --apply builtins.attrNames)" >> "$GITHUB_OUTPUT"
+
   build:
     name: dry-build (${{ matrix.host }})
+    needs: hosts
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        host:
-          - thinkpadx1carbon
-          - nixos-asus-laptop
-          - nixos-home
-          - nixos-work
-          - nixos-oracle
+        host: ${{ fromJSON(needs.hosts.outputs.list) }}
     steps:
       - uses: actions/checkout@v6
       - uses: cachix/install-nix-action@v31

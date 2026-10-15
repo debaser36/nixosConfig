@@ -39,6 +39,14 @@ A single `flake.nix` at the repository root defines every host as `nixosConfigur
 
 ## Usage
 
+The interactive helper covers the common tasks: rebuilding a host (switch, build or dry-build), collecting garbage, and adding a new host. A new host gets a skeleton under `hosts/<name>/`, an entry in `flake.nix` and a line in this README.
+
+```sh
+./programs/tools/nixos_manager/nixosmanager.fish
+```
+
+The same tasks by hand:
+
 ```sh
 # Apply a host's configuration (run from the repository root)
 sudo nixos-rebuild switch --flake .#thinkpadx1carbon
