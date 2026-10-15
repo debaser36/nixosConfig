@@ -10,7 +10,6 @@ in
     ./hardware-configuration.nix
     ./http_https/acme.nix
     ./http_https/nginx.nix
-    ./http_https/keycloak.nix
     ./http_https/postgres.nix
     ./http_https/website-activation.nix
   ];

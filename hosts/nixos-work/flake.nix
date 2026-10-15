@@ -1,5 +1,5 @@
 {
-  description = "My very first nixos config flake :))";
+  description = "Flake for work machine";
   #author="nico@nixos";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";

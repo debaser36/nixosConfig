@@ -6,10 +6,6 @@
 {
   specialisation."PERFORMANCE".configuration = {
     services.blueman.enable = lib.mkForce true;
-    #  services.xserver.videoDrivers = lib.mkForce [
-    #    "amdgpu"
-    #    "nvidia"
-    #  ];
   };
   services = {
     udisks2.enable = true;
@@ -23,7 +19,6 @@
     };
     xserver = {
       enable = true;
-      #  videoDrivers = lib.mkDefault [ "amdgpu" ];
     };
     wg-netmanager.enable = true;
     pcscd.enable = true;

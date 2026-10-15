@@ -1,5 +1,5 @@
 {
-  description = "Flake for Asus Gaming TUF 17 Laptop)";
+  description = "Flake for Lenovo ThinkPad X1 Carbon (Gen 6)";
   #author="nico@nixos";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";

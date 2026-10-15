@@ -24,6 +24,7 @@ Each host is currently self-contained with its own `flake.nix`, allowing indepen
 │   ├── nixos-home             # Home machine setup
 │   ├── nixos-oracle           # Server / VPS configuration
 │   ├── nixos-work             # Work machine setup
+│   ├── thinkpadx1carbon       # Lenovo ThinkPad X1 Carbon (Gen 6) laptop
 │
 ├── programs/                  # Shared configuration modules
 │   ├── homeManager            # Home Manager modules (per app/tool)

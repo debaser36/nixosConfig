@@ -4,51 +4,46 @@ on:
   push:
     paths:
       - '**.nix'
-      - 'flake.lock'
+      - '**/flake.lock'
+      - '.github/workflows/check_nix.yaml'
   workflow_dispatch:
 
 jobs:
-  check:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: cachix/install-nix-action@v31
-
-      - name: Check flake syntax
-        run: | 
-          echo "Checking flake syntax for home Computer!"
-          cd hosts/nixos-home
-          nix flake check
-
-          echo "Checking flake syntax for work Computer!"
-          cd ../nixos-work
-          nix flake check
-
-          echo "Checking flake syntax for Oracle unhalteproblem.de Server!"
-          cd ../nixos-oracle
-          nix flake check
-
-          echo "Checking flake syntax for Asus Laptop!"
-          cd ../nixos-asus-laptop
-          nix flake check
 
       - name: Format check
         run: nix run nixpkgs#nixpkgs-fmt -- --check .
 
       - name: Lint with statix
         run: nix run nixpkgs#statix -- check .
-      
-      - name: Dry-build systems
-        run: |
-          echo "Dry-building home system"
-          cd hosts/nixos-home && nix build .#nixosConfigurations.nixos.config.system.build.toplevel --dry-run
 
-          echo "Dry-building asus laptop system system"
-          cd hosts/nixos-asus-laptop && nix build .#nixosConfigurations.nixos.config.system.build.toplevel --dry-run
-  
+  check:
+    name: check (${{ matrix.host }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - host: nixos-home
+            config: nixos
+          - host: nixos-work
+            config: nixos
+          - host: nixos-oracle
+            config: nixos-oracle
+          - host: nixos-asus-laptop
+            config: nixos
+          - host: thinkpadx1carbon
+            config: nixos
+    steps:
+      - uses: actions/checkout@v6
+      - uses: cachix/install-nix-action@v31
 
-          echo "Dry-building work system"
-          cd ../nixos-work && nix build .#nixosConfigurations.nixos.config.system.build.toplevel --dry-run
-          
-          echo "Dry-building oracle system"
-          cd ../nixos-oracle && nix build .#nixosConfigurations.nixos-oracle.config.system.build.toplevel --dry-run
+      - name: Check flake
+        run: nix flake check ./hosts/${{ matrix.host }}
+
+      - name: Dry-build system
+        run: nix build ./hosts/${{ matrix.host }}#nixosConfigurations.${{ matrix.config }}.config.system.build.toplevel --dry-run

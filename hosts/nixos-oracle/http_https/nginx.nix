@@ -1,4 +1,4 @@
-{ config, ... }:
+_:
 {
   services.nginx = {
     enable = true;
@@ -15,9 +15,6 @@
         extraConfig = ''
           				try_files $uri /index.html;
           			'';
-      };
-      locations."/keycloak/" = {
-        proxyPass = "http://localhost:${toString config.services.keycloak.settings.http-port}/keycloak/";
       };
     };
 

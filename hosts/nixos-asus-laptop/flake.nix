@@ -1,5 +1,5 @@
 {
-  description = "Flake for Asus Gaming TUF 17 Laptop)";
+  description = "Flake for Asus Gaming TUF 17 Laptop";
   #author="nico@nixos";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
