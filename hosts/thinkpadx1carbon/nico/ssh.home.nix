@@ -10,6 +10,11 @@
         identityFile = "/home/nico/keys_and_secrets/private/ssh/unhalteproblem.key";
         user = "nico";
       };
+      "github.com" = {
+        hostname = "ssh.github.com";
+        user = "git";
+        port = 443;
+      };
     };
   };
   home.file.".ssh/config".force = true;
