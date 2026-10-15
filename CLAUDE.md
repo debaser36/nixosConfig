@@ -1,18 +1,23 @@
 # CLAUDE.md
 
-NixOS + Home Manager configuration for five machines. There is **no root flake**: every
-`hosts/<host>/` directory is a self-contained flake with its own `flake.lock`. Shared modules
-live in `programs/` and are imported by relative path (`../../../programs/...`).
+NixOS + Home Manager configuration for five machines. One root `flake.nix` defines every host as
+`nixosConfigurations.<host>`, named after its folder in `hosts/`. Shared modules live in
+`programs/` and are imported by relative path (`../../../programs/...`).
 
 ## Hosts
 
-| Directory           | Machine                                   | Flake output                       | nixpkgs         |
-|---------------------|-------------------------------------------|------------------------------------|-----------------|
-| `thinkpadx1carbon`  | Lenovo ThinkPad X1 Carbon Gen 6 (laptop)  | `nixosConfigurations.nixos`        | nixos-unstable  |
-| `nixos-asus-laptop` | Asus TUF Gaming 17 laptop                 | `nixosConfigurations.nixos`        | nixos-unstable  |
-| `nixos-home`        | Home machine                              | `nixosConfigurations.nixos`        | nixos-unstable  |
-| `nixos-work`        | Work machine                              | `nixosConfigurations.nixos`        | nixos-unstable  |
-| `nixos-oracle`      | Server for unhalteproblem.de, aarch64     | `nixosConfigurations.nixos-oracle` | nixos-25.11     |
+| Host (= folder and flake output) | Machine                                  | Inputs                          |
+|----------------------------------|------------------------------------------|---------------------------------|
+| `thinkpadx1carbon`               | Lenovo ThinkPad X1 Carbon Gen 6 (laptop) | desktop set (nixos-unstable)    |
+| `nixos-asus-laptop`              | Asus TUF Gaming 17 laptop                | desktop set (nixos-unstable)    |
+| `nixos-home`                     | Home machine                             | desktop set (nixos-unstable)    |
+| `nixos-work`                     | Work machine                             | desktop set (nixos-unstable)    |
+| `nixos-oracle`                   | Server for unhalteproblem.de, aarch64    | server set (nixos-25.11)        |
+
+- Desktop inputs: `nixpkgs`, `home-manager`, `nur`, `nix-vscode-extension`.
+- Server inputs: `nixpkgs-stable`, `home-manager-stable`, `nur-stable`, `vscode-server`, `compose2nix`.
+- The two sets never share an input, so updating one set never changes the other hosts.
+  Shared modules in `programs/` still affect both (e.g. the server imports the Firefox module).
 
 All desktop hosts have the hostname `nixos`, so `hostname` does not identify the machine.
 The ThinkPad reports `20KHS2LF00` in `/sys/class/dmi/id/product_name`; otherwise ask which host
@@ -24,13 +29,15 @@ the same file and ask whether to propagate the change. Never propagate silently.
 
 ## Commands
 
-Run from the repo root. Replace `<host>`/`<output>` per the table above.
+Run from the repo root.
 
-- Validate: `nix build ./hosts/<host>#nixosConfigurations.<output>.config.system.build.toplevel --dry-run`
-- Flake check: `nix flake check ./hosts/<host>`
+- Validate a host: `nix build .#nixosConfigurations.<host>.config.system.build.toplevel --dry-run`
+- Flake check (evaluates all hosts): `nix flake check`
 - Format: `nix run nixpkgs#nixpkgs-fmt -- .` (CI runs it with `--check`)
 - Lint: `nix run nixpkgs#statix -- check .`
-- Update inputs: `nix flake update --flake ./hosts/<host>`
+- Update the desktop inputs: `nix flake update nixpkgs home-manager nur nix-vscode-extension`
+- Update the server inputs: `nix flake update nixpkgs-stable home-manager-stable nur-stable vscode-server compose2nix`
+- The user applies a host with `sudo nixos-rebuild switch --flake .#<host>`
 
 Flakes only see git-tracked files. Run `git add -N <file>` on new files before evaluating, or
 evaluation fails with "path does not exist". The "Git tree is dirty" warning is harmless.
@@ -38,8 +45,8 @@ evaluation fails with "path does not exist". The "Git tree is dirty" warning is 
 Never run `sudo`, `nixos-rebuild switch|boot|test` or garbage collection: the user applies
 configurations themselves.
 
-CI (`.github/workflows/check_nix.yaml`) runs format, statix, flake check and a dry-build for every
-host. A new host must be added to the CI matrix and to `README.md`.
+CI (`.github/workflows/check_nix.yaml`) runs format, statix and `nix flake check`, plus a
+dry-build per host. A new host must be added to `flake.nix`, the CI matrix and `README.md`.
 
 ## Looking things up
 
@@ -47,14 +54,15 @@ Do not guess option or package names; options get renamed on unstable. Check aga
 the host pins:
 
 - Option description (also proves it exists):
-  `nix eval --raw ./hosts/<host>#nixosConfigurations.<output>.options.<option.path>.description`
+  `nix eval --raw .#nixosConfigurations.<host>.options.<option.path>.description`
 - Home Manager option:
-  `nix eval --raw ./hosts/<host>#nixosConfigurations.<output>.options.home-manager.users --apply 'o: (o.type.getSubOptions []).<option.path>.description'`
-- Current value: `nix eval --json ./hosts/<host>#nixosConfigurations.<output>.config.<option.path>`
-- Package version (overlays applied): `nix eval --raw ./hosts/<host>#nixosConfigurations.<output>.pkgs.<name>.version`
+  `nix eval --raw .#nixosConfigurations.<host>.options.home-manager.users --apply 'o: (o.type.getSubOptions []).<option.path>.description'`
+- Current value: `nix eval --json .#nixosConfigurations.<host>.config.<option.path>`
+- Package version (overlays applied): `nix eval --raw .#nixosConfigurations.<host>.pkgs.<name>.version`
 - Pinned source tree (read modules directly under `nixos/modules/`):
-  `nix eval --raw --impure --expr '(builtins.getFlake (toString ./hosts/<host>)).inputs.nixpkgs.outPath'`
-  (use `.home-manager` for Home Manager; its modules are under `modules/`)
+  `nix eval --raw --impure --expr '(builtins.getFlake (toString ./.)).inputs.nixpkgs.outPath'`
+  (`nixpkgs-stable` for the server; `home-manager` / `home-manager-stable` for Home Manager,
+  whose modules are under `modules/`)
 - `lib` functions: `nix repl --file <nixpkgs-path>`, then `:doc lib.<name>`
 - Breaking changes: `<nixpkgs-path>/nixos/doc/manual/release-notes/rl-<YYMM>.section.md` and
   `<home-manager-path>/docs/release-notes/rl-<YYMM>.md`
@@ -78,6 +86,7 @@ target machine instead (e.g. `passwordFile = "/var/secrets/...";`). `.gitattribu
 
 ## Agents (`.claude/agents/`)
 
-- `nix-check`: after editing `.nix` files or a lock; validates the affected hosts, returns only errors.
+- `nix-check`: after editing `.nix` files or the lock; validates the affected hosts, returns only errors.
 - `nix-options-lookup`: before using an option or package you have not verified in the pinned version.
 - `flake-update-review`: after `nix flake update`, before the user switches.
+- `nix-equivalence-check`: for refactors and cleanups; proves which hosts' built systems changed.

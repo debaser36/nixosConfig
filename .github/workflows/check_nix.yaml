@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - '**.nix'
-      - '**/flake.lock'
+      - 'flake.lock'
       - '.github/workflows/check_nix.yaml'
   workflow_dispatch:
 
@@ -21,29 +21,24 @@ jobs:
       - name: Lint with statix
         run: nix run nixpkgs#statix -- check .
 
-  check:
-    name: check (${{ matrix.host }})
+      - name: Check flake
+        run: nix flake check
+
+  build:
+    name: dry-build (${{ matrix.host }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - host: nixos-home
-            config: nixos
-          - host: nixos-work
-            config: nixos
-          - host: nixos-oracle
-            config: nixos-oracle
-          - host: nixos-asus-laptop
-            config: nixos
-          - host: thinkpadx1carbon
-            config: nixos
+        host:
+          - thinkpadx1carbon
+          - nixos-asus-laptop
+          - nixos-home
+          - nixos-work
+          - nixos-oracle
     steps:
       - uses: actions/checkout@v6
       - uses: cachix/install-nix-action@v31
 
-      - name: Check flake
-        run: nix flake check ./hosts/${{ matrix.host }}
-
       - name: Dry-build system
-        run: nix build ./hosts/${{ matrix.host }}#nixosConfigurations.${{ matrix.config }}.config.system.build.toplevel --dry-run
+        run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel --dry-run

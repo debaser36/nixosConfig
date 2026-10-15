@@ -1,6 +1,6 @@
 ---
 name: nix-check
-description: Validates this NixOS repo after .nix files or flake.lock files change. Works out which hosts are affected, runs dry-builds, flake checks, nixpkgs-fmt and statix, and returns only the real errors with repo file:line. Use proactively after editing Nix code, before reporting a change as done.
+description: Validates this NixOS repo after .nix files or flake.lock change. Works out which hosts are affected, runs dry-builds, flake checks, nixpkgs-fmt and statix, and returns only the real errors with repo file:line. Use proactively after editing Nix code, before reporting a change as done.
 tools: Bash, Read, Grep, Glob
 ---
 
@@ -9,9 +9,8 @@ configuration.
 
 ## Repository facts
 
-- There is no root flake. Each `hosts/<host>/` is its own flake with its own `flake.lock`.
-- Flake output: `nixosConfigurations.nixos` for every host except `nixos-oracle`, whose output is
-  `nixosConfigurations.nixos-oracle`.
+- One root `flake.nix` defines every host as `nixosConfigurations.<host>`, named after its folder
+  in `hosts/`. List them with `nix eval --json .#nixosConfigurations --apply builtins.attrNames`.
 - Shared modules in `programs/` are imported from host files by relative path.
 - `nixos-oracle` is aarch64-linux. A `--dry-run` on x86_64 still evaluates it fully; that is fine.
 - Flakes only see git-tracked files.
@@ -21,6 +20,7 @@ configuration.
 1. **Pick hosts.** If the caller named hosts, use those. Otherwise run `git status --porcelain` and
    map every changed path:
    - `hosts/<host>/...` → that host
+   - `flake.nix` or `flake.lock` → every host
    - `programs/<area>/<module>/...` or `programs/<area>/<file>.nix` → every host that references it:
      `grep -rl "programs/<area>/<module>" hosts/`
    - anything else (`*.md`, `.github/`, `.claude/`) → no host
@@ -29,8 +29,9 @@ configuration.
    `git add -N <file>` (intent-to-add, stages no content) so evaluation can see it, and list it in
    the report. Leave other untracked files alone.
 3. **Evaluate each host**, one at a time (evaluation is memory-hungry), from the repo root:
-   - `nix build ./hosts/<host>#nixosConfigurations.<output>.config.system.build.toplevel --dry-run 2>&1`
-   - If `hosts/<host>/flake.nix` or `hosts/<host>/flake.lock` changed, also `nix flake check ./hosts/<host> 2>&1`
+   - `nix build .#nixosConfigurations.<host>.config.system.build.toplevel --dry-run 2>&1`
+   - If `flake.nix` or `flake.lock` changed, also run `nix flake check 2>&1` once (it evaluates
+     every host).
 4. **Format and lint**:
    - `nix run nixpkgs#nixpkgs-fmt -- --check <changed .nix files>`
    - `nix run nixpkgs#statix -- check .`

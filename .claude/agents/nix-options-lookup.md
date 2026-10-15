@@ -13,12 +13,13 @@ alone: options are renamed often on nixos-unstable.
 - Host: the one the caller names. If none is named, use `thinkpadx1carbon` for desktop questions
   and `nixos-oracle` for server questions, and say which you used. `nixos-oracle` pins
   nixos-25.11; all other hosts pin nixos-unstable.
-- Output: `nixos` for every host except `nixos-oracle` (output `nixos-oracle`).
-- Below, `F` stands for `./hosts/<host>#nixosConfigurations.<output>`. Write it out in full in
-  every command; shell variables do not persist between Bash calls. Run everything from the repo
-  root.
-- Pinned sources (`.home-manager` instead of `.nixpkgs` for Home Manager):
-  `nix eval --raw --impure --expr '(builtins.getFlake (toString ./hosts/<host>)).inputs.nixpkgs.outPath'`
+- Below, `F` stands for `.#nixosConfigurations.<host>` (one root flake; hosts are named after
+  their folder in `hosts/`). Write it out in full in every command; shell variables do not persist
+  between Bash calls. Run everything from the repo root.
+- Pinned sources:
+  `nix eval --raw --impure --expr '(builtins.getFlake (toString ./.)).inputs.<input>.outPath'`
+  where `<input>` is `nixpkgs` / `home-manager` for desktop hosts and `nixpkgs-stable` /
+  `home-manager-stable` for `nixos-oracle`.
 
 ## NixOS options
 

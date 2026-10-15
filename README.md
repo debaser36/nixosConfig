@@ -11,7 +11,7 @@ Modular NixOS setup split into multiple host configurations and reusable program
 
 This repository manages multiple NixOS machines with a mix of system-level and user-level (Home Manager) configuration.
 
-Each host is currently self-contained with its own `flake.nix`, allowing independent builds per machine while sharing common program modules.
+A single `flake.nix` at the repository root defines every host as `nixosConfigurations.<host>`, named after its folder in `hosts/`. All desktop hosts share one pinned set of inputs on nixos-unstable; `nixos-oracle` uses its own `-stable` inputs on nixos-25.11.
 
 ---
 
@@ -19,6 +19,8 @@ Each host is currently self-contained with its own `flake.nix`, allowing indepen
 
 ```text
 .
+├── flake.nix                  # Defines all hosts
+├── flake.lock                 # Pinned inputs for all hosts
 ├── hosts/                     # Machine-specific NixOS configurations
 │   ├── nixos-asus-laptop      # Gaming laptop setup
 │   ├── nixos-home             # Home machine setup
@@ -31,4 +33,22 @@ Each host is currently self-contained with its own `flake.nix`, allowing indepen
 │   ├── system                 # System-wide NixOS modules
 │   └── tools                  # Utility scripts / helpers
 
+```
+
+---
+
+## Usage
+
+```sh
+# Apply a host's configuration (run from the repository root)
+sudo nixos-rebuild switch --flake .#thinkpadx1carbon
+
+# On nixos-oracle the hostname matches, so this is enough
+sudo nixos-rebuild switch --flake .
+
+# Update the desktop hosts' inputs
+nix flake update nixpkgs home-manager nur nix-vscode-extension
+
+# Update the server's inputs
+nix flake update nixpkgs-stable home-manager-stable nur-stable vscode-server compose2nix
 ```
