@@ -9,7 +9,7 @@ let
   inputConfig = import ../hardware/swayInputSettings.nix {
     initial_output = monitors.center_monitor.name;
   };
-  extraConfig = import ./swayExtraConfig.nix;
+  extraConfig = import ../../../programs/desktop/nico/swayExtraConfig.nix;
   startupConfig = import ../../../programs/desktop/nico/swayStartup.nix;
   #/sway
 

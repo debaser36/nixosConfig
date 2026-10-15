@@ -1,15 +1,19 @@
-{ pkgs, nix-vscode-extension, ... }:
-
+_:
 {
   imports = [
     ../hardware/hardware-configuration.nix
     ../../../programs/desktop/system/environment.etc.nix
-    ./systemPackages.nix
+    ../../../programs/desktop/system/systemPackages.nix
     ../../../programs/system/npm.nix
+    ./services.nix
+    ../../../programs/desktop/system/services.nix
     ../../../programs/desktop/system/audio.nix
     ../../../programs/desktop/system/sddm.nix
     ../../../programs/desktop/system/networking.nix
+    ../../../programs/desktop/system/nix_settings.nix
+    ../../../programs/desktop/system/users.nix
     ../../../programs/desktop/system/environment.variables.nix
+    ../../../programs/desktop/system/fonts.nix
     ../../../programs/desktop/system/security.nix
   ];
 
@@ -20,54 +24,16 @@
     timeout = 2;
   };
 
-  nixpkgs = {
-    overlays = [
-      nix-vscode-extension.overlays.default
-    ];
-    config.allowUnfree = true;
-  };
-
-  time.timeZone = "Europe/Berlin";
-  i18n.defaultLocale = "de_DE.UTF-8";
-
-  nix = {
-    package = pkgs.nixVersions.latest;
-    extraOptions = "experimental-features = nix-command flakes no-url-literals";
-  };
-
-  fonts.packages = [ pkgs.fira-code ];
-
-  #virtualisation.virtualbox.guest.enable = true;
-  console.keyMap = "de";
-
-  users = {
-    defaultUserShell = pkgs.fish;
-    users.nico = {
-      isNormalUser = true;
-      description = "Default user for personal use of this system!";
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "video"
-      ];
-      home = "/home/nico";
-      shell = pkgs.fish;
-    };
-  };
-
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
 
-  services = {
-    dbus.enable = true;
-    xserver = {
-      wacom.enable = true;
-      videoDrivers = [ "modesetting" ];
-    };
-    wg-netmanager.enable = true;
-  };
+  time.timeZone = "Europe/Berlin";
+  i18n.defaultLocale = "de_DE.UTF-8";
+  console.keyMap = "de";
+
+  #virtualisation.virtualbox.guest.enable = true;
 
   #DONT CHANGE THIS LINE
   system.stateVersion = "24.11"; # Did you read the comment?

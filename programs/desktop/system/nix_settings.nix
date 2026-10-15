@@ -3,9 +3,6 @@
 , ...
 }:
 {
-  time.timeZone = "Pacific/Auckland";
-  i18n.defaultLocale = "en_US.UTF-8";
-  console.keyMap = "us";
   nix = {
     package = pkgs.nixVersions.latest;
     extraOptions = ''

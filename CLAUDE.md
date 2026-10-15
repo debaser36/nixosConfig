@@ -30,9 +30,10 @@ mirroring a host folder). Hosts import the shared modules they use, at fixed pos
 - Changing a file in `programs/desktop/` changes every host that imports it
   (`grep -rl "programs/desktop/<file>" hosts/` lists them). Say which hosts are affected.
 - A setting wanted on only one host goes into that host's files, not the shared module.
-- Desktop hosts still differ in some host-local files (package lists, `services.nix`,
-  `nix_settings.nix`). When changing one of those, check whether siblings have the same setting
-  and ask whether to change them too. Never propagate silently.
+- The four desktops use the same shared base. On purpose they differ only in hardware, keyboard
+  layout, time zone and locale, laptop power management, package lists, and their own extras in
+  host-local files (e.g. `services.nix`, `systemPackages.nix` additions). When changing such a
+  host-local setting, ask whether the other desktops should get it too. Never propagate silently.
 - Moving settings between files can reorder list options (`environment.systemPackages`,
   `home.packages`), which changes the built system even with the same contents. Verify
   restructurings with `nix-equivalence-check`.

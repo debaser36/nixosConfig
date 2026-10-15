@@ -10,7 +10,7 @@ let
   inputConfig = import ../hardware/swayInputSettings.nix {
     initial_output = monitors.center_monitor.name;
   };
-  extraConfig = import ./swayExtraConfig.nix;
+  extraConfig = import ../../../programs/desktop/nico/swayExtraConfig.nix + import ./swayExtraConfig.nix;
   startupConfig = import ./swayStartup.nix;
 
   packageList = import ./packageList.nix { inherit pkgs; };
@@ -42,9 +42,6 @@ in
       inherit startupConfig;
       inherit pkgs;
     })
-
-    # ssh
-    ../../../programs/desktop/nico/ssh.home.nix
 
     # Discord
     ../../../programs/homeManager/discord/default.nix

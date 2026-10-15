@@ -21,8 +21,6 @@ let
   };
 in
 {
-  services.udiskie.enable = true;
-  xdg.enable = true;
   home = {
     packages = packageList;
 
@@ -45,11 +43,7 @@ in
       inherit pkgs;
     })
 
-    # swayosd
-    ../../../programs/homeManager/swayosd/default.nix
-
-    # ssh
-    ../../../programs/desktop/nico/ssh.home.nix
+    # ssh: GitHub over port 443, on top of the shared ssh config
     ./ssh.home.nix
 
     # settings and programs shared by all desktop hosts

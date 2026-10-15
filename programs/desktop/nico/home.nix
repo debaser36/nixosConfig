@@ -18,6 +18,8 @@ _: {
   };
 
   imports = [
+    ../../homeManager/swayosd/default.nix
+    ./ssh.home.nix
     ../../homeManager/fish/default.nix
     ../../homeManager/neovim/default.nix
     ../../homeManager/git/default.nix
@@ -31,5 +33,7 @@ _: {
     ../../homeManager/thunderbird/default.nix
   ];
 
+  services.udiskie.enable = true;
+  xdg.enable = true;
   programs.home-manager.enable = true;
 }

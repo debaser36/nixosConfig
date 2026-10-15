@@ -1,27 +1,10 @@
-{ pkgs, custom-sddm-astronaut, ... }:
+{ pkgs, ... }:
 {
-  #packages needed for flakes to work
-  environment.systemPackages = with pkgs; [
-    custom-sddm-astronaut
-    kdePackages.qtbase
-    kdePackages.qtmultimedia
-    kdePackages.qttools
-    kdePackages.qtvirtualkeyboard
-    kdePackages.qtsvg
-    git
-    vim
-    wget
-    wlroots
-    xrandr
-    procps
-  ];
-
-  # sway related stuff
-  programs.sway.enable = true;
-  programs.fish.enable = true;
-
   services = {
-    xserver.enable = true;
+    xserver = {
+      wacom.enable = true;
+      videoDrivers = [ "modesetting" ];
+    };
     postgresql = {
       enable = true;
       ensureDatabases = [ "pb_app" ];

@@ -21,8 +21,6 @@ let
   };
 in
 {
-  services.udiskie.enable = true;
-  xdg.enable = true;
   home = {
     packages = packageList;
 
@@ -45,11 +43,6 @@ in
       inherit pkgs;
     })
 
-    # swayosd
-    ../../../programs/homeManager/swayosd/default.nix
-
-    # ssh
-    ../../../programs/desktop/nico/ssh.home.nix
 
     # settings and programs shared by all desktop hosts
     ../../../programs/desktop/nico/home.nix
