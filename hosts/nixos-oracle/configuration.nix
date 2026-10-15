@@ -88,6 +88,11 @@ in
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
+    # 2222 for networks that block outgoing port 22 (it must also be allowed in the Oracle Cloud security list)
+    ports = [
+      22
+      2222
+    ];
     settings = {
       PermitRootLogin = "no";
       PasswordAuthentication = false;
@@ -102,6 +107,7 @@ in
     22
     80
     443
+    2222
     5432
   ];
 

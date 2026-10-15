@@ -43,7 +43,7 @@ in
       inherit pkgs;
     })
 
-    # ssh: GitHub over port 443, on top of the shared ssh config
+    # ssh: GitHub over port 443 and the server over port 2222, on top of the shared ssh config
     ./ssh.home.nix
 
     # settings and programs shared by all desktop hosts
