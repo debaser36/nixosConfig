@@ -4,6 +4,7 @@ with pkgs;
   # Video Editing
   # openshot-qt
   # shotcut
+  claude-code
 
   glib
 
