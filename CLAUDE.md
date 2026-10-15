@@ -15,7 +15,9 @@ NixOS + Home Manager configuration for five machines. One root `flake.nix` defin
 | `nixos-oracle`                   | Server for unhalteproblem.de, aarch64    | server set (nixos-25.11)        |
 
 - Desktop inputs: `nixpkgs`, `home-manager`, `nur`, `nix-vscode-extension`.
-- Server inputs: `nixpkgs-stable`, `home-manager-stable`, `nur-stable`, `vscode-server`, `compose2nix`.
+- Server inputs: `nixpkgs-stable`, `home-manager-stable`, `nur-stable`, `vscode-server`, `compose2nix`,
+  plus `unhalteproblem-website` (the website, built with its own pinned nixos-unstable; nginx
+  serves its `packages.<system>.default` straight from the Nix store).
 - The two sets never share an input, so updating one set never changes the other hosts.
   Shared modules in `programs/` still affect both (e.g. the server imports the Firefox module).
 
@@ -48,6 +50,9 @@ Run from the repo root.
 - Lint: `nix run nixpkgs#statix -- check .` (`statix.toml` skips generated `hardware-configuration.nix` files)
 - Update the desktop inputs: `nix flake update nixpkgs home-manager nur nix-vscode-extension`
 - Update the server inputs: `nix flake update nixpkgs-stable home-manager-stable nur-stable vscode-server compose2nix`
+- Deploy the website's latest `main`: `nix flake update unhalteproblem-website`, then rebuild
+  `nixos-oracle`. The build lives in the website repo's `flake.nix`; its `pnpmDeps` hash is
+  updated there whenever its `pnpm-lock.yaml` changes.
 - The user applies a host with `sudo nixos-rebuild switch --flake .#<host>`
 
 Flakes only see git-tracked files. Run `git add -N <file>` on new files before evaluating, or

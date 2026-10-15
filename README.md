@@ -62,4 +62,7 @@ nix flake update nixpkgs home-manager nur nix-vscode-extension
 
 # Update the server's inputs
 nix flake update nixpkgs-stable home-manager-stable nur-stable vscode-server compose2nix
+
+# Deploy the latest unhalteproblem.de website (then rebuild nixos-oracle)
+nix flake update unhalteproblem-website
 ```

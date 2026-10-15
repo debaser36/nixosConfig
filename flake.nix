@@ -28,6 +28,9 @@
       url = "github:aksiksi/compose2nix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    # The website builds with its own pinned nixos-unstable (Node.js 26), so it shares no input
+    # with the desktops. Deploy a new version with `nix flake update unhalteproblem-website`.
+    unhalteproblem-website.url = "github:debaser36/unhalteproblem.de";
   };
 
   outputs =
@@ -40,6 +43,7 @@
     , nur-stable
     , vscode-server
     , compose2nix
+    , unhalteproblem-website
     , ...
     }:
     let
@@ -129,11 +133,8 @@
           modules = [
             vscode-server.nixosModules.default
             { services.vscode-server.enable = true; }
-            {
-              environment.etc."website-build.nix".source = ./hosts/nixos-oracle/http_https/website-build.nix;
-            }
             ./hosts/nixos-oracle/configuration.nix
-            { _module.args.compose2nix = compose2nix; }
+            { _module.args = { inherit compose2nix unhalteproblem-website; }; }
             home-manager-stable.nixosModules.home-manager
             {
               home-manager = {

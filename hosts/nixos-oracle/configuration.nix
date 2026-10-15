@@ -11,7 +11,6 @@ in
     ./http_https/acme.nix
     ./http_https/nginx.nix
     ./http_https/postgres.nix
-    ./http_https/website-activation.nix
   ];
 
   boot = {
@@ -73,8 +72,6 @@ in
     neovim
     wget
     nginx
-    nodejs
-    pnpm
   ];
 
   nix = {

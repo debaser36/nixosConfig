@@ -15,7 +15,8 @@ collection.
 - Desktop inputs (`nixpkgs`, `home-manager`, `nur`, `nix-vscode-extension`) feed
   `thinkpadx1carbon`, `nixos-asus-laptop`, `nixos-home` and `nixos-work`.
 - Server inputs (`nixpkgs-stable`, `home-manager-stable`, `nur-stable`, `vscode-server`,
-  `compose2nix`) feed `nixos-oracle` (aarch64-linux).
+  `compose2nix`, `unhalteproblem-website`) feed `nixos-oracle` (aarch64-linux).
+  `unhalteproblem-website` brings its own nixos-unstable, which builds only the website.
 - `$BASE` below stands for the baseline commit SHA from step 2. Write it out in full in every
   command; shell variables do not persist between Bash calls. Run everything from the repo root.
 
