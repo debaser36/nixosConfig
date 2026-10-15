@@ -22,21 +22,7 @@ let
 in
 {
   home = {
-    username = "nico";
-    homeDirectory = "/home/nico";
-    sessionPath = [
-      "$HOME/bin"
-      "$HOME/.pnpm-global"
-      "$HOME/.npm-global/bin"
-      "$HOME/.local/bin"
-      "$HOME/go/bin"
-    ];
     packages = packageList;
-    sessionVariables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-      PNPM_HOME = "$HOME/.pnpm-global";
-    };
 
     # ## DONT CHANGE THIS LINE!
     stateVersion = "25.05";
@@ -58,7 +44,7 @@ in
     })
 
     # ssh
-    ./ssh.home.nix
+    ../../../programs/desktop/nico/ssh.home.nix
 
     # Discord
     ../../../programs/homeManager/discord/default.nix
@@ -66,38 +52,8 @@ in
     # Go
     ../../../programs/homeManager/go/default.nix
 
-    # fish
-    ../../../programs/homeManager/fish/default.nix
-
-    # nvim
-    ../../../programs/homeManager/neovim/default.nix
-
-    # git
-    ../../../programs/homeManager/git/default.nix
-
-    # vscode
-    ../../../programs/homeManager/vscode/default.nix
-
-    # bash
-    ../../../programs/homeManager/bash/default.nix
-
-    # firefox
-    ../../../programs/homeManager/firefox/default.nix
-
-    # kitty
-    ../../../programs/homeManager/kitty/default.nix
-
-    # waybar
-    ../../../programs/homeManager/waybar/default.nix
-
-    # wofi
-    ../../../programs/homeManager/wofi/default.nix
-
-    # direnv
-    ../../../programs/homeManager/direnv/default.nix
-
-    # thunderbird
-    ../../../programs/homeManager/thunderbird/default.nix
+    # settings and programs shared by all desktop hosts
+    ../../../programs/desktop/nico/home.nix
 
     # texlive
     ../../../programs/homeManager/texlive/default.nix
@@ -108,6 +64,4 @@ in
     # texlive
     ../../../programs/homeManager/texlive/default.nix
   ];
-
-  programs.home-manager.enable = true;
 }

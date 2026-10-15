@@ -1,31 +1,7 @@
-{ lib, ... }:
-{
-  programs.ssh = {
-    enable = true;
-    enableDefaultConfig = false;
-    settings = {
-      "unhalteproblem.de" = {
-        addKeysToAgent = "yes";
-        hostname = "unhalteproblem.de";
-        identityFile = "/home/nico/keys_and_secrets/private/ssh/unhalteproblem.key";
-        user = "nico";
-      };
-      "github.com" = {
-        hostname = "ssh.github.com";
-        user = "git";
-        port = 443;
-      };
-    };
-  };
-  home.file.".ssh/config".force = true;
-  home.activation = {
-    fixSSHPermissions = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-      run install -d -m 0700 "$HOME/.ssh"
-      if [ -L "$HOME/.ssh/config" ]; then
-        src="$(readlink -f "$HOME/.ssh/config")"
-        run rm -f "$HOME/.ssh/config"
-        run install -m 0600 "$src" "$HOME/.ssh/config"
-      fi
-    '';
+_: {
+  programs.ssh.settings."github.com" = {
+    hostname = "ssh.github.com";
+    user = "git";
+    port = 443;
   };
 }

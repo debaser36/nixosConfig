@@ -1,24 +1,21 @@
-{ pkgs, nix-vscode-extension, ... }:
-let
-  custom-sddm-astronaut = pkgs.sddm-astronaut.override {
-    embeddedTheme = "pixel_sakura";
-  };
-in
+{ nix-vscode-extension, ... }:
 {
   _module.args = {
-    inherit custom-sddm-astronaut;
     inherit nix-vscode-extension;
   };
   imports = [
     ../hardware/hardware-configuration.nix
-    ./environment.etc.nix
-    ./systemPackages.nix
+    ../../../programs/desktop/system/environment.etc.nix
+    ../../../programs/desktop/system/systemPackages.nix
     ./services.nix
-    ./networking.nix
-    ./nix_settings.nix
-    ./users.nix
-    ./environment.variables.nix
-    ./fonts.nix
+    ../../../programs/desktop/system/services.nix
+    ../../../programs/desktop/system/audio.nix
+    ../../../programs/desktop/system/sddm.nix
+    ../../../programs/desktop/system/networking.nix
+    ../../../programs/desktop/system/nix_settings.nix
+    ../../../programs/desktop/system/users.nix
+    ../../../programs/desktop/system/environment.variables.nix
+    ../../../programs/desktop/system/fonts.nix
   ];
 
   #DONT CHANGE THIS LINE

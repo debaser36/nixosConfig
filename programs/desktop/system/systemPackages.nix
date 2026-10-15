@@ -2,10 +2,10 @@
 {
 
   imports = [
-    ../../../programs/system/fish.nix
-    ../../../programs/system/sway.nix
-    ../../../programs/system/steam.nix
-    ../../../programs/system/gnupg.nix
+    ../../system/fish.nix
+    ../../system/sway.nix
+    ../../system/steam.nix
+    ../../system/gnupg.nix
   ];
 
   #packages needed for flakes to work

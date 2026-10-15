@@ -9,8 +9,8 @@ let
   inputConfig = import ../hardware/swayInputSettings.nix {
     initial_output = monitors.center_monitor.name;
   };
-  extraConfig = import ./swayExtraConfig.nix;
-  startupConfig = import ./swayStartup.nix;
+  extraConfig = import ../../../programs/desktop/nico/swayExtraConfig.nix;
+  startupConfig = import ../../../programs/desktop/nico/swayStartup.nix;
   extraOptions = [ "--unsupported-gpu" ];
 
   packageList = import ./packageList.nix { inherit pkgs; };
@@ -24,20 +24,6 @@ in
   services.udiskie.enable = true;
   xdg.enable = true;
   home = {
-    username = "nico";
-    homeDirectory = "/home/nico";
-    sessionPath = [
-      "$HOME/bin"
-      "$HOME/.pnpm-global"
-      "$HOME/.npm-global/bin"
-      "$HOME/.local/bin"
-      "$HOME/go/bin"
-    ];
-    sessionVariables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-      PNPM_HOME = "$HOME/.pnpm-global";
-    };
     packages = packageList;
 
     # ## DONT CHANGE THIS LINE!
@@ -63,40 +49,10 @@ in
     ../../../programs/homeManager/swayosd/default.nix
 
     # ssh
+    ../../../programs/desktop/nico/ssh.home.nix
     ./ssh.home.nix
 
-    # fish
-    ../../../programs/homeManager/fish/default.nix
-    # nvim
-    ../../../programs/homeManager/neovim/default.nix
-
-    # git
-    ../../../programs/homeManager/git/default.nix
-
-    # vscode
-    ../../../programs/homeManager/vscode/default.nix
-
-    # bash
-    ../../../programs/homeManager/bash/default.nix
-
-    # firefox
-    ../../../programs/homeManager/firefox/default.nix
-
-    # kitty
-    ../../../programs/homeManager/kitty/default.nix
-
-    # waybar
-    ../../../programs/homeManager/waybar/default.nix
-
-    # wofi
-    ../../../programs/homeManager/wofi/default.nix
-
-    # direnv
-    ../../../programs/homeManager/direnv/default.nix
-
-    # thunderbird
-    ../../../programs/homeManager/thunderbird/default.nix
+    # settings and programs shared by all desktop hosts
+    ../../../programs/desktop/nico/home.nix
   ];
-
-  programs.home-manager.enable = true;
 }

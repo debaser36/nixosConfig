@@ -21,8 +21,12 @@ configuration.
    map every changed path:
    - `hosts/<host>/...` → that host
    - `flake.nix` or `flake.lock` → every host
-   - `programs/<area>/<module>/...` or `programs/<area>/<file>.nix` → every host that references it:
-     `grep -rl "programs/<area>/<module>" hosts/`
+   - `programs/<area>/<module>/...` or `programs/<area>/<file>.nix` → every host that imports it,
+     directly or through another shared module (e.g. `programs/desktop/nico/home.nix` imports the
+     common Home Manager programs). Search without the `programs/` prefix, because shared modules
+     import each other by shorter relative paths: `grep -rl "<area>/<module>" hosts/ programs/`.
+     For every match under `programs/`, repeat the search for that file, until only files under
+     `hosts/` remain. If in doubt, check every host.
    - anything else (`*.md`, `.github/`, `.claude/`) → no host
    If no host is affected, say so and stop after step 4.
 2. **Untracked files.** For every untracked (`??`) `.nix` file that a host imports, run

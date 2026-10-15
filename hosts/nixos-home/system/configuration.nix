@@ -3,9 +3,14 @@
 {
   imports = [
     ../hardware/hardware-configuration.nix
-    ./environment.etc.nix
+    ../../../programs/desktop/system/environment.etc.nix
     ./systemPackages.nix
     ../../../programs/system/npm.nix
+    ../../../programs/desktop/system/audio.nix
+    ../../../programs/desktop/system/sddm.nix
+    ../../../programs/desktop/system/networking.nix
+    ../../../programs/desktop/system/environment.variables.nix
+    ../../../programs/desktop/system/security.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -13,16 +18,6 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
     timeout = 2;
-  };
-
-  networking = {
-    hostName = "nixos";
-    networkmanager.enable = true;
-    firewall = {
-      checkReversePath = false;
-      allowedUDPPorts = [ 51820 ];
-    };
-    wireguard.enable = true;
   };
 
   nixpkgs = {
@@ -42,11 +37,6 @@
 
   fonts.packages = [ pkgs.fira-code ];
 
-  environment.variables = {
-    WLR_RENDERER_ALLOW_SOFTWARE = "1";
-    EDITOR = "nvim";
-  };
-
   #virtualisation.virtualbox.guest.enable = true;
   console.keyMap = "de";
 
@@ -65,11 +55,6 @@
     };
   };
 
-  security = {
-    polkit.enable = true;
-    rtkit.enable = true;
-  };
-
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -77,20 +62,12 @@
 
   services = {
     dbus.enable = true;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
     xserver = {
       wacom.enable = true;
       videoDrivers = [ "modesetting" ];
     };
     wg-netmanager.enable = true;
   };
-
-  systemd.services.dlm.wantedBy = [ "multi-user.target" ];
 
   #DONT CHANGE THIS LINE
   system.stateVersion = "24.11"; # Did you read the comment?

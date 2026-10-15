@@ -23,9 +23,19 @@ All desktop hosts have the hostname `nixos`, so `hostname` does not identify the
 The ThinkPad reports `20KHS2LF00` in `/sys/class/dmi/id/product_name`; otherwise ask which host
 you are on.
 
-The desktop hosts are near-copies of each other (`system/`, `hardware/`, `nico/`), and many files
-are byte-identical between hosts. When changing a file in one host, check whether siblings have
-the same file and ask whether to propagate the change. Never propagate silently.
+Configuration shared by desktop hosts lives in `programs/desktop/` (`system/`, `nico/`, `assets/`,
+mirroring a host folder). Hosts import the shared modules they use, at fixed positions in their
+`imports` lists; `hosts/<host>/` keeps hardware and real differences only.
+
+- Changing a file in `programs/desktop/` changes every host that imports it
+  (`grep -rl "programs/desktop/<file>" hosts/` lists them). Say which hosts are affected.
+- A setting wanted on only one host goes into that host's files, not the shared module.
+- Desktop hosts still differ in some host-local files (package lists, `services.nix`,
+  `nix_settings.nix`). When changing one of those, check whether siblings have the same setting
+  and ask whether to change them too. Never propagate silently.
+- Moving settings between files can reorder list options (`environment.systemPackages`,
+  `home.packages`), which changes the built system even with the same contents. Verify
+  restructurings with `nix-equivalence-check`.
 
 ## Commands
 
