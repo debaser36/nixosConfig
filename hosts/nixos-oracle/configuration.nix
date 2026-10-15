@@ -1,7 +1,12 @@
-{ pkgs, compose2nix, ... }:
+{ pkgs, compose2nix, nixpkgs-unstable, ... }:
 
 let
   vars = import ./vars.nix;
+
+  pkgs-unstable = import nixpkgs-unstable {
+    inherit (pkgs.stdenv.hostPlatform) system;
+    config.allowUnfree = true;
+  };
 
 in
 {
@@ -62,6 +67,11 @@ in
   ];
 
   nixpkgs.config.allowUnfree = true;
+
+  # Pull claude-code from unstable: stable's version lags too far behind upstream.
+  nixpkgs.overlays = [
+    (_: _: { inherit (pkgs-unstable) claude-code; })
+  ];
 
   environment.systemPackages = with pkgs; [
     compose2nix.packages.${vars.architeture}.default

@@ -28,6 +28,10 @@
       url = "github:aksiksi/compose2nix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    # Pins unstable only for nixos-oracle, used by an overlay to pull individual
+    # packages (currently just claude-code) that need to be newer than stable.
+    # Separate from the desktops' `nixpkgs` so the two input sets stay independent.
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # The website builds with its own pinned nixos-unstable (Node.js 26), so it shares no input
     # with the desktops. Deploy a new version with `nix flake update unhalteproblem-website`.
     unhalteproblem-website.url = "github:debaser36/unhalteproblem.de";
@@ -43,6 +47,7 @@
     , nur-stable
     , vscode-server
     , compose2nix
+    , nixpkgs-unstable
     , unhalteproblem-website
     , ...
     }:
@@ -134,7 +139,7 @@
             vscode-server.nixosModules.default
             { services.vscode-server.enable = true; }
             ./hosts/nixos-oracle/configuration.nix
-            { _module.args = { inherit compose2nix unhalteproblem-website; }; }
+            { _module.args = { inherit compose2nix nixpkgs-unstable unhalteproblem-website; }; }
             home-manager-stable.nixosModules.home-manager
             {
               home-manager = {
