@@ -13,7 +13,7 @@ collection.
 - One root `flake.nix` defines every host as `nixosConfigurations.<host>`, named after its folder
   in `hosts/`.
 - Desktop inputs (`nixpkgs`, `home-manager`, `nur`, `nix-vscode-extension`) feed
-  `thinkpadx1carbon`, `nixos-asus-laptop`, `nixos-home` and `nixos-work`.
+  `thinkpadx1carbon`, `nixos-asus-laptop` and `nixos-home`.
 - Server inputs (`nixpkgs-stable`, `home-manager-stable`, `nur-stable`, `vscode-server`,
   `nixpkgs-unstable`, `unhalteproblem-website`) feed `nixos-oracle` (aarch64-linux).
   `unhalteproblem-website` brings its own nixos-unstable, which builds only the website.

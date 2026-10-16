@@ -27,7 +27,6 @@ Configuration that several desktop hosts share lives once in `programs/desktop/`
 │   ├── nixos-asus-laptop      # Gaming laptop setup
 │   ├── nixos-home             # Home machine setup
 │   ├── nixos-oracle           # Server / VPS configuration
-│   ├── nixos-work             # Work machine setup
 │   ├── thinkpadx1carbon       # Lenovo ThinkPad X1 Carbon (Gen 6) laptop
 │
 ├── programs/                  # Shared configuration modules

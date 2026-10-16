@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-NixOS + Home Manager configuration for five machines. One root `flake.nix` defines every host as
+NixOS + Home Manager configuration for four machines. One root `flake.nix` defines every host as
 `nixosConfigurations.<host>`, named after its folder in `hosts/`. Shared modules live in
 `programs/` and are imported by relative path (`../../../programs/...`).
 
@@ -11,7 +11,6 @@ NixOS + Home Manager configuration for five machines. One root `flake.nix` defin
 | `thinkpadx1carbon`               | Lenovo ThinkPad X1 Carbon Gen 6 (laptop) | desktop set (nixos-unstable)    |
 | `nixos-asus-laptop`              | Asus TUF Gaming 17 laptop                | desktop set (nixos-unstable)    |
 | `nixos-home`                     | Home machine                             | desktop set (nixos-unstable)    |
-| `nixos-work`                     | Work machine                             | desktop set (nixos-unstable)    |
 | `nixos-oracle`                   | Server for unhalteproblem.de, aarch64    | server set (nixos-25.11)        |
 
 - Desktop inputs: `nixpkgs`, `home-manager`, `nur`, `nix-vscode-extension`.
@@ -35,11 +34,11 @@ mirroring a host folder). Every desktop's `system/configuration.nix` imports
 optional shared modules (`bluetooth.nix` on the laptops) and its own files; `hosts/<host>/` keeps
 hardware and real differences only.
 
-- Changing a file in `programs/desktop/` changes every host that imports it: all four desktops for
+- Changing a file in `programs/desktop/` changes every host that imports it: all three desktops for
   files listed in `programs/desktop/system/default.nix` or `programs/desktop/nico/home.nix`, otherwise
   `grep -rl "<file>" hosts/ programs/desktop/` lists them. Say which hosts are affected.
 - A setting wanted on only one host goes into that host's files, not the shared module.
-- The four desktops use the same shared base. On purpose they differ only in hardware, keyboard
+- The three desktops use the same shared base. On purpose they differ only in hardware, keyboard
   layout, time zone and locale, laptop power management, package lists, and their own extras in
   host-local files (e.g. `services.nix`, `systemPackages.nix` additions). When changing such a
   host-local setting, ask whether the other desktops should get it too. Never propagate silently.

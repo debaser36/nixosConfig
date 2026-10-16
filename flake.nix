@@ -151,7 +151,6 @@
           homeManagerBackups = true;
         };
         nixos-home = mkDesktop { host = "nixos-home"; };
-        nixos-work = mkDesktop { host = "nixos-work"; };
 
         nixos-oracle = mkHost {
           host = "nixos-oracle";
