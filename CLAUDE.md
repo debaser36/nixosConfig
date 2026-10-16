@@ -74,6 +74,9 @@ configurations themselves.
 
 CI (`.github/workflows/check_nix.yaml`, on pushes and pull requests) runs `nix flake check`
 (including formatting and statix), plus a dry-build for every host it lists from the flake.
+`.github/workflows/update_flake_lock.yaml` opens a weekly pull request per input set
+(`update_flake_lock_desktop`, `update_flake_lock_server`) and runs the checks on it; review those
+with `flake-update-review` before merging. The website input is never updated automatically.
 
 Both the desktops (30 days) and the server (14 days) collect garbage automatically once a week.
 

@@ -14,12 +14,21 @@ on:
       - 'statix.toml'
       - '.github/workflows/check_nix.yaml'
   workflow_dispatch:
+  # Used by update_flake_lock.yaml: pull requests opened with GITHUB_TOKEN start no workflows themselves
+  workflow_call:
+    inputs:
+      ref:
+        description: Branch to check
+        type: string
+        required: true
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.ref }}
       - uses: cachix/install-nix-action@v31
       - uses: DeterminateSystems/magic-nix-cache-action@main
 
@@ -33,6 +42,8 @@ jobs:
       list: ${{ steps.list.outputs.list }}
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.ref }}
       - uses: cachix/install-nix-action@v31
 
       - name: List hosts from the flake
@@ -49,6 +60,8 @@ jobs:
         host: ${{ fromJSON(needs.hosts.outputs.list) }}
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.ref }}
       - uses: cachix/install-nix-action@v31
       - uses: DeterminateSystems/magic-nix-cache-action@main
 

@@ -73,3 +73,5 @@ nix flake check
 # Shell with nixpkgs-fmt, statix and nil
 nix develop
 ```
+
+A weekly GitHub Action opens one pull request for the desktop inputs and one for the server inputs, each checked by CI. It needs "Allow GitHub Actions to create and approve pull requests" enabled in the repository settings (Settings → Actions → General).

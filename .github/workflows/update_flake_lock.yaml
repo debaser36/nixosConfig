@@ -1,0 +1,58 @@
+# Weekly pull requests that update the flake inputs, one per input set, so the desktops and the
+# server can be upgraded independently. Review a PR (e.g. with the flake-update-review agent)
+# before merging. The website input is not touched; it is deployed by hand.
+name: Update flake.lock
+
+on:
+  schedule:
+    - cron: '0 4 * * 1' # Mondays 04:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-desktop:
+    runs-on: ubuntu-latest
+    outputs:
+      pr: ${{ steps.update.outputs.pull-request-number }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: cachix/install-nix-action@v31
+      - id: update
+        uses: DeterminateSystems/update-flake-lock@main
+        with:
+          inputs: nixpkgs home-manager nur nix-vscode-extension
+          branch: update_flake_lock_desktop
+          commit-msg: 'feat: upgraded flake'
+          pr-title: 'feat: upgraded flake (desktop inputs)'
+
+  update-server:
+    runs-on: ubuntu-latest
+    outputs:
+      pr: ${{ steps.update.outputs.pull-request-number }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: cachix/install-nix-action@v31
+      - id: update
+        uses: DeterminateSystems/update-flake-lock@main
+        with:
+          inputs: nixpkgs-stable home-manager-stable nur-stable vscode-server compose2nix nixpkgs-unstable
+          branch: update_flake_lock_server
+          commit-msg: 'feat: upgraded flake'
+          pr-title: 'feat: upgraded flake (server inputs)'
+
+  check-desktop:
+    needs: update-desktop
+    if: needs.update-desktop.outputs.pr != ''
+    uses: ./.github/workflows/check_nix.yaml
+    with:
+      ref: update_flake_lock_desktop
+
+  check-server:
+    needs: update-server
+    if: needs.update-server.outputs.pr != ''
+    uses: ./.github/workflows/check_nix.yaml
+    with:
+      ref: update_flake_lock_server
