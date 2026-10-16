@@ -111,6 +111,9 @@ in
     };
   };
 
+  # Bans addresses after repeated failed SSH logins (jail on ports 22 and 2222)
+  services.fail2ban.enable = true;
+
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     22
