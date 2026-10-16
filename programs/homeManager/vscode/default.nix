@@ -5,25 +5,21 @@
 let
   extensionSettings = import ./default.extensions.nix { inherit pkgs; };
 
-  # Import the raw CSS from the .nix file
-  customCss = import ./custom_css/pretty-ts-errors-hack.css.nix;
+  customCss = pkgs.writeText "pretty-ts-errors-hack.css" (import ./custom_css/pretty-ts-errors-hack.css.nix);
 
-  # Inject custom CSS into the built VSCode
-  patchedVSCode = pkgs.vscode-fhs.overrideAttrs (old: {
-    postInstall = ''
-      workbenchFile=$(find $out -name "workbench.html" | head -n 1)
-      if [ -n "$workbenchFile" ]; then
-        echo "Injecting custom CSS into $workbenchFile"
-        sed -i '/<\/html>/i <style>'"${customCss}"'</style>' "$workbenchFile"
-      fi
+  # Inject the custom CSS into VS Code's workbench, then wrap the patched build in the FHS
+  # environment. Patching vscode-fhs itself does nothing: it is only a wrapper with symlinks, and
+  # its buildCommand never runs postInstall. VS Code may report the installation as corrupt because
+  # the file checksum no longer matches.
+  patchedVSCode = (pkgs.vscode.overrideAttrs (old: {
+    postInstall = (old.postInstall or "") + ''
+      substituteInPlace "$out/lib/vscode/resources/app/out/vs/code/electron-browser/workbench/workbench.html" \
+        --replace-fail '</html>' "<style>$(cat ${customCss})</style></html>"
     '';
-  });
+  })).fhs;
 
 in
 {
-  # Declare your home file (makes the CSS available in user’s home directory)
-  # home.file."pretty-ts-errors-hacks.css" = homeCssImportFile;
-
   programs.vscode = {
     enable = true;
     package = patchedVSCode;
