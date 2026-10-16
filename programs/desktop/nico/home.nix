@@ -17,6 +17,7 @@ _: {
   };
 
   imports = [
+    ./packages.nix
     ./sway.nix
     ../../homeManager/swayosd/default.nix
     ./ssh.home.nix

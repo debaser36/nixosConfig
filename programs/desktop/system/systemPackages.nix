@@ -23,7 +23,6 @@
       vim
 
       wget
-      wlroots
       xrandr
       procps
 
