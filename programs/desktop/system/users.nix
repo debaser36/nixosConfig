@@ -10,7 +10,6 @@
         "wheel"
         "video"
         "storage"
-        "docker"
       ];
       home = "/home/nico";
     };
