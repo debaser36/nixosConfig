@@ -5,8 +5,6 @@
     ../../../programs/system/npm.nix
   ];
   environment.systemPackages = with pkgs; [
-    # gaming emulation
-    # lutris-unwrapped
     notion-app-enhanced
 
     # Security & Authentication

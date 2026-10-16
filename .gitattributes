@@ -1,1 +1,2 @@
+# Guard: a WireGuard config with private keys must only ever be committed encrypted (git-crypt).
 wireguardConfig.nix filter=git-crypt diff=git-crypt

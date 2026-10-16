@@ -33,8 +33,6 @@ _:
   i18n.defaultLocale = "de_DE.UTF-8";
   console.keyMap = "de";
 
-  #virtualisation.virtualbox.guest.enable = true;
-
   #DONT CHANGE THIS LINE
   system.stateVersion = "24.11"; # Did you read the comment?
 }

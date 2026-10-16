@@ -18,7 +18,6 @@
     xserver = {
       wacom.enable = true;
       videoDrivers = [ "modesetting" ];
-      #windowManager.notion.enable = true;
     };
   };
 }
