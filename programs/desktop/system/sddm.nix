@@ -5,8 +5,7 @@ let
   };
 in
 {
-  # the hosts' systemPackages also install the theme
-  _module.args = { inherit custom-sddm-astronaut; };
+  environment.systemPackages = [ custom-sddm-astronaut ];
 
   services.displayManager = {
     defaultSession = "sway";

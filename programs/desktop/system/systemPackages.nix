@@ -1,4 +1,4 @@
-{ pkgs, custom-sddm-astronaut, ... }:
+{ pkgs, ... }:
 {
 
   imports = [
@@ -8,12 +8,11 @@
     ../../system/gnupg.nix
   ];
 
-  #packages needed for flakes to work
   environment.systemPackages =
     with pkgs;
     with pkgs.kdePackages;
     [
-      custom-sddm-astronaut
+      # Qt libraries for the sddm theme (sddm.nix)
       qtbase
       qtmultimedia
       qttools
