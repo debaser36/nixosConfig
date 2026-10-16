@@ -1,8 +1,4 @@
-{ nix-vscode-extension, ... }:
-{
-  _module.args = {
-    inherit nix-vscode-extension;
-  };
+_: {
   imports = [
     ../hardware/hardware-configuration.nix
     ../../../programs/desktop/system/environment.etc.nix
