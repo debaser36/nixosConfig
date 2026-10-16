@@ -7,10 +7,7 @@
     stateVersion = "25.05";
   };
 
-  _module.args.user = {
-    username = "debaser36";
-    email = "n.burkholder@tu-berlin.de";
-  };
+  programs.git.settings.user.email = "n.burkholder@tu-berlin.de";
 
   my.sway.monitors = import ../hardware/monitors.nix;
   wayland.windowManager.sway = {

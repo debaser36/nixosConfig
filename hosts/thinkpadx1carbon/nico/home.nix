@@ -7,10 +7,7 @@
     stateVersion = "25.05";
   };
 
-  _module.args.user = {
-    username = "debaser36";
-    email = "nico.burkholder@web.de";
-  };
+  programs.git.settings.user.email = "nico.burkholder@web.de";
 
   my.sway.monitors = import ../hardware/monitors.nix;
   wayland.windowManager.sway.config.input."12994:102:2.4G_Wireless_Mouse" = {
