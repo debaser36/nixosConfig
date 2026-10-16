@@ -30,11 +30,14 @@ The ThinkPad reports `20KHS2LF00` in `/sys/class/dmi/id/product_name`; otherwise
 you are on.
 
 Configuration shared by desktop hosts lives in `programs/desktop/` (`system/`, `nico/`, `assets/`,
-mirroring a host folder). Hosts import the shared modules they use, at fixed positions in their
-`imports` lists; `hosts/<host>/` keeps hardware and real differences only.
+mirroring a host folder). Every desktop's `system/configuration.nix` imports
+`programs/desktop/system` (its `default.nix` lists the system modules all desktops share), then
+optional shared modules (`bluetooth.nix` on the laptops) and its own files; `hosts/<host>/` keeps
+hardware and real differences only.
 
-- Changing a file in `programs/desktop/` changes every host that imports it
-  (`grep -rl "programs/desktop/<file>" hosts/` lists them). Say which hosts are affected.
+- Changing a file in `programs/desktop/` changes every host that imports it: all four desktops for
+  files listed in `programs/desktop/system/default.nix` or `programs/desktop/nico/home.nix`, otherwise
+  `grep -rl "<file>" hosts/ programs/desktop/` lists them. Say which hosts are affected.
 - A setting wanted on only one host goes into that host's files, not the shared module.
 - The four desktops use the same shared base. On purpose they differ only in hardware, keyboard
   layout, time zone and locale, laptop power management, package lists, and their own extras in
