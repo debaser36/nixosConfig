@@ -14,5 +14,9 @@ with pkgs;
   android-tools
 
   exercism
+
+  # Secrets (sops-nix): sops edits secrets/*.yaml, age creates keys
+  sops
+  age
   discord
 ]

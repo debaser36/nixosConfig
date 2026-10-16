@@ -12,6 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-vscode-extension.url = "github:nix-community/nix-vscode-extensions";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # nixos-oracle stays on the stable release
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
@@ -24,6 +28,10 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     vscode-server.url = "github:nix-community/nixos-vscode-server";
+    sops-nix-stable = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
     # Pins unstable only for nixos-oracle, used by an overlay to pull individual
     # packages (currently just claude-code) that need to be newer than stable.
     # Separate from the desktops' `nixpkgs` so the two input sets stay independent.
@@ -39,10 +47,12 @@
     , home-manager
     , nur
     , nix-vscode-extension
+    , sops-nix
     , nixpkgs-stable
     , home-manager-stable
     , nur-stable
     , vscode-server
+    , sops-nix-stable
     , nixpkgs-unstable
     , unhalteproblem-website
     , ...
@@ -54,7 +64,8 @@
         }:
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit nix-vscode-extension; };
+          # sops-nix is imported only by the desktops that use secrets (currently thinkpadx1carbon)
+          specialArgs = { inherit nix-vscode-extension sops-nix; };
           modules = [
             ./hosts/${host}/system/configuration.nix
             home-manager.nixosModules.home-manager
@@ -84,11 +95,12 @@
         }:
         let
           inputSet = {
-            unstable = { inherit nixpkgs home-manager nur; };
+            unstable = { inherit nixpkgs home-manager nur sops-nix; };
             stable = {
               nixpkgs = nixpkgs-stable;
               home-manager = home-manager-stable;
               nur = nur-stable;
+              sops-nix = sops-nix-stable;
             };
           }.${channel};
           flakeModules = {
@@ -103,6 +115,7 @@
               }
             ];
             nur = [ inputSet.nur.modules.nixos.default ];
+            sops-nix = [ inputSet.sops-nix.nixosModules.sops ];
             nix-vscode-extension = [{ nixpkgs.overlays = [ nix-vscode-extension.overlays.default ]; }];
             vscode-server = [
               vscode-server.nixosModules.default
@@ -157,7 +170,7 @@
           system = "aarch64-linux";
           channel = "stable";
           user = "nico";
-          modules = [ "vscode-server" "home-manager" "nur" ];
+          modules = [ "vscode-server" "home-manager" "nur" "sops-nix" ];
           specialArgs = { inherit nixpkgs-unstable unhalteproblem-website; };
         };
 

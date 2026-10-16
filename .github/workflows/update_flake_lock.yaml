@@ -23,7 +23,7 @@ jobs:
       - id: update
         uses: DeterminateSystems/update-flake-lock@main
         with:
-          inputs: nixpkgs home-manager nur nix-vscode-extension
+          inputs: nixpkgs home-manager nur nix-vscode-extension sops-nix
           branch: update_flake_lock_desktop
           commit-msg: 'feat: upgraded flake'
           pr-title: 'feat: upgraded flake (desktop inputs)'
@@ -38,7 +38,7 @@ jobs:
       - id: update
         uses: DeterminateSystems/update-flake-lock@main
         with:
-          inputs: nixpkgs-stable home-manager-stable nur-stable vscode-server nixpkgs-unstable
+          inputs: nixpkgs-stable home-manager-stable nur-stable vscode-server sops-nix-stable nixpkgs-unstable
           branch: update_flake_lock_server
           commit-msg: 'feat: upgraded flake'
           pr-title: 'feat: upgraded flake (server inputs)'

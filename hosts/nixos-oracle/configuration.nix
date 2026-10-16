@@ -15,6 +15,7 @@ in
     ./hardware-configuration.nix
     ./http_https/acme.nix
     ./http_https/nginx.nix
+    ./sops.nix
   ];
 
   boot = {

@@ -4,6 +4,7 @@ _: {
     ../../../programs/desktop/system
     ../../../programs/desktop/system/bluetooth.nix
     ./services.nix
+    ./sops.nix
   ];
 
   time.timeZone = "Pacific/Auckland";

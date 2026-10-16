@@ -1,0 +1,16 @@
+# Which age keys each secrets file is encrypted for. After changing keys here, re-encrypt the
+# affected files with `sops updatekeys secrets/<file>.yaml`.
+keys:
+  # Edits every file. Private key: ~/.config/sops/age/keys.txt (backed up in KeePassXC)
+  - &admin age13fjffeqrq3w8ssppn9nx07dn8gq5yru6z85fxuhg2f2pdt9wnapq8j0n26
+  # Machine key in /var/lib/sops-nix/key.txt
+  - &thinkpadx1carbon age15snm4n385glw7alcxrr4vwnxhtfgpspr9kw3mkymcp6cm0anz30qtgxaew
+  # From the SSH host key: ssh-keyscan unhalteproblem.de | ssh-to-age
+  - &nixos-oracle age1xxxcmksmh2t5349jdr4x8f7t3q8eps9hzjywxg7zp4muuxgn4dqsf38e3v
+creation_rules:
+  - path_regex: ^secrets/thinkpadx1carbon\.yaml$
+    key_groups:
+      - age: [ *admin, *thinkpadx1carbon ]
+  - path_regex: ^secrets/nixos-oracle\.yaml$
+    key_groups:
+      - age: [ *admin, *nixos-oracle ]

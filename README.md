@@ -57,10 +57,10 @@ sudo nixos-rebuild switch --flake .#thinkpadx1carbon
 sudo nixos-rebuild switch --flake .
 
 # Update the desktop hosts' inputs
-nix flake update nixpkgs home-manager nur nix-vscode-extension
+nix flake update nixpkgs home-manager nur nix-vscode-extension sops-nix
 
 # Update the server's inputs
-nix flake update nixpkgs-stable home-manager-stable nur-stable vscode-server nixpkgs-unstable
+nix flake update nixpkgs-stable home-manager-stable nur-stable vscode-server sops-nix-stable nixpkgs-unstable
 
 # Deploy the latest unhalteproblem.de website (then rebuild nixos-oracle)
 nix flake update unhalteproblem-website
