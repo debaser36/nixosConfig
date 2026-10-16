@@ -9,7 +9,15 @@
       experimental-features = nix-command flakes 
       lint-url-literals = fatal
     '';
-    settings.download-buffer-size = 524288000;
+    settings = {
+      download-buffer-size = 524288000;
+      auto-optimise-store = true;
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
   };
   nixpkgs = {
     overlays = [
