@@ -28,7 +28,6 @@ in
     };
     initrd.systemd.enable = true;
   };
-  systemd.targets.multi-user.enable = true;
 
   networking = {
     hostName = vars.hostname;
@@ -81,7 +80,6 @@ in
     vim
     neovim
     wget
-    nginx
   ];
 
   nix = {
@@ -112,9 +110,6 @@ in
       PasswordAuthentication = false;
     };
   };
-
-  # Disable autologin.
-  services.getty.autologinUser = null;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
