@@ -65,6 +65,8 @@ configurations themselves.
 CI (`.github/workflows/check_nix.yaml`) runs format, statix and `nix flake check`, plus a
 dry-build for every host it lists from the flake.
 
+Both the desktops (30 days) and the server (14 days) collect garbage automatically once a week.
+
 New hosts are created with the interactive tool `programs/tools/nixos_manager/nixosmanager.fish`
 (it also rebuilds hosts and collects garbage). It writes `hosts/<name>/`, inserts a `mkHost` entry
 above the `# nixos_manager: …` marker line in `flake.nix` (keep that line) and adds the host to

@@ -86,12 +86,16 @@ in
 
   nix = {
     package = pkgs.nixVersions.latest;
-    extraOptions = ''
-      			experimental-features = nix-command flakes 
-      			trusted-users = nico root
-      			sandbox = false
-      			'';
-
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      trusted-users = [ "nico" "root" ];
+      auto-optimise-store = true;
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 14d";
+    };
   };
 
   environment.variables.EDITOR = "nvim";
