@@ -4,14 +4,14 @@ _: {
     settings = {
       mode = "run";
       width = "60%";
-      heigth = "80%";
+      height = "80%";
       prompt = "Search for executables...";
       allow-markup = true;
       insensitive = true;
       columns = 2;
-      gtK_dark = true;
+      gtk_dark = true;
 
-      dynmaic_lines = true;
+      dynamic_lines = true;
       single_click = true;
 
       key_up = "H";

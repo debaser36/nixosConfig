@@ -4,7 +4,7 @@ _: {
     settings = {
       MainBar = {
         layer = "top";
-        potition = "top";
+        position = "top";
         modules-left = [
           "sway/workspaces"
           "sway/mode"
