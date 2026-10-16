@@ -11,7 +11,7 @@ NixOS + Home Manager configuration for four machines. One root `flake.nix` defin
 | `thinkpadx1carbon`               | Lenovo ThinkPad X1 Carbon Gen 6 (laptop) | desktop set (nixos-unstable)    |
 | `nixos-asus-laptop`              | Asus TUF Gaming 17 laptop                | desktop set (nixos-unstable)    |
 | `nixos-home`                     | Home machine                             | desktop set (nixos-unstable)    |
-| `nixos-oracle`                   | Server for unhalteproblem.de, aarch64    | server set (nixos-25.11)        |
+| `nixos-oracle`                   | Server for unhalteproblem.de, aarch64    | server set (nixos-26.05)        |
 
 - Desktop inputs: `nixpkgs`, `home-manager`, `nur`, `nix-vscode-extension`, `sops-nix`.
 - Server inputs: `nixpkgs-stable`, `home-manager-stable`, `nur-stable`, `vscode-server`, `sops-nix-stable`,

@@ -11,7 +11,7 @@ Modular NixOS setup split into multiple host configurations and reusable program
 
 This repository manages multiple NixOS machines with a mix of system-level and user-level (Home Manager) configuration.
 
-A single `flake.nix` at the repository root defines every host as `nixosConfigurations.<host>`, named after its folder in `hosts/`. All desktop hosts share one pinned set of inputs on nixos-unstable; `nixos-oracle` uses its own `-stable` inputs on nixos-25.11.
+A single `flake.nix` at the repository root defines every host as `nixosConfigurations.<host>`, named after its folder in `hosts/`. All desktop hosts share one pinned set of inputs on nixos-unstable; `nixos-oracle` uses its own `-stable` inputs on nixos-26.05.
 
 Configuration that several desktop hosts share lives once in `programs/desktop/`, which mirrors a host folder (`system/`, `nico/`, `assets/`). Each host imports the shared modules it uses and keeps only its own differences and hardware in `hosts/<host>/`.
 

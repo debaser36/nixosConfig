@@ -12,7 +12,7 @@ alone: options are renamed often on nixos-unstable.
 
 - Host: the one the caller names. If none is named, use `thinkpadx1carbon` for desktop questions
   and `nixos-oracle` for server questions, and say which you used. `nixos-oracle` pins
-  nixos-25.11; all other hosts pin nixos-unstable.
+  nixos-26.05; all other hosts pin nixos-unstable.
 - Below, `F` stands for `.#nixosConfigurations.<host>` (one root flake; hosts are named after
   their folder in `hosts/`). Write it out in full in every command; shell variables do not persist
   between Bash calls. Run everything from the repo root.
