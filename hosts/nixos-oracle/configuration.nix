@@ -74,7 +74,7 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
-    compose2nix.packages.${vars.architeture}.default
+    compose2nix.packages.${vars.system}.default
     openssh
     curl
     git

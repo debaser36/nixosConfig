@@ -46,5 +46,5 @@ in
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp0s6.useDHCP = lib.mkDefault true;
 
-  nixpkgs.hostPlatform = lib.mkDefault vars.architeture;
+  nixpkgs.hostPlatform = lib.mkDefault vars.system;
 }

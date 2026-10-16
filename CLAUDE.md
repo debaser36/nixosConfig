@@ -21,6 +21,8 @@ NixOS + Home Manager configuration for five machines. One root `flake.nix` defin
   pinned nixos-unstable; nginx serves its `packages.<system>.default` straight from the Nix store).
 - The two sets never share an input, so updating one set never changes the other hosts.
   Shared modules in `programs/` still affect both (e.g. the server imports the Firefox module).
+- Desktops are built with `mkDesktop`, every other host (including `nixos-oracle`) with `mkHost`,
+  whose `specialArgs` passes flake inputs a host uses directly.
 
 All desktop hosts have the hostname `nixos`, so `hostname` does not identify the machine.
 The ThinkPad reports `20KHS2LF00` in `/sys/class/dmi/id/product_name`; otherwise ask which host

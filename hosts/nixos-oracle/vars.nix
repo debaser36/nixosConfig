@@ -1,6 +1,6 @@
 {
   hostname = "nixos-oracle";
-  architeture = "aarch64-linux";
+  system = "aarch64-linux";
 
   default_user = {
     username = "nico";

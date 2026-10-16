@@ -77,13 +77,15 @@
         };
 
       # Generic builder for hosts created with programs/tools/nixos_manager.
-      # `channel` picks the input set ("unstable" or "stable"), `modules` the optional flake modules.
+      # `channel` picks the input set ("unstable" or "stable"), `modules` the optional flake modules,
+      # `specialArgs` extra module arguments (e.g. flake inputs a host uses directly).
       mkHost =
         { host
         , system
         , channel
         , user
         , modules ? [ ]
+        , specialArgs ? { }
         }:
         let
           inputSet = {
@@ -115,11 +117,9 @@
           };
         in
         inputSet.nixpkgs.lib.nixosSystem {
-          inherit system;
+          inherit system specialArgs;
           modules = [ ./hosts/${host}/configuration.nix ] ++ builtins.concatMap (m: flakeModules.${m}) modules;
         };
-
-      oracleVars = import ./hosts/nixos-oracle/vars.nix;
 
       # Repository tooling (formatter, linter, dev shell) comes from the desktop nixpkgs pin
       forAllSystems = f: nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-linux" ] (system: f nixpkgs.legacyPackages.${system});
@@ -159,23 +159,13 @@
         nixos-home = mkDesktop { host = "nixos-home"; };
         nixos-work = mkDesktop { host = "nixos-work"; };
 
-        nixos-oracle = nixpkgs-stable.lib.nixosSystem {
-          system = oracleVars.architeture;
-          modules = [
-            vscode-server.nixosModules.default
-            { services.vscode-server.enable = true; }
-            ./hosts/nixos-oracle/configuration.nix
-            { _module.args = { inherit compose2nix nixpkgs-unstable unhalteproblem-website; }; }
-            home-manager-stable.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.nico = import ./hosts/nixos-oracle/home_manager/home.nix;
-              };
-            }
-            nur-stable.modules.nixos.default
-          ];
+        nixos-oracle = mkHost {
+          host = "nixos-oracle";
+          system = "aarch64-linux";
+          channel = "stable";
+          user = "nico";
+          modules = [ "vscode-server" "home-manager" "nur" ];
+          specialArgs = { inherit compose2nix nixpkgs-unstable unhalteproblem-website; };
         };
 
         # nixos_manager: new hosts are inserted above this line

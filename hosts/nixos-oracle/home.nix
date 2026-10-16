@@ -1,19 +1,19 @@
 _:
 let
-  vars = import ../vars.nix;
+  vars = import ./vars.nix;
 in
 {
   imports = [
-    ./home_packagelist.nix
+    ./home_packages.nix
 
     # firefox
-    ../../../programs/homeManager/firefox/default.nix
+    ../../programs/homeManager/firefox/default.nix
 
     # nvim
-    ../../../programs/homeManager/neovim/default.nix
+    ../../programs/homeManager/neovim/default.nix
 
     # fish
-    ../../../programs/homeManager/fish/default.nix
+    ../../programs/homeManager/fish/default.nix
   ];
 
   programs = {
