@@ -9,13 +9,11 @@
 
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    ../../../programs/desktop/system/bluetooth.nix
     ./fs.nix
     ./graphics.nix
     ./kernel.nix
     ./network.nix
     ./power.nix
-    ../../../programs/desktop/system/security.nix
   ];
 
 }

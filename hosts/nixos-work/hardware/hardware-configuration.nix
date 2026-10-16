@@ -12,20 +12,6 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  time.timeZone = "Europe/Berlin";
-  i18n.defaultLocale = "de_DE.UTF-8";
-  console.keyMap = "de";
-
-  security = {
-    polkit.enable = true;
-    rtkit.enable = true;
-  };
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-
   boot = {
     initrd = {
       kernelModules = [ ];
@@ -41,11 +27,6 @@
     };
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-      timeout = 2;
-    };
   };
 
   fileSystems = {

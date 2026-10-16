@@ -37,6 +37,8 @@ mirroring a host folder). Hosts import the shared modules they use, at fixed pos
   layout, time zone and locale, laptop power management, package lists, and their own extras in
   host-local files (e.g. `services.nix`, `systemPackages.nix` additions). When changing such a
   host-local setting, ask whether the other desktops should get it too. Never propagate silently.
+- `hardware-configuration.nix` holds hardware only; locale, boot loader and shared imports go
+  into `configuration.nix`.
 - Moving settings between files can reorder list options (`environment.systemPackages`,
   `home.packages`), which changes the built system even with the same contents. Verify
   restructurings with `nix-equivalence-check`.
