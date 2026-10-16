@@ -5,11 +5,9 @@
 {
   nix = {
     package = pkgs.nixVersions.latest;
-    extraOptions = ''
-      experimental-features = nix-command flakes 
-      lint-url-literals = fatal
-    '';
     settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      lint-url-literals = "fatal";
       download-buffer-size = 524288000;
       auto-optimise-store = true;
     };
