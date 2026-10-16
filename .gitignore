@@ -1,3 +1,7 @@
 LOG.txt
 
 result
+
+# WireGuard configs hold private keys. git-crypt is not set up in every clone, and without it the
+# filter in .gitattributes is skipped silently, so the file stays untracked unless added with -f.
+wireguardConfig.nix

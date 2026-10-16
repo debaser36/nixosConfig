@@ -115,7 +115,8 @@ currently running system only, not other hosts or an updated lock.
 The repo is pushed to GitHub (`debaser36/nixosConfig`) and the Nix store is world-readable. Never
 put passwords, tokens or private keys into `.nix` files. Reference files that live only on the
 target machine instead (e.g. `passwordFile = "/var/secrets/...";`). `.gitattributes` routes
-`wireguardConfig.nix` through git-crypt.
+`wireguardConfig.nix` through git-crypt, and `.gitignore` keeps it out unless added with `-f`
+(git skips the filter silently in clones where git-crypt is not set up).
 
 ## Conventions
 

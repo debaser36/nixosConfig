@@ -1,2 +1,3 @@
 # Guard: a WireGuard config with private keys must only ever be committed encrypted (git-crypt).
+# It is also in .gitignore; only `git add -f` it in a clone where git-crypt is unlocked.
 wireguardConfig.nix filter=git-crypt diff=git-crypt
