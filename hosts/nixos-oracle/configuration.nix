@@ -15,7 +15,6 @@ in
     ./hardware-configuration.nix
     ./http_https/acme.nix
     ./http_https/nginx.nix
-    ./http_https/postgres.nix
   ];
 
   boot = {
@@ -119,7 +118,7 @@ in
   # Bans addresses after repeated failed SSH logins (jail on ports 22 and 2222)
   services.fail2ban.enable = true;
 
-  # Open ports in the firewall. PostgreSQL (5432) is opened for a single address in http_https/postgres.nix.
+  # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     22
     80
