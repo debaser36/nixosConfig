@@ -47,7 +47,6 @@ in
       extraGroups = [
         "networkmanager"
         "wheel"
-        "docker"
       ];
       openssh.authorizedKeys.keys = [ vars.public_sshKey ];
       home = "/home/" + vars.default_user.username;
@@ -125,13 +124,6 @@ in
     443
     2222
   ];
-
-  # TODO: modularize this better
-  virtualisation.docker = {
-    enable = true;
-    # The default docker_28 is unmaintained and marked insecure on 25.11
-    package = pkgs.docker_29;
-  };
 
   # Disable documentation for minimal install.
   documentation.enable = false;
