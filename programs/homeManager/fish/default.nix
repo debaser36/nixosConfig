@@ -31,7 +31,6 @@
     };
     enable = true;
     shellAliases = {
-      discord = "vesktop";
       ll = "ls -l";
       la = "ls -A";
       ls = "ls -A --color=tty";
