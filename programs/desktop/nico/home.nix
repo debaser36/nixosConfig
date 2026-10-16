@@ -36,5 +36,9 @@ _: {
 
   services.udiskie.enable = true;
   xdg.enable = true;
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
+    # Runs the script from the checkout, which it needs to find the repository
+    fish.shellAliases.nixConfigConfigurator = "~/nixosConfig/programs/tools/nixos_manager/nixosmanager.fish";
+  };
 }

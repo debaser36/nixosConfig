@@ -7,7 +7,11 @@
     stateVersion = "25.05";
   };
 
-  programs.git.settings.user.email = "nico.burkholder@web.de";
+  programs = {
+    git.settings.user.email = "nico.burkholder@web.de";
+    # Switches the Wi-Fi between hotspot and WLAN mode
+    fish.shellAliases.toggleHotspot = "~/nixosConfig/programs/tools/hotspot_toggle/hotspottoggle.fish";
+  };
 
   my.sway.monitors = import ../hardware/monitors.nix;
   wayland.windowManager.sway.config.input."12994:102:2.4G_Wireless_Mouse" = {
