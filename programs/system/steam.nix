@@ -1,10 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
+    # Hosts that leave the home network (the laptops) turn these off
+    remotePlay.openFirewall = lib.mkDefault true;
+    dedicatedServer.openFirewall = lib.mkDefault true;
+    localNetworkGameTransfers.openFirewall = lib.mkDefault true;
     protontricks = {
       enable = true;
     };
