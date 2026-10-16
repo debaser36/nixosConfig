@@ -65,12 +65,13 @@ in
     }
   ];
 
-  nixpkgs.config.allowUnfree = true;
-
-  # Pull claude-code from unstable: stable's version lags too far behind upstream.
-  nixpkgs.overlays = [
-    (_: _: { inherit (pkgs-unstable) claude-code; })
-  ];
+  nixpkgs = {
+    config.allowUnfree = true;
+    # Pull claude-code from unstable: stable's version lags too far behind upstream.
+    overlays = [
+      (_: _: { inherit (pkgs-unstable) claude-code; })
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
     compose2nix.packages.${vars.system}.default
@@ -124,9 +125,11 @@ in
   ];
 
   # TODO: modularize this better
-  virtualisation.docker.enable = true;
-  # TODO: at 02/08/2026, this is (in stable) docker_28, which isn't maintained since 11/25
-  nixpkgs.config.permittedInsecurePackages = [ "docker-28.5.2" ];
+  virtualisation.docker = {
+    enable = true;
+    # The default docker_28 is unmaintained and marked insecure on 25.11
+    package = pkgs.docker_29;
+  };
 
   # Disable documentation for minimal install.
   documentation.enable = false;
