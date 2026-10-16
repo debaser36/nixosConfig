@@ -10,9 +10,8 @@ _: {
       "$HOME/.local/bin"
       "$HOME/go/bin"
     ];
+    # EDITOR and VISUAL come from programs.neovim.defaultEditor
     sessionVariables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
       PNPM_HOME = "$HOME/.pnpm-global";
     };
   };
