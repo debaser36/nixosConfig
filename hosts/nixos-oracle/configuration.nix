@@ -115,13 +115,12 @@ in
   # Bans addresses after repeated failed SSH logins (jail on ports 22 and 2222)
   services.fail2ban.enable = true;
 
-  # Open ports in the firewall.
+  # Open ports in the firewall. PostgreSQL (5432) is opened for a single address in http_https/postgres.nix.
   networking.firewall.allowedTCPPorts = [
     22
     80
     443
     2222
-    5432
   ];
 
   # TODO: modularize this better
