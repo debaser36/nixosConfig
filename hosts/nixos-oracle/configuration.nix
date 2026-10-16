@@ -20,7 +20,11 @@ in
 
   boot = {
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot = {
+        enable = true;
+        # Without this, anyone on the serial console can add `init=/bin/sh` to the kernel command line
+        editor = false;
+      };
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
