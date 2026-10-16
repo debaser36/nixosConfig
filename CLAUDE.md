@@ -20,7 +20,8 @@ NixOS + Home Manager configuration for five machines. One root `flake.nix` defin
   currently just `claude-code`), plus `unhalteproblem-website` (the website, built with its own
   pinned nixos-unstable; nginx serves its `packages.<system>.default` straight from the Nix store).
 - The two sets never share an input, so updating one set never changes the other hosts.
-  Shared modules in `programs/` still affect both (e.g. the server imports the Firefox module).
+  Shared modules in `programs/` still affect both (e.g. the server imports the fish and neovim
+  modules).
 - Desktops are built with `mkDesktop`, every other host (including `nixos-oracle`) with `mkHost`,
   whose `specialArgs` passes flake inputs a host uses directly.
 

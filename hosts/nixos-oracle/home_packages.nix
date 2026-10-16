@@ -1,11 +1,9 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-		claude-code
+    claude-code
     fastfetch
     nnn
-
-    browsh
 
     # archives
     zip
@@ -33,8 +31,6 @@
     gnused
     zstd
     gnupg
-    libnotify
-    kitty
 
     #nix-related
     nix-output-monitor
@@ -45,6 +41,5 @@
     ethtool
     pciutils
     usbutils
-    xorg.xrandr
   ];
 }

@@ -6,9 +6,6 @@ in
   imports = [
     ./home_packages.nix
 
-    # firefox
-    ../../programs/homeManager/firefox/default.nix
-
     # nvim
     ../../programs/homeManager/neovim/default.nix
 
