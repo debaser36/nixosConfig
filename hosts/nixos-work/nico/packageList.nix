@@ -26,7 +26,6 @@ in
   kdePackages.okular # pdf viewer
 
   # Emulation
-  waydroid
   waydroid-helper
   nur.repos.ataraxiasjel.waydroid-script
 
