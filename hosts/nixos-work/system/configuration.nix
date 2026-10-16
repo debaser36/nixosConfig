@@ -18,6 +18,7 @@
     ../../../programs/desktop/system/environment.variables.nix
     ../../../programs/desktop/system/fonts.nix
     ../../../programs/desktop/system/security.nix
+    ../../../programs/desktop/system/waydroid.nix
   ];
 
   #DONT CHANGE THIS LINE

@@ -15,6 +15,7 @@ _:
     ../../../programs/desktop/system/environment.variables.nix
     ../../../programs/desktop/system/fonts.nix
     ../../../programs/desktop/system/security.nix
+    ../../../programs/desktop/system/waydroid.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

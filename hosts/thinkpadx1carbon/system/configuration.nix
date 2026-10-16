@@ -16,6 +16,7 @@
     ../../../programs/desktop/system/users.nix
     ../../../programs/desktop/system/environment.variables.nix
     ../../../programs/desktop/system/fonts.nix
+    ../../../programs/desktop/system/waydroid.nix
   ];
 
   time.timeZone = "Pacific/Auckland";

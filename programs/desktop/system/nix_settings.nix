@@ -11,7 +11,6 @@
     '';
     settings.download-buffer-size = 524288000;
   };
-  virtualisation.waydroid.enable = true;
   nixpkgs = {
     overlays = [
       nix-vscode-extension.overlays.default
