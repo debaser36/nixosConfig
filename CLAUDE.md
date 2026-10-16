@@ -17,7 +17,9 @@ NixOS + Home Manager configuration for four machines. One root `flake.nix` defin
 - Server inputs: `nixpkgs-stable`, `home-manager-stable`, `nur-stable`, `vscode-server`, `sops-nix-stable`,
   `nixpkgs-unstable` (overlay source for the few packages that need to be newer than stable,
   currently just `claude-code`), plus `unhalteproblem-website` (the website, built with its own
-  pinned nixos-unstable; nginx serves its `packages.<system>.default` straight from the Nix store).
+  pinned nixos-unstable; nginx serves its `packages.<system>.default` straight from the Nix store,
+  and its `nixosModules.backend` runs the backend container behind `/api/`, see
+  `hosts/nixos-oracle/backend.nix`).
 - The two sets never share an input, so updating one set never changes the other hosts.
   Shared modules in `programs/` still affect both (e.g. the server imports the fish and neovim
   modules).
@@ -66,7 +68,7 @@ Run from the repo root.
 - `nix develop` gives a shell with nixpkgs-fmt, statix and nil
 - Update the desktop inputs: `nix flake update nixpkgs home-manager nur nix-vscode-extension sops-nix`
 - Update the server inputs: `nix flake update nixpkgs-stable home-manager-stable nur-stable vscode-server sops-nix-stable nixpkgs-unstable`
-- Deploy the website's latest `main`: `nix flake update unhalteproblem-website`, then rebuild
+- Deploy the website's latest `main` (frontend and backend): `nix flake update unhalteproblem-website`, then rebuild
   `nixos-oracle`. The build lives in the website repo's `flake.nix`; its `pnpmDeps` hash is
   updated there whenever its `pnpm-lock.yaml` changes.
 - The user applies a host with `sudo nixos-rebuild switch --flake .#<host>`

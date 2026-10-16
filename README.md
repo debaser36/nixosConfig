@@ -62,7 +62,7 @@ nix flake update nixpkgs home-manager nur nix-vscode-extension sops-nix
 # Update the server's inputs
 nix flake update nixpkgs-stable home-manager-stable nur-stable vscode-server sops-nix-stable nixpkgs-unstable
 
-# Deploy the latest unhalteproblem.de website (then rebuild nixos-oracle)
+# Deploy the latest unhalteproblem.de website and backend (then rebuild nixos-oracle)
 nix flake update unhalteproblem-website
 
 # Format, lint, and check everything (CI runs the same)

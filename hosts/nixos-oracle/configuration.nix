@@ -15,6 +15,7 @@ in
     ./hardware-configuration.nix
     ./http_https/acme.nix
     ./http_https/nginx.nix
+    ./backend.nix
     ./sops.nix
   ];
 
@@ -113,8 +114,15 @@ in
     };
   };
 
-  # Bans addresses after repeated failed SSH logins (jail on ports 22 and 2222)
-  services.fail2ban.enable = true;
+  services = {
+    # Bans addresses after repeated failed SSH logins (jail on ports 22 and 2222)
+    fail2ban.enable = true;
+
+    # The backend logs contact messages (names, email addresses), so logs are not kept forever
+    journald.extraConfig = ''
+      MaxRetentionSec=1month
+    '';
+  };
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
