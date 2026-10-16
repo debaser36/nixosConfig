@@ -13,9 +13,7 @@
       root = unhalteproblem-website.packages.${pkgs.stdenv.hostPlatform.system}.default;
       locations."/" = {
         index = "index.html";
-        extraConfig = ''
-          				try_files $uri /index.html;
-          			'';
+        tryFiles = "$uri /index.html";
       };
     };
   };
