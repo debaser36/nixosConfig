@@ -26,8 +26,6 @@
     enable32Bit = true;
   };
 
-  systemd.services.dlm.wantedBy = [ "multi-user.target" ];
-
   boot = {
     initrd = {
       kernelModules = [ ];
