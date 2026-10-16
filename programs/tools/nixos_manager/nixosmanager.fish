@@ -21,8 +21,7 @@ set -g flake_modules \
     "home-manager          Home Manager as a NixOS module (creates home.nix)" \
     "nur                   Nix User Repository (pkgs.nur)" \
     "nix-vscode-extension  overlay with VS Code extensions" \
-    "vscode-server         VS Code remote server support" \
-    "compose2nix           compose2nix CLI"
+    "vscode-server         VS Code remote server support"
 
 # nix without the "Git tree is dirty" warning
 function nixq

@@ -1,4 +1,4 @@
-{ pkgs, compose2nix, nixpkgs-unstable, ... }:
+{ pkgs, nixpkgs-unstable, ... }:
 
 let
   vars = import ./vars.nix;
@@ -76,7 +76,6 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    compose2nix.packages.${vars.system}.default
     openssh
     curl
     git

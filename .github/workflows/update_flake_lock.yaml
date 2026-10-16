@@ -38,7 +38,7 @@ jobs:
       - id: update
         uses: DeterminateSystems/update-flake-lock@main
         with:
-          inputs: nixpkgs-stable home-manager-stable nur-stable vscode-server compose2nix nixpkgs-unstable
+          inputs: nixpkgs-stable home-manager-stable nur-stable vscode-server nixpkgs-unstable
           branch: update_flake_lock_server
           commit-msg: 'feat: upgraded flake'
           pr-title: 'feat: upgraded flake (server inputs)'

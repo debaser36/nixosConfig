@@ -24,10 +24,6 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     vscode-server.url = "github:nix-community/nixos-vscode-server";
-    compose2nix = {
-      url = "github:aksiksi/compose2nix";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
     # Pins unstable only for nixos-oracle, used by an overlay to pull individual
     # packages (currently just claude-code) that need to be newer than stable.
     # Separate from the desktops' `nixpkgs` so the two input sets stay independent.
@@ -47,7 +43,6 @@
     , home-manager-stable
     , nur-stable
     , vscode-server
-    , compose2nix
     , nixpkgs-unstable
     , unhalteproblem-website
     , ...
@@ -113,7 +108,6 @@
               vscode-server.nixosModules.default
               { services.vscode-server.enable = true; }
             ];
-            compose2nix = [{ environment.systemPackages = [ compose2nix.packages.${system}.default ]; }];
           };
         in
         inputSet.nixpkgs.lib.nixosSystem {
@@ -165,7 +159,7 @@
           channel = "stable";
           user = "nico";
           modules = [ "vscode-server" "home-manager" "nur" ];
-          specialArgs = { inherit compose2nix nixpkgs-unstable unhalteproblem-website; };
+          specialArgs = { inherit nixpkgs-unstable unhalteproblem-website; };
         };
 
         # nixos_manager: new hosts are inserted above this line

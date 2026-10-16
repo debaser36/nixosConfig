@@ -15,7 +15,7 @@ collection.
 - Desktop inputs (`nixpkgs`, `home-manager`, `nur`, `nix-vscode-extension`) feed
   `thinkpadx1carbon`, `nixos-asus-laptop`, `nixos-home` and `nixos-work`.
 - Server inputs (`nixpkgs-stable`, `home-manager-stable`, `nur-stable`, `vscode-server`,
-  `compose2nix`, `nixpkgs-unstable`, `unhalteproblem-website`) feed `nixos-oracle` (aarch64-linux).
+  `nixpkgs-unstable`, `unhalteproblem-website`) feed `nixos-oracle` (aarch64-linux).
   `unhalteproblem-website` brings its own nixos-unstable, which builds only the website.
 - `$BASE` below stands for the baseline commit SHA from step 2. Write it out in full in every
   command; shell variables do not persist between Bash calls. Run everything from the repo root.
@@ -24,7 +24,7 @@ collection.
 
 1. **Lock.** Update only if the caller explicitly asked you to, and only the input set they named:
    - desktops: `nix flake update nixpkgs home-manager nur nix-vscode-extension`
-   - server: `nix flake update nixpkgs-stable home-manager-stable nur-stable vscode-server compose2nix nixpkgs-unstable`
+   - server: `nix flake update nixpkgs-stable home-manager-stable nur-stable vscode-server nixpkgs-unstable`
 
    `flake.lock` is the only file you may change.
 2. **Baseline commit.**
