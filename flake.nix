@@ -38,7 +38,8 @@
   };
 
   outputs =
-    { nixpkgs
+    { self
+    , nixpkgs
     , home-manager
     , nur
     , nix-vscode-extension
@@ -119,8 +120,33 @@
         };
 
       oracleVars = import ./hosts/nixos-oracle/vars.nix;
+
+      # Repository tooling (formatter, linter, dev shell) comes from the desktop nixpkgs pin
+      forAllSystems = f: nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-linux" ] (system: f nixpkgs.legacyPackages.${system});
     in
     {
+      # `nix fmt` formats the whole repository (or only the paths given)
+      formatter = forAllSystems (pkgs: pkgs.writeShellApplication {
+        name = "fmt";
+        runtimeInputs = [ pkgs.nixpkgs-fmt ];
+        text = ''nixpkgs-fmt "''${@:-.}"'';
+      });
+
+      # `nix develop`: the tools CI uses, plus the Nix language server
+      devShells = forAllSystems (pkgs: {
+        default = pkgs.mkShell { packages = with pkgs; [ nixpkgs-fmt statix nil ]; };
+      });
+
+      # Run by `nix flake check` (and CI) next to the evaluation of every host
+      checks = forAllSystems (pkgs: {
+        format = pkgs.runCommand "check-format" { nativeBuildInputs = [ pkgs.nixpkgs-fmt ]; } ''
+          nixpkgs-fmt --check ${self} && touch $out
+        '';
+        statix = pkgs.runCommand "check-statix" { nativeBuildInputs = [ pkgs.statix ]; } ''
+          cd ${self} && statix check . && touch $out
+        '';
+      });
+
       nixosConfigurations = {
         thinkpadx1carbon = mkDesktop {
           host = "thinkpadx1carbon";

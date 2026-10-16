@@ -65,4 +65,11 @@ nix flake update nixpkgs-stable home-manager-stable nur-stable vscode-server com
 
 # Deploy the latest unhalteproblem.de website (then rebuild nixos-oracle)
 nix flake update unhalteproblem-website
+
+# Format, lint, and check everything (CI runs the same)
+nix fmt
+nix flake check
+
+# Shell with nixpkgs-fmt, statix and nil
+nix develop
 ```

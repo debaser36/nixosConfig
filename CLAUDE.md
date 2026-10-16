@@ -55,9 +55,10 @@ mirroring a host folder). Hosts import the shared modules they use, at fixed pos
 Run from the repo root.
 
 - Validate a host: `nix build .#nixosConfigurations.<host>.config.system.build.toplevel --dry-run`
-- Flake check (evaluates all hosts): `nix flake check`
-- Format: `nix run nixpkgs#nixpkgs-fmt -- .` (CI runs it with `--check`)
-- Lint: `nix run nixpkgs#statix -- check .` (`statix.toml` skips generated `hardware-configuration.nix` files)
+- Flake check (evaluates all hosts, runs the `format` and `statix` checks): `nix flake check`
+- Format: `nix fmt` (nixpkgs-fmt from the pinned `nixpkgs`)
+- Lint: `nix develop --command statix check .` (`statix.toml` skips generated `hardware-configuration.nix` files)
+- `nix develop` gives a shell with nixpkgs-fmt, statix and nil
 - Update the desktop inputs: `nix flake update nixpkgs home-manager nur nix-vscode-extension`
 - Update the server inputs: `nix flake update nixpkgs-stable home-manager-stable nur-stable vscode-server compose2nix nixpkgs-unstable`
 - Deploy the website's latest `main`: `nix flake update unhalteproblem-website`, then rebuild
@@ -71,8 +72,8 @@ evaluation fails with "path does not exist". The "Git tree is dirty" warning is 
 Never run `sudo`, `nixos-rebuild switch|boot|test` or garbage collection: the user applies
 configurations themselves.
 
-CI (`.github/workflows/check_nix.yaml`) runs format, statix and `nix flake check`, plus a
-dry-build for every host it lists from the flake.
+CI (`.github/workflows/check_nix.yaml`, on pushes and pull requests) runs `nix flake check`
+(including formatting and statix), plus a dry-build for every host it lists from the flake.
 
 Both the desktops (30 days) and the server (14 days) collect garbage automatically once a week.
 

@@ -447,10 +447,10 @@ function add_host
 
     pushd $repo
     echo "🎨 Formatting the new files…"
-    nixq run nixpkgs#nixpkgs-fmt -- $files >/dev/null
+    nixq fmt -- $files >/dev/null
     or echo "⚠️  nixpkgs-fmt failed; CI will report the formatting"
     echo "🔍 Linting…"
-    nixq run nixpkgs#statix -- check $dir
+    nixq develop --command statix check $dir
     or echo "⚠️  statix reported problems; CI will fail until they are fixed"
     popd
 

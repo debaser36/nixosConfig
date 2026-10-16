@@ -5,22 +5,25 @@ on:
     paths:
       - '**.nix'
       - 'flake.lock'
+      - 'statix.toml'
+      - '.github/workflows/check_nix.yaml'
+  pull_request:
+    paths:
+      - '**.nix'
+      - 'flake.lock'
+      - 'statix.toml'
       - '.github/workflows/check_nix.yaml'
   workflow_dispatch:
 
 jobs:
-  lint:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: cachix/install-nix-action@v31
+      - uses: DeterminateSystems/magic-nix-cache-action@main
 
-      - name: Format check
-        run: nix run nixpkgs#nixpkgs-fmt -- --check .
-
-      - name: Lint with statix
-        run: nix run nixpkgs#statix -- check .
-
+      # Formatting and statix run as flake checks (pinned versions, see `checks` in flake.nix)
       - name: Check flake
         run: nix flake check
 
@@ -47,6 +50,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: cachix/install-nix-action@v31
+      - uses: DeterminateSystems/magic-nix-cache-action@main
 
       - name: Dry-build system
         run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel --dry-run
