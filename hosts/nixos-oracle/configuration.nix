@@ -76,7 +76,6 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    openssh
     curl
     git
     vim
