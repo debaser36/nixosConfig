@@ -5,14 +5,6 @@ with pkgs;
   exercism
   discord
 
-  # Development
-  corepack # Node.js package manager manager
-  python314
-  libgcc
-  gcc
-  rocmPackages.llvm.clang-unwrapped
-  cmakeWithGui
-
   # Databases
   pgmodeler
   sqlite

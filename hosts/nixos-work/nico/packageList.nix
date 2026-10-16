@@ -30,16 +30,6 @@ in
   waydroid-helper
   nur.repos.ataraxiasjel.waydroid-script
 
-  # Development Tools & Languages
-  corepack # Node.js package manager manager
-  python314 # Python interpreter with all modules
-
-  # Development Build Tools & Compilers
-  libgcc # GCC runtime library
-  gcc # GNU Compiler Collection
-  rocmPackages.llvm.clang-unwrapped # Clang compiler
-  cmakeWithGui # CMake build system with GUI
-
   # Wacom tablet
   xf86_input_wacom # Wacom tablet X11 driver
   kdePackages.wacomtablet # Wacom tablet configuration
