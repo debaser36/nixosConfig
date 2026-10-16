@@ -13,7 +13,6 @@
         "docker"
       ];
       home = "/home/nico";
-      shell = pkgs.fish;
     };
   };
 }
