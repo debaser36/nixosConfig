@@ -1,48 +1,37 @@
-{ pkgs, ... }:
-let
-
-  monitors = import ../hardware/monitorInfo.nix;
-  outputConfig = import ../hardware/swayMonitorSettings.nix {
-    inherit (monitors) left_monitor;
-    inherit (monitors) center_monitor;
-    inherit (monitors) right_monitor;
-  };
-  inputConfig = import ../hardware/swayInputSettings.nix {
-    initial_output = monitors.center_monitor.name;
-  };
-  extraConfig = import ../../../programs/desktop/nico/swayExtraConfig.nix + import ./swayExtraConfig.nix;
-  startupConfig = import ./swayStartup.nix;
-
-  packageList = import ./packageList.nix { inherit pkgs; };
-
-  gitUser = {
-    username = "debaser36";
-    email = "n.burkholder@tu-berlin.de";
-  };
-in
+{ pkgs, lib, ... }:
 {
   home = {
-    packages = packageList;
+    packages = import ./packageList.nix { inherit pkgs; };
 
     # ## DONT CHANGE THIS LINE!
     stateVersion = "25.05";
   };
 
-  _module.args = {
-    user = gitUser;
+  _module.args.user = {
+    username = "debaser36";
+    email = "n.burkholder@tu-berlin.de";
+  };
+
+  my.sway = {
+    monitors = import ../hardware/monitors.nix;
+    primaryOutput = "eDP-1";
+  };
+  wayland.windowManager.sway = {
+    config.startup = lib.mkAfter [
+      {
+        command = "nohup element-desktop &";
+        always = false;
+      }
+      {
+        command = "nohup thunderbird &";
+        always = true;
+      }
+    ];
+    extraConfig = lib.mkAfter (import ./swayExtraConfig.nix);
   };
 
   # Packages configurable via home manager config settings
   imports = [
-    # sway
-    (import ../../../programs/homeManager/sway/default.nix {
-      inherit inputConfig;
-      inherit outputConfig;
-      inherit extraConfig;
-      inherit startupConfig;
-      inherit pkgs;
-    })
-
     # Discord
     ../../../programs/homeManager/discord/default.nix
 
@@ -57,8 +46,5 @@ in
 
     # lutris
     ../../../programs/homeManager/lutris/default.nix
-
-    # texlive
-    ../../../programs/homeManager/texlive/default.nix
   ];
 }

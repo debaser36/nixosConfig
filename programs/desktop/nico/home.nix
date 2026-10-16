@@ -17,6 +17,7 @@ _: {
   };
 
   imports = [
+    ./sway.nix
     ../../homeManager/swayosd/default.nix
     ./ssh.home.nix
     ../../homeManager/fish/default.nix

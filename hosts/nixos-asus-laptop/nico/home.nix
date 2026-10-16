@@ -1,49 +1,28 @@
 { pkgs, ... }:
-let
-
-  monitors = import ../hardware/monitorInfo.nix;
-  # sway
-  outputConfig = import ../hardware/swayMonitorSettings.nix {
-    inherit (monitors) center_monitor;
-  };
-  inputConfig = import ../hardware/swayInputSettings.nix {
-    initial_output = monitors.center_monitor.name;
-  };
-  extraConfig = import ../../../programs/desktop/nico/swayExtraConfig.nix;
-  startupConfig = import ../../../programs/desktop/nico/swayStartup.nix;
-  extraOptions = [ "--unsupported-gpu" ];
-
-  packageList = import ./packageList.nix { inherit pkgs; };
-
-  gitUser = {
-    username = "debaser36";
-    email = "n.burkholder@tu-berlin.de";
-  };
-in
 {
   home = {
-    packages = packageList;
+    packages = import ./packageList.nix { inherit pkgs; };
 
     # ## DONT CHANGE THIS LINE!
     stateVersion = "25.05";
   };
 
-  _module.args = {
-    user = gitUser;
+  _module.args.user = {
+    username = "debaser36";
+    email = "n.burkholder@tu-berlin.de";
   };
-  # Packages configurable via home manager config settings
+
+  my.sway.monitors = import ../hardware/monitors.nix;
+  wayland.windowManager.sway = {
+    extraOptions = [ "--unsupported-gpu" ];
+    config.input."12994:102:2.4G_Wireless_Mouse" = {
+      accel_profile = "flat";
+      drag = "enabled";
+      pointer_accel = "-0.5";
+    };
+  };
+
   imports = [
-    # sway
-    (import ../../../programs/homeManager/sway/default.nix {
-      inherit inputConfig;
-      inherit outputConfig;
-      inherit extraConfig;
-      inherit startupConfig;
-      inherit extraOptions;
-      inherit pkgs;
-    })
-
-
     # settings and programs shared by all desktop hosts
     ../../../programs/desktop/nico/home.nix
   ];
