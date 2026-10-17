@@ -1,7 +1,9 @@
 # Keycloak at https://auth.unhalteproblem.de, the identity provider for the website's backend.
 # Realms, clients and users are configured in the admin console and kept in the database; only
 # the server itself is declared here. Keycloak listens on 127.0.0.1:8080 behind nginx.
-{ config, pkgs, ... }:
+# No bootstrap admin is configured: the master realm already has one. On an empty database, create
+# one with `kc.sh bootstrap-admin` (https://www.keycloak.org/server/bootstrap-admin-recovery).
+{ pkgs, ... }:
 let
   hostname = "auth.unhalteproblem.de";
   port = 8080;
@@ -62,21 +64,9 @@ in
     };
   };
 
-  # Creates the temporary "admin" user in the master realm on the first start (ignored once the
-  # realm has an admin). The password stays out of the Nix store: sops renders it into an
-  # environment file that systemd reads as root.
-  sops = {
-    secrets.keycloak-admin-password = { };
-    templates."keycloak-admin.env".content = ''
-      KC_BOOTSTRAP_ADMIN_USERNAME=admin
-      KC_BOOTSTRAP_ADMIN_PASSWORD=${config.sops.placeholder.keycloak-admin-password}
-    '';
-  };
-
   systemd.services.keycloak = {
     # postgresql.target includes postgresql-setup, which creates the role and database above
     after = [ "postgresql.target" ];
     requires = [ "postgresql.target" ];
-    serviceConfig.EnvironmentFile = config.sops.templates."keycloak-admin.env".path;
   };
 }
