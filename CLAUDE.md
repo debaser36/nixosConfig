@@ -79,6 +79,10 @@ evaluation fails with "path does not exist". The "Git tree is dirty" warning is 
 Never run `sudo`, `nixos-rebuild switch|boot|test` or garbage collection: the user applies
 configurations themselves.
 
+Before starting any requested change or addition, run `git pull` in the checkout or worktree you
+will edit. If the pull fails (conflicts, local changes blocking the merge), stop and tell the user
+instead of resolving it yourself.
+
 CI (`.github/workflows/check_nix.yaml`, on pushes and pull requests) runs `nix flake check`
 (including formatting and statix), plus a dry-build for every host it lists from the flake.
 `.github/workflows/update_flake_lock.yaml` opens a weekly pull request per input set
