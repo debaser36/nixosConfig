@@ -16,6 +16,7 @@ in
     ./http_https/acme.nix
     ./http_https/nginx.nix
     ./backend.nix
+    ./keycloak.nix
     ./sops.nix
   ];
 
