@@ -24,6 +24,9 @@
     # ssh: GitHub over port 443 and the server over port 2222, on top of the shared ssh config
     ./ssh.home.nix
 
+    # changeKeyboardLayout: switch sway between US Standard, US Custom (Ctrl+a/o/u/s umlauts) and German
+    ./keyboardLayout.nix
+
     # settings and programs shared by all desktop hosts
     ../../../programs/desktop/nico/home.nix
   ];
