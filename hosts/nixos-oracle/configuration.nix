@@ -81,6 +81,8 @@ in
   environment.systemPackages = with pkgs; [
     curl
     git
+    # terminfo for TERM=xterm-kitty, which kitty sends over ssh
+    kitty.terminfo
     vim
     neovim
     wget
