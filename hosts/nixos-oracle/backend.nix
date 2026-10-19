@@ -24,7 +24,7 @@ in
   services = {
     unhalteproblem-backend = {
       enable = true;
-      backups.enable = true;
+      backup.enable = true;
       nginx.virtualHost = "unhalteproblem.de";
       # A host starting with / is the directory of the Postgres socket
       environment = {
