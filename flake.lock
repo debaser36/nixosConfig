@@ -240,11 +240,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792397208,
-        "narHash": "sha256-gHy0I+JAUzafusCo2xwxJt7cl3asKHf9JE1A2lgiQxw=",
+        "lastModified": 1792399379,
+        "narHash": "sha256-YXrBh3GjINxtiV9p9GMotgN6Vf/j5ZbmlxDRddBYz7Y=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "dca9dac447fc4e761a747c42d2f1eb6d76a04559",
+        "rev": "ce35dca2a7df0c62740acf67fe1237b1b75ddf61",
         "type": "github"
       },
       "original": {
@@ -261,11 +261,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792397208,
-        "narHash": "sha256-gHy0I+JAUzafusCo2xwxJt7cl3asKHf9JE1A2lgiQxw=",
+        "lastModified": 1792399379,
+        "narHash": "sha256-YXrBh3GjINxtiV9p9GMotgN6Vf/j5ZbmlxDRddBYz7Y=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "dca9dac447fc4e761a747c42d2f1eb6d76a04559",
+        "rev": "ce35dca2a7df0c62740acf67fe1237b1b75ddf61",
         "type": "github"
       },
       "original": {
@@ -351,11 +351,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1792374620,
-        "narHash": "sha256-GCLUImvibCv3tbzKkZBSsZ2K8pmozHH6UewkN14o1PY=",
+        "lastModified": 1792398712,
+        "narHash": "sha256-Es5pseK0C7F2n1UYpN20PqKqlNSTglDYJXRZ5GEz+wA=",
         "owner": "debaser36",
         "repo": "unhalteproblem.de",
-        "rev": "056801ddaec5bd1a980b57f6056957870d5153ab",
+        "rev": "eb09ddc0d50d67cfbc20f4b9d418f20855dd389e",
         "type": "github"
       },
       "original": {
