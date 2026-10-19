@@ -24,12 +24,13 @@ in
   services = {
     unhalteproblem-backend = {
       enable = true;
+      backups.enable = true;
       nginx.virtualHost = "unhalteproblem.de";
       # A host starting with / is the directory of the Postgres socket
       environment = {
         POSTGRES_HOST = "/run/postgresql";
-        SMTP_HOST = "smtp.zoho.eu"; # your provider
-        SMTP_FROM = "Backend <backend@unhalteproblem.de>";
+        SMTP_HOST = "smtp.zoho.eu";
+        SMTP_FROM = "Backend <admin@unhalteproblem.de>";
       };
       environmentFiles = [ config.sops.templates."unhalteproblem-backend.env".path ];
     };
@@ -48,7 +49,6 @@ in
 
   sops = {
     secrets = {
-      unhalteproblem-oidc-client-secret = { };
       unhalteproblem-oidc-client-secret = { };
       unhalteproblem-keycloak-admin-client-secret = { };
       unhalteproblem-smtp-user = { };
