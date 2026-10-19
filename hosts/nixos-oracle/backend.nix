@@ -26,7 +26,11 @@ in
       enable = true;
       nginx.virtualHost = "unhalteproblem.de";
       # A host starting with / is the directory of the Postgres socket
-      environment.POSTGRES_HOST = "/run/postgresql";
+      environment = {
+        POSTGRES_HOST = "/run/postgresql";
+        SMTP_HOST = "smtp.zoho.eu"; # your provider
+        SMTP_FROM = "Backend <backend@unhalteproblem.de>";
+      };
       environmentFiles = [ config.sops.templates."unhalteproblem-backend.env".path ];
     };
 
@@ -43,11 +47,21 @@ in
   };
 
   sops = {
-    secrets.unhalteproblem-oidc-client-secret = { };
+    secrets = {
+      unhalteproblem-oidc-client-secret = { };
+      unhalteproblem-oidc-client-secret = { };
+      unhalteproblem-keycloak-admin-client-secret = { };
+      unhalteproblem-smtp-user = { };
+      unhalteproblem-smtp-password = { };
+      unhalteproblem-contact-mail-to = { };
+    };
     templates."unhalteproblem-backend.env" = {
       content = ''
         OIDC_CLIENT_SECRET=${config.sops.placeholder.unhalteproblem-oidc-client-secret}
-      '';
+        KEYCLOAK_ADMIN_CLIENT_SECRET=${config.sops.placeholder.unhalteproblem-keycloak-admin-client-secret}
+        SMTP_USER=${config.sops.placeholder.unhalteproblem-smtp-user}
+        SMTP_PASSWORD=${config.sops.placeholder.unhalteproblem-smtp-password}
+        CONTACT_MAIL_TO=${config.sops.placeholder.unhalteproblem-contact-mail-to}'';
       restartUnits = [ "podman-unhalteproblem-backend.service" ];
     };
   };
