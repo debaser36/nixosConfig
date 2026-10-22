@@ -351,11 +351,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1792656294,
-        "narHash": "sha256-+1DJOoXtL9sWGNUTbcTm9bgd+gcepxmOYLRsmoyee/8=",
+        "lastModified": 1792657018,
+        "narHash": "sha256-xdd15X13LUmlaNVyqAcjM9082tPYJ6mzEyXI5uIXCJg=",
         "owner": "debaser36",
         "repo": "unhalteproblem.de",
-        "rev": "aecb6d2d5e03a235d5db27d0d6babdf12536e2ac",
+        "rev": "17bee383e3ac224d50da6733577a9b24a80bff3f",
         "type": "github"
       },
       "original": {
