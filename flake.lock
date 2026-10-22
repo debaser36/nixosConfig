@@ -124,11 +124,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1792555615,
-        "narHash": "sha256-hgkjMS7s4GRhZiHAgzF1UHFrXwu+2dcBohgF57Wrgps=",
+        "lastModified": 1792642300,
+        "narHash": "sha256-J8DxAG8MBalgVKo7MEcCy7ZG0PbWnyvCadw2X97WaEY=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "2a46f9d8fac507c47e8a659d5a4e91676d06273c",
+        "rev": "13893865e7165471ce258bff94e61aca9ccfbb87",
         "type": "github"
       },
       "original": {
@@ -170,11 +170,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1792503283,
-        "narHash": "sha256-vhe2jyvRCgufWPqDuDq1S3t3ypE+ka46IFutV02xKso=",
+        "lastModified": 1792615934,
+        "narHash": "sha256-MlvRfa1O5Cqc2/a+gG+l9TSuowEoCKCmrJ1d9oAVm0I=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "cd4ea8d57de16f4810bc5f14207bac45fbf19f67",
+        "rev": "da6dc0e7b26060f2f71ce3ef7088fb56ee44fa36",
         "type": "github"
       },
       "original": {
@@ -240,11 +240,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792639655,
-        "narHash": "sha256-ix3u3YoSVLDFhQxkm3Jvo8UQ7G8nxz+8wZjObGV7IlI=",
+        "lastModified": 1792648524,
+        "narHash": "sha256-LfFQii4+ZOhbbgTcAw9LP9KaJ0MZixFojW5oNObTG9s=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "19421762388d5a0d7814abd243c2b7257e638bb0",
+        "rev": "11f5a092b041cfa98dfc786ce6b008d208a37508",
         "type": "github"
       },
       "original": {
@@ -261,11 +261,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792639655,
-        "narHash": "sha256-ix3u3YoSVLDFhQxkm3Jvo8UQ7G8nxz+8wZjObGV7IlI=",
+        "lastModified": 1792648524,
+        "narHash": "sha256-LfFQii4+ZOhbbgTcAw9LP9KaJ0MZixFojW5oNObTG9s=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "19421762388d5a0d7814abd243c2b7257e638bb0",
+        "rev": "11f5a092b041cfa98dfc786ce6b008d208a37508",
         "type": "github"
       },
       "original": {
@@ -351,11 +351,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1792631952,
-        "narHash": "sha256-8AxoGMC/poBfLtqjDrsY1tgTQ3kDW7FZh7Qhw9yTur4=",
+        "lastModified": 1792648898,
+        "narHash": "sha256-AburSAMN3Yg67y+HWQHz/Smp+OPLL3+9dEMnpBsqG7A=",
         "owner": "debaser36",
         "repo": "unhalteproblem.de",
-        "rev": "53d604309b5bd91d5acfb0f8da11a47c1c4288a5",
+        "rev": "aa318eb3c21420fc7d20b91908375dd2f3a16997",
         "type": "github"
       },
       "original": {
