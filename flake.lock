@@ -240,11 +240,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792648524,
-        "narHash": "sha256-LfFQii4+ZOhbbgTcAw9LP9KaJ0MZixFojW5oNObTG9s=",
+        "lastModified": 1792654632,
+        "narHash": "sha256-OSiP+J6DRaKBUgIJrk0PCT0hDa8WaRPmjHWYZ8AtQWs=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "11f5a092b041cfa98dfc786ce6b008d208a37508",
+        "rev": "b4e5f7d5440209cd144830fc996c647190fd715a",
         "type": "github"
       },
       "original": {
@@ -261,11 +261,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792648524,
-        "narHash": "sha256-LfFQii4+ZOhbbgTcAw9LP9KaJ0MZixFojW5oNObTG9s=",
+        "lastModified": 1792654632,
+        "narHash": "sha256-OSiP+J6DRaKBUgIJrk0PCT0hDa8WaRPmjHWYZ8AtQWs=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "11f5a092b041cfa98dfc786ce6b008d208a37508",
+        "rev": "b4e5f7d5440209cd144830fc996c647190fd715a",
         "type": "github"
       },
       "original": {
@@ -297,11 +297,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792056300,
-        "narHash": "sha256-YU1LjDe1o2Ymg5zEiCHbmMXLkDCtxHQRiVqZ3nC5GGk=",
+        "lastModified": 1792308394,
+        "narHash": "sha256-r4G33ygU307QCwyngAS6E9BMhnCRPyZrL7UxRCMrqo0=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "44931708c62937c2b1bf7953902989fa5bb9ee1b",
+        "rev": "a1438ca361b05d1e70854d5495abcb34fdf6ff47",
         "type": "github"
       },
       "original": {
@@ -317,11 +317,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792056300,
-        "narHash": "sha256-YU1LjDe1o2Ymg5zEiCHbmMXLkDCtxHQRiVqZ3nC5GGk=",
+        "lastModified": 1792308394,
+        "narHash": "sha256-r4G33ygU307QCwyngAS6E9BMhnCRPyZrL7UxRCMrqo0=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "44931708c62937c2b1bf7953902989fa5bb9ee1b",
+        "rev": "a1438ca361b05d1e70854d5495abcb34fdf6ff47",
         "type": "github"
       },
       "original": {
@@ -351,11 +351,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1792648898,
-        "narHash": "sha256-AburSAMN3Yg67y+HWQHz/Smp+OPLL3+9dEMnpBsqG7A=",
+        "lastModified": 1792656294,
+        "narHash": "sha256-+1DJOoXtL9sWGNUTbcTm9bgd+gcepxmOYLRsmoyee/8=",
         "owner": "debaser36",
         "repo": "unhalteproblem.de",
-        "rev": "aa318eb3c21420fc7d20b91908375dd2f3a16997",
+        "rev": "aecb6d2d5e03a235d5db27d0d6babdf12536e2ac",
         "type": "github"
       },
       "original": {
