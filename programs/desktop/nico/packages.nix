@@ -24,7 +24,6 @@
 
     # Productivity
     obsidian
-    isabelle # Proof assistant
     keepassxc # Password manager
 
     # Terminal & files

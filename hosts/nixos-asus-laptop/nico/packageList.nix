@@ -12,4 +12,6 @@ with pkgs;
 
   exercism
   discord
+
+  isabelle # Proof assistant
 ]

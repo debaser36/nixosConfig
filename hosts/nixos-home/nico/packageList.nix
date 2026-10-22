@@ -12,4 +12,6 @@ with pkgs;
   # Wacom tablet
   xf86_input_wacom # X11 driver
   kdePackages.wacomtablet # configuration
+
+  isabelle # Proof assistant
 ]

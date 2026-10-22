@@ -19,4 +19,6 @@ with pkgs;
   sops
   age
   discord
+
+  # isabelle (proof assistant) disabled for now; the other desktops install it
 ]
