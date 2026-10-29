@@ -16,7 +16,9 @@ NixOS + Home Manager configuration for four machines. One root `flake.nix` defin
 - Desktop inputs: `nixpkgs`, `home-manager`, `nur`, `nix-vscode-extension`, `sops-nix`.
 - Server inputs: `nixpkgs-stable`, `home-manager-stable`, `nur-stable`, `vscode-server`, `sops-nix-stable`,
   `nixpkgs-unstable` (overlay source for the few packages that need to be newer than stable,
-  currently just `claude-code`), plus `unhalteproblem-website` (the website, built with its own
+  currently just `claude-code`; the server's `claude` and its Remote Control services run the
+  newest release instead, which `hosts/nixos-oracle/claude-remote-control.nix` builds every other
+  day outside the lock and falls back to the pinned one), plus `unhalteproblem-website` (the website, built with its own
   pinned nixos-unstable; nginx serves its `packages.<system>.default` straight from the Nix store,
   and its `nixosModules.backend` runs the backend container behind `/api/`, see
   `hosts/nixos-oracle/backend.nix`).

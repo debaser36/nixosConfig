@@ -11,4 +11,11 @@
   locale = "de_DE.UTF-8";
   timezone = "Europe/Berlin";
 
+  # Folders served by `claude remote-control`, one systemd service each (claude-remote-control.nix)
+  claude_remote_control_directories = [
+    "/home/nico/nixosConfig"
+    "/home/nico/unhalteproblem.de"
+    "/home/nico/crunchMunch"
+  ];
+
 }

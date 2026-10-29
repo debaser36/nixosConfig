@@ -16,6 +16,7 @@ in
     ./http_https/acme.nix
     ./http_https/nginx.nix
     ./backend.nix
+    ./claude-remote-control.nix
     ./keycloak.nix
     ./sops.nix
   ];
@@ -73,6 +74,7 @@ in
   nixpkgs = {
     config.allowUnfree = true;
     # Pull claude-code from unstable: stable's version lags too far behind upstream.
+    # claude-remote-control.nix runs it until its first update has built a newer release.
     overlays = [
       (_: _: { inherit (pkgs-unstable) claude-code; })
     ];

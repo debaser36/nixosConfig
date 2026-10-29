@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    claude-code
+    # claude: claude-remote-control.nix installs the auto-updated build
     fastfetch
     nnn
 
