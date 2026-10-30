@@ -15,7 +15,7 @@
   claude_remote_control_directories = [
     "/home/nico/nixosConfig"
     "/home/nico/unhalteproblem.de"
-    "/home/nico/crunchMunch"
+    "/home/nico/mudwright"
   ];
 
 }
