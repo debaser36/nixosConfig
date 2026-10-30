@@ -79,7 +79,9 @@ Flakes only see git-tracked files. Run `git add -N <file>` on new files before e
 evaluation fails with "path does not exist". The "Git tree is dirty" warning is harmless.
 
 Never run `sudo`, `nixos-rebuild switch|boot|test` or garbage collection: the user applies
-configurations themselves.
+configurations themselves. The only exception is the `/redeploy` skill, which the user starts
+themselves; it may run `sudo -n nixos-rebuild switch --flake .#<host>` and nothing else as root.
+Never invoke it on your own or reuse its permission outside it.
 
 Before starting any requested change or addition, run `git pull` in the checkout or worktree you
 will edit. If the pull fails (conflicts, local changes blocking the merge), stop and tell the user
@@ -141,3 +143,10 @@ target machine instead (e.g. `passwordFile = "/var/secrets/...";`). `.gitattribu
 - `nix-options-lookup`: before using an option or package you have not verified in the pinned version.
 - `flake-update-review`: after `nix flake update`, before the user switches.
 - `nix-equivalence-check`: for refactors and cleanups; proves which hosts' built systems changed.
+
+## Skills (`.claude/skills/`)
+
+- `redeploy` (user-invoked only, `/redeploy [host]`): optionally updates and pushes the lock, then
+  builds and switches this machine. Without an argument it finds the host via
+  `/etc/nixos-flake-host` (written by `hostMarker` in `flake.nix`), a hostname that is a flake
+  output, or the ThinkPad's DMI name, and aborts otherwise.

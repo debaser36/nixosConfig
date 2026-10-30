@@ -58,6 +58,10 @@
     , ...
     }:
     let
+      # /etc/nixos-flake-host names the flake output a machine runs, so the redeploy skill
+      # (.claude/skills/redeploy) can find it; all desktops share the hostname "nixos".
+      hostMarker = host: { environment.etc."nixos-flake-host".text = "${host}\n"; };
+
       mkDesktop =
         { host
         , homeManagerBackups ? false
@@ -79,6 +83,7 @@
               };
             }
             nur.modules.nixos.default
+            (hostMarker host)
           ];
         };
 
@@ -125,7 +130,7 @@
         in
         inputSet.nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
-          modules = [ ./hosts/${host}/configuration.nix ] ++ builtins.concatMap (m: flakeModules.${m}) modules;
+          modules = [ ./hosts/${host}/configuration.nix (hostMarker host) ] ++ builtins.concatMap (m: flakeModules.${m}) modules;
         };
 
       # Repository tooling (formatter, linter, dev shell) comes from the desktop nixpkgs pin
