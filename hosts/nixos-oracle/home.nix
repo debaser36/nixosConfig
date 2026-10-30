@@ -11,6 +11,9 @@ in
 
     # fish
     ../../programs/homeManager/fish/default.nix
+
+    # direnv
+    ../../programs/homeManager/direnv/default.nix
   ];
 
   programs = {
