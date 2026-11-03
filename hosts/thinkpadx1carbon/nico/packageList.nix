@@ -2,6 +2,7 @@
 { pkgs, ... }:
 with pkgs;
 [
+	vlc
   claude-code
   glib
 
