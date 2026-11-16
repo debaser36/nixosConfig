@@ -21,8 +21,8 @@ allowed-tools:
 Applies a configuration of this flake to **this** machine with `nixos-rebuild switch`.
 Argument: `$ARGUMENTS` (empty = detect the host).
 
-This skill is the only exception to the rule in `CLAUDE.md` that forbids `sudo` and
-`nixos-rebuild switch`. The exception covers exactly one command,
+This skill is one of the two exceptions (with `/update-server`) to the rule in `CLAUDE.md` that
+forbids `sudo` and `nixos-rebuild switch`. The exception covers exactly one command,
 `sudo -n nixos-rebuild switch --flake .#<host>` in step 5, and only while running this skill.
 Never run any other command with `sudo`, never use `boot`/`test`, never collect garbage.
 

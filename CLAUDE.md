@@ -71,17 +71,18 @@ Run from the repo root.
 - Update the desktop inputs: `nix flake update nixpkgs home-manager nur nix-vscode-extension sops-nix`
 - Update the server inputs: `nix flake update nixpkgs-stable home-manager-stable nur-stable vscode-server sops-nix-stable nixpkgs-unstable`
 - Deploy the website's latest `main` (frontend and backend): `nix flake update unhalteproblem-website`, then rebuild
-  `nixos-oracle`. The build lives in the website repo's `flake.nix`; its `pnpmDeps` hash is
-  updated there whenever its `pnpm-lock.yaml` changes.
+  `nixos-oracle` (on the server, `/update-server website` does both). The build lives in the
+  website repo's `flake.nix`; its `pnpmDeps` hash is updated there whenever its `pnpm-lock.yaml`
+  changes.
 - The user applies a host with `sudo nixos-rebuild switch --flake .#<host>`
 
 Flakes only see git-tracked files. Run `git add -N <file>` on new files before evaluating, or
 evaluation fails with "path does not exist". The "Git tree is dirty" warning is harmless.
 
 Never run `sudo`, `nixos-rebuild switch|boot|test` or garbage collection: the user applies
-configurations themselves. The only exception is the `/redeploy` skill, which the user starts
-themselves; it may run `sudo -n nixos-rebuild switch --flake .#<host>` and nothing else as root.
-Never invoke it on your own or reuse its permission outside it.
+configurations themselves. The only exceptions are the `/redeploy` and `/update-server` skills,
+which the user starts themselves; they may run `sudo -n nixos-rebuild switch --flake .#<host>` and
+nothing else as root. Never invoke them on your own or reuse their permission outside them.
 
 Before starting any requested change or addition, run `git pull` in the checkout or worktree you
 will edit. If the pull fails (conflicts, local changes blocking the merge), stop and tell the user
@@ -150,3 +151,7 @@ target machine instead (e.g. `passwordFile = "/var/secrets/...";`). `.gitattribu
   builds and switches this machine. Without an argument it finds the host via
   `/etc/nixos-flake-host` (written by `hostMarker` in `flake.nix`), a hostname that is a flake
   output, or the ThinkPad's DMI name, and aborts otherwise.
+- `update-server` (user-invoked only, `/update-server [website]`, on the server only): updates the
+  server input set (with `website` also `unhalteproblem-website`), builds `nixos-oracle`, commits
+  and pushes the lock only if the build succeeded, switches, then checks for failed units and that
+  the website answers.
